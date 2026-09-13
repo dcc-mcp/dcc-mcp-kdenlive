@@ -29,3 +29,15 @@ is part of this adapter's acceptance path.
 
 Publication evidence must distinguish unit/MCP tests, renderer acceptance,
 editor readback, CI at the exact release SHA, and downloaded release assets.
+
+## 2026-09-13 acceptance
+
+- Native Kdenlive 26.08.1 on Windows opened an adapter-created 640x360 project.
+  DCC-CUA 1.8.3 exact-window pixels and UIA confirmed the named bin clip, V1 track,
+  two-second duration and matching blue project-monitor image. Native save/reopen
+  roundtrip was not established by this observation.
+- CLI discovery and progressive skill loading reached a GUI-bound adapter using
+  Core 0.20.28. `render_project --wait` traversed pending -> running -> completed.
+  FFprobe confirmed H.264, 640x360, 25 fps and 50 video frames in the final artifact.
+- The pre-existing unsaved user project was preserved in its original process;
+  the acceptance project ran in a separate editor instance.

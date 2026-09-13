@@ -20,7 +20,7 @@ its exact PID and native window handle:
 
 ```sh
 dcc-mcp-kdenlive serve --pid 1234 --hwnd 5678 --host-version 26.08.1
-dcc-mcp-cli list --dcc-type kdenlive
+dcc-mcp-cli list
 dcc-mcp-cli load-skill kdenlive-project --instance-id INSTANCE_ID
 ```
 

@@ -12,6 +12,7 @@ from . import __version__
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--version", action="version", version=__version__)
+    parser.set_defaults(port=None, pid=None, hwnd=None, host_version=None)
     sub = parser.add_subparsers(dest="command")
     sub.add_parser("doctor")
     serve = sub.add_parser("serve")
@@ -25,8 +26,6 @@ def main():
 
         print(json.dumps(get_status(), indent=2))
         return
-    if args.command != "serve":
-        parser.error("Select doctor or serve")
     if bool(args.pid) != bool(args.hwnd):
         parser.error("--pid and --hwnd must be supplied together")
     if args.pid:
