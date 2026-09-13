@@ -117,7 +117,12 @@ QJsonObject dispatch(const QString &method, const QJsonObject &params)
         if (!pCore->undoStack()->canRedo()) return failure("nothing_to_redo");
         pCore->undoStack()->redo();
     }
-    auto result = snapshot(model, doc);
+    // Undo can change the active sequence. Never return the previously held model.
+    auto *current = pCore->window()->getCurrentTimeline();
+    auto *currentDoc = pCore->projectManager()->current();
+    if (!current || !currentDoc || !current->model() || current->loading || current->model()->isClosed)
+        return failure("edit_applied_state_unavailable");
+    auto result = snapshot(current->model(), currentDoc);
     if (insertedId >= 0) result.insert(QStringLiteral("inserted_clip_id"), insertedId);
     return {{QStringLiteral("result"), result}};
 }
