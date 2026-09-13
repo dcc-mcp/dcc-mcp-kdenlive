@@ -29,6 +29,19 @@ def main():
                 info.compress_type = zipfile.ZIP_DEFLATED
                 archive.writestr(info, path.read_bytes())
     wheel = wheels[0]
+    # Source overlay only: never label this archive as a loadable DLL or host binary.
+    native_archive = dist / ("dcc-mcp-kdenlive-" + version + "-native-source.zip")
+    native_files = list((ROOT / "native").rglob("*")) + [
+        ROOT / "LICENSE",
+        ROOT / "tools/prepare_native_host.py",
+        ROOT / "docs/native-bridge.md",
+    ]
+    with zipfile.ZipFile(str(native_archive), "w", zipfile.ZIP_DEFLATED) as archive:
+        for path in sorted(native_files):
+            if path.is_file():
+                info = zipfile.ZipInfo(path.relative_to(ROOT).as_posix(), (2020, 1, 1, 0, 0, 0))
+                info.compress_type = zipfile.ZIP_DEFLATED
+                archive.writestr(info, path.read_bytes())
     manifest = {
         "schema_version": 1,
         "dcc_type": "kdenlive",
@@ -42,6 +55,14 @@ def main():
             "sha256": hashlib.sha256(wheel.read_bytes()).hexdigest(),
         },
         "host_bundled": False,
+        "native_bridge": {
+            "protocol": 1,
+            "distribution": "source-overlay",
+            "host_binary_verified": False,
+            "archive": native_archive.name,
+            "sha256": hashlib.sha256(native_archive.read_bytes()).hexdigest(),
+            "upstream": json.loads((ROOT / "native/upstream.json").read_text()),
+        },
     }
     (dist / "install-manifest.json").write_text(
         json.dumps(manifest, indent=2) + "\n", encoding="utf-8"

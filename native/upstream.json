@@ -1,0 +1,8 @@
+{
+  "repository": "https://github.com/KDE/kdenlive.git",
+  "tag": "v26.08.1",
+  "commit": "55e16e85cd9a9c6e032cd27a621137b4da881a7c",
+  "protocol": 1,
+  "integration": "source-overlay",
+  "host_binary_verified": false
+}
