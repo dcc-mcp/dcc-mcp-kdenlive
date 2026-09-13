@@ -1,0 +1,233 @@
+{
+  "tools": [
+    {
+      "name": "handshake",
+      "description": "Read native bridge identity and implemented capabilities.",
+      "input_schema": {
+        "type": "object",
+        "properties": {},
+        "required": [],
+        "additionalProperties": false
+      },
+      "output_schema": {
+        "type": "object"
+      },
+      "source_file": "scripts/handshake.py",
+      "execution": "sync",
+      "job_strategy": "monolithic",
+      "affinity": "any",
+      "enforce_thread_affinity": true,
+      "requires_in_process": true,
+      "timeout_hint_secs": 10,
+      "annotations": {
+        "read_only_hint": true,
+        "destructive_hint": false,
+        "idempotent_hint": true,
+        "open_world_hint": true,
+        "deferred_hint": false
+      }
+    },
+    {
+      "name": "project_state",
+      "description": "Read the live editor timeline, clip IDs and revision.",
+      "input_schema": {
+        "type": "object",
+        "properties": {},
+        "required": [],
+        "additionalProperties": false
+      },
+      "output_schema": {
+        "type": "object"
+      },
+      "source_file": "scripts/project_state.py",
+      "execution": "sync",
+      "job_strategy": "monolithic",
+      "affinity": "any",
+      "enforce_thread_affinity": true,
+      "requires_in_process": true,
+      "timeout_hint_secs": 10,
+      "annotations": {
+        "read_only_hint": true,
+        "destructive_hint": false,
+        "idempotent_hint": true,
+        "open_world_hint": true,
+        "deferred_hint": false
+      }
+    },
+    {
+      "name": "insert_clip",
+      "description": "Insert an existing bin clip using the native undoable timeline command.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "bin_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "track_id": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2147483647
+          },
+          "position": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2147483647
+          },
+          "expected_revision": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "description": "Revision from fresh native project_state; rejected after intervening edits."
+          }
+        },
+        "required": [
+          "bin_id",
+          "track_id",
+          "position",
+          "expected_revision"
+        ],
+        "additionalProperties": false
+      },
+      "output_schema": {
+        "type": "object"
+      },
+      "source_file": "scripts/insert_clip.py",
+      "execution": "sync",
+      "job_strategy": "monolithic",
+      "affinity": "any",
+      "enforce_thread_affinity": true,
+      "requires_in_process": true,
+      "timeout_hint_secs": 10,
+      "annotations": {
+        "read_only_hint": false,
+        "destructive_hint": true,
+        "idempotent_hint": false,
+        "open_world_hint": true,
+        "deferred_hint": false
+      }
+    },
+    {
+      "name": "move_clip",
+      "description": "Move a native timeline clip using the host model and undo stack.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "clip_id": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2147483647
+          },
+          "track_id": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2147483647
+          },
+          "position": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2147483647
+          },
+          "expected_revision": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "description": "Revision from fresh native project_state; rejected after intervening edits."
+          }
+        },
+        "required": [
+          "clip_id",
+          "track_id",
+          "position",
+          "expected_revision"
+        ],
+        "additionalProperties": false
+      },
+      "output_schema": {
+        "type": "object"
+      },
+      "source_file": "scripts/move_clip.py",
+      "execution": "sync",
+      "job_strategy": "monolithic",
+      "affinity": "any",
+      "enforce_thread_affinity": true,
+      "requires_in_process": true,
+      "timeout_hint_secs": 10,
+      "annotations": {
+        "read_only_hint": false,
+        "destructive_hint": true,
+        "idempotent_hint": false,
+        "open_world_hint": true,
+        "deferred_hint": false
+      }
+    },
+    {
+      "name": "undo",
+      "description": "Undo the latest host command, only against a fresh revision.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "expected_revision": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "description": "Revision from fresh native project_state; rejected after intervening edits."
+          }
+        },
+        "required": [
+          "expected_revision"
+        ],
+        "additionalProperties": false
+      },
+      "output_schema": {
+        "type": "object"
+      },
+      "source_file": "scripts/undo.py",
+      "execution": "sync",
+      "job_strategy": "monolithic",
+      "affinity": "any",
+      "enforce_thread_affinity": true,
+      "requires_in_process": true,
+      "timeout_hint_secs": 10,
+      "annotations": {
+        "read_only_hint": false,
+        "destructive_hint": true,
+        "idempotent_hint": false,
+        "open_world_hint": true,
+        "deferred_hint": false
+      }
+    },
+    {
+      "name": "redo",
+      "description": "Redo the next host command, only against a fresh revision.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "expected_revision": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "description": "Revision from fresh native project_state; rejected after intervening edits."
+          }
+        },
+        "required": [
+          "expected_revision"
+        ],
+        "additionalProperties": false
+      },
+      "output_schema": {
+        "type": "object"
+      },
+      "source_file": "scripts/redo.py",
+      "execution": "sync",
+      "job_strategy": "monolithic",
+      "affinity": "any",
+      "enforce_thread_affinity": true,
+      "requires_in_process": true,
+      "timeout_hint_secs": 10,
+      "annotations": {
+        "read_only_hint": false,
+        "destructive_hint": true,
+        "idempotent_hint": false,
+        "open_world_hint": true,
+        "deferred_hint": false
+      }
+    }
+  ]
+}

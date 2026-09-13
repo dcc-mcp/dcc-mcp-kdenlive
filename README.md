@@ -4,6 +4,11 @@ Agent tools for Kdenlive project files, installed effects and transitions, media
 subtitles, and MLT rendering. Uses the DCC-MCP Core gateway, skill discovery,
 async jobs and shared DCC-CUA editor control.
 
+An experimental [native C++ bridge](docs/native-bridge.md) adds live timeline
+readback and undoable edits for a separately built, pinned Kdenlive host.
+The source overlay and protocol tests are included; stock installations do not
+expose this endpoint, and a full host binary has not yet been validated.
+
 ## Install and run
 
 Follow the authoritative [installation and lifecycle runbook](install.md) for
