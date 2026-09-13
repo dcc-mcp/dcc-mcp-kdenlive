@@ -9,6 +9,14 @@ readback and undoable edits for a separately built, pinned Kdenlive host.
 The source overlay and protocol tests are included; stock installations do not
 expose this endpoint, and a full host binary has not yet been validated.
 
+## Showcase: a vertical solar-system edit
+
+![Kdenlive solar-system project with a vertical preview, scene markers, separate music and narration tracks, and the DCC-CUA control banner](docs/showcase/kdenlive-solar-system.png)
+
+A real Kdenlive project with scene markers, separate music and Chinese narration
+tracks, and the visible DCC-CUA control state. The user-provided screenshot shows
+the existing solar-system short. [Image source and details](docs/showcase/README.md).
+
 ## Install and run
 
 Follow the authoritative [installation and lifecycle runbook](install.md) for
