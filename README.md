@@ -6,6 +6,9 @@ async jobs and shared DCC-CUA editor control.
 
 ## Install and run
 
+Follow the authoritative [installation and lifecycle runbook](install.md) for
+acquisition, integrity checks, setup, verification, upgrades and removal.
+
 Install the wheel from GitHub Releases (or `pip install .` from a checkout):
 
 ```sh
