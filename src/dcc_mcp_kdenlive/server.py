@@ -37,7 +37,6 @@ class KdenliveServer(DccServerBase):
             instance_type="gui" if dcc_pid is not None else "standalone",
             dcc_pid=dcc_pid,
             dcc_window_handle=dcc_window_handle,
-            dcc_window_title="Kdenlive" if dcc_pid is not None else None,
             dcc_version=dcc_version,
             execution_bridge=HostExecutionBridge(dispatcher=None),
             **kwargs,

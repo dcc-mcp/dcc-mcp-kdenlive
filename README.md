@@ -40,6 +40,9 @@ dcc-mcp-cli list
 dcc-mcp-cli load-skill kdenlive-project --instance-id INSTANCE_ID
 ```
 
+GUI binding uses the exact PID and window handle without assuming a window title;
+Kdenlive's title changes with the active project and profile.
+
 Discover the instance through the gateway and use search/describe/call with its
 returned tool slugs. The CLI prints its direct MCP URL as an alternative. Configure
 an MCP client with that HTTP URL or the machine's DCC-MCP gateway URL.
