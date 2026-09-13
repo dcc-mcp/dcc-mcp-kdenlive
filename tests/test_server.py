@@ -68,6 +68,35 @@ def test_gui_requires_both_identity_fields():
         KdenliveServer(dcc_pid=123)
 
 
+@pytest.mark.parametrize("title", [None, "solar-system / Vertical HD 30 fps - Kdenlive"])
+def test_gui_ui_scope_preserves_identity_without_guessing_title(monkeypatch, tmp_path, title):
+    monkeypatch.setattr("dcc_mcp_kdenlive.server.validate_host", lambda pid: None)
+    monkeypatch.delenv("DCC_KDENLIVE_BRIDGE_PORT", raising=False)
+    options = {} if title is None else {"dcc_window_title": title}
+    server = KdenliveServer(
+        dcc_pid=123,
+        dcc_window_handle=456,
+        gateway_port=0,
+        enable_gateway_failover=False,
+        enable_telemetry=False,
+        registry_dir=str(tmp_path / "registry"),
+        **options,
+    )
+
+    # Exercise core's real context injection without starting a service or touching a UI.
+    executor = server._get_execution()._with_adapter_context(
+        lambda script_path, params, **metadata: metadata
+    )
+    result = executor("unused.py", {}, skill_name="ui-control")
+
+    assert result["trusted_adapter_scope"] == {
+        "dcc_type": "kdenlive",
+        "process_id": 123,
+        "window_handle": 456,
+        "window_title": title,
+    }
+
+
 def test_port_environment_respected(monkeypatch):
     monkeypatch.setenv("DCC_MCP_KDENLIVE_PORT", "12345")
     server = KdenliveServer(gateway_port=0, enable_gateway_failover=False)
