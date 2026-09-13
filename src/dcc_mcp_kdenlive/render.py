@@ -3,11 +3,11 @@
 import os
 import tempfile
 from pathlib import Path
-from xml.etree import ElementTree as ET
 
 from .media import probe_media
 from .project import Project
 from .runtime import executable, run_native
+from .storage import xml_bytes
 
 PRESETS = {
     "mp4": ["vcodec=libx264", "acodec=aac", "crf=18", "preset=medium"],
@@ -47,7 +47,7 @@ def render_project(path, output_path, preset="mp4", start=0, end=0, timeout=3600
         prefix=".kdenlive-render-", dir=str(output.parent)
     ) as directory:
         frozen = Path(directory) / "project.mlt"
-        frozen.write_bytes(ET.tostring(project.root, encoding="utf-8", xml_declaration=True))
+        frozen.write_bytes(xml_bytes(project.root))
         temporary = Path(directory) / ("output." + preset)
         run_native(
             [

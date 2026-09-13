@@ -1,13 +1,21 @@
 """Bounded XML and exclusive, copy-on-write artifact publication."""
 
 import hashlib
+import io
 import os
 import tempfile
 from pathlib import Path
+from xml.etree import ElementTree as StdET
 
 from defusedxml import ElementTree
 
 MAX_XML_BYTES = 32 * 1024 * 1024
+
+
+def xml_bytes(root):
+    stream = io.BytesIO()
+    StdET.ElementTree(root).write(stream, encoding="utf-8", xml_declaration=True)
+    return stream.getvalue()
 
 
 def read_xml(path):

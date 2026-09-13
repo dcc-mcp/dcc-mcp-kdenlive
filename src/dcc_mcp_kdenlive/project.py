@@ -8,7 +8,7 @@ from fractions import Fraction
 from pathlib import Path
 from xml.etree import ElementTree as ET
 
-from .storage import digest, publish, read_xml
+from .storage import digest, publish, read_xml, xml_bytes
 
 
 def properties(element):
@@ -94,9 +94,7 @@ class Project:
         if not root_path.is_absolute():
             root_path = self.path.parent / root_path
         self.root.set("root", str(root_path.resolve()))
-        result = publish(
-            output_path, ET.tostring(self.root, encoding="utf-8", xml_declaration=True)
-        )
+        result = publish(output_path, xml_bytes(self.root))
         result.update(source_sha256=self.sha256, editor_state="file_only")
         return result
 
@@ -270,7 +268,7 @@ def create_project(
             "sum": "1",
         }.items():
             put(transition, name, value)
-    return publish(output_path, ET.tostring(root, encoding="utf-8", xml_declaration=True))
+    return publish(output_path, xml_bytes(root))
 
 
 def inspect_project(path):
