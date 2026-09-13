@@ -1,0 +1,183 @@
+{
+  "tools": [
+    {
+      "name": "insert_clip",
+      "description": "Append a clip at or after the playlist end, inserting a gap when needed.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "output_path": {
+            "type": "string",
+            "description": "New file path in an existing directory; existing destinations are never replaced."
+          },
+          "playlist_id": {
+            "type": "string"
+          },
+          "producer_id": {
+            "type": "string"
+          },
+          "position": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "source_in": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "source_out": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "expected_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "description": "Source revision returned by inspect_project. A mismatch rejects the edit."
+          }
+        },
+        "required": [
+          "path",
+          "output_path",
+          "playlist_id",
+          "producer_id",
+          "position",
+          "source_in",
+          "source_out"
+        ],
+        "additionalProperties": false
+      },
+      "output_schema": {
+        "type": "object"
+      },
+      "source_file": "scripts/insert_clip.py",
+      "execution": "sync",
+      "job_strategy": "monolithic",
+      "affinity": "any",
+      "enforce_thread_affinity": true,
+      "requires_in_process": true,
+      "timeout_hint_secs": 60,
+      "annotations": {
+        "read_only_hint": false,
+        "destructive_hint": true,
+        "idempotent_hint": false,
+        "open_world_hint": true,
+        "deferred_hint": false
+      }
+    },
+    {
+      "name": "split_clip",
+      "description": "Split an ungrouped clip at an offset while preserving source ranges.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "output_path": {
+            "type": "string",
+            "description": "New file path in an existing directory; existing destinations are never replaced."
+          },
+          "playlist_id": {
+            "type": "string"
+          },
+          "item_index": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "expected_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "description": "Source revision returned by inspect_project. A mismatch rejects the edit."
+          }
+        },
+        "required": [
+          "path",
+          "output_path",
+          "playlist_id",
+          "item_index",
+          "offset"
+        ],
+        "additionalProperties": false
+      },
+      "output_schema": {
+        "type": "object"
+      },
+      "source_file": "scripts/split_clip.py",
+      "execution": "sync",
+      "job_strategy": "monolithic",
+      "affinity": "any",
+      "enforce_thread_affinity": true,
+      "requires_in_process": true,
+      "timeout_hint_secs": 60,
+      "annotations": {
+        "read_only_hint": false,
+        "destructive_hint": true,
+        "idempotent_hint": false,
+        "open_world_hint": true,
+        "deferred_hint": false
+      }
+    },
+    {
+      "name": "remove_item",
+      "description": "Remove an ungrouped timeline item, leaving a gap or rippling that playlist.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "output_path": {
+            "type": "string",
+            "description": "New file path in an existing directory; existing destinations are never replaced."
+          },
+          "playlist_id": {
+            "type": "string"
+          },
+          "item_index": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "ripple": {
+            "type": "boolean",
+            "default": false
+          },
+          "expected_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "description": "Source revision returned by inspect_project. A mismatch rejects the edit."
+          }
+        },
+        "required": [
+          "path",
+          "output_path",
+          "playlist_id",
+          "item_index"
+        ],
+        "additionalProperties": false
+      },
+      "output_schema": {
+        "type": "object"
+      },
+      "source_file": "scripts/remove_item.py",
+      "execution": "sync",
+      "job_strategy": "monolithic",
+      "affinity": "any",
+      "enforce_thread_affinity": true,
+      "requires_in_process": true,
+      "timeout_hint_secs": 60,
+      "annotations": {
+        "read_only_hint": false,
+        "destructive_hint": true,
+        "idempotent_hint": false,
+        "open_world_hint": true,
+        "deferred_hint": false
+      }
+    }
+  ]
+}

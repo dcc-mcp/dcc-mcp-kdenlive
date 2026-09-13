@@ -1,0 +1,202 @@
+{
+  "tools": [
+    {
+      "name": "create_project",
+      "description": "Create a Kdenlive project with audio and video tracks.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "output_path": {
+            "type": "string",
+            "description": "New file path in an existing directory; existing destinations are never replaced."
+          },
+          "width": {
+            "type": "integer",
+            "minimum": 0,
+            "default": 1920
+          },
+          "height": {
+            "type": "integer",
+            "minimum": 0,
+            "default": 1080
+          },
+          "fps_num": {
+            "type": "integer",
+            "minimum": 0,
+            "default": 25
+          },
+          "fps_den": {
+            "type": "integer",
+            "minimum": 0,
+            "default": 1
+          },
+          "video_tracks": {
+            "type": "integer",
+            "minimum": 0,
+            "default": 2
+          },
+          "audio_tracks": {
+            "type": "integer",
+            "minimum": 0,
+            "default": 2
+          }
+        },
+        "required": [
+          "output_path"
+        ],
+        "additionalProperties": false
+      },
+      "output_schema": {
+        "type": "object"
+      },
+      "source_file": "scripts/create_project.py",
+      "execution": "sync",
+      "job_strategy": "monolithic",
+      "affinity": "any",
+      "enforce_thread_affinity": true,
+      "requires_in_process": true,
+      "timeout_hint_secs": 60,
+      "annotations": {
+        "read_only_hint": false,
+        "destructive_hint": true,
+        "idempotent_hint": false,
+        "open_world_hint": true,
+        "deferred_hint": false
+      }
+    },
+    {
+      "name": "inspect_project",
+      "description": "Inspect the file profile, bin, tracks, clips and effects; does not read live editor state.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "path"
+        ],
+        "additionalProperties": false
+      },
+      "output_schema": {
+        "type": "object"
+      },
+      "source_file": "scripts/inspect_project.py",
+      "execution": "sync",
+      "job_strategy": "monolithic",
+      "affinity": "any",
+      "enforce_thread_affinity": true,
+      "requires_in_process": true,
+      "timeout_hint_secs": 60,
+      "annotations": {
+        "read_only_hint": true,
+        "destructive_hint": false,
+        "idempotent_hint": true,
+        "open_world_hint": true,
+        "deferred_hint": false
+      }
+    },
+    {
+      "name": "validate_project",
+      "description": "Validate XML references, IDs, frame rate and entry ranges.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "path"
+        ],
+        "additionalProperties": false
+      },
+      "output_schema": {
+        "type": "object"
+      },
+      "source_file": "scripts/validate_project.py",
+      "execution": "sync",
+      "job_strategy": "monolithic",
+      "affinity": "any",
+      "enforce_thread_affinity": true,
+      "requires_in_process": true,
+      "timeout_hint_secs": 60,
+      "annotations": {
+        "read_only_hint": true,
+        "destructive_hint": false,
+        "idempotent_hint": true,
+        "open_world_hint": true,
+        "deferred_hint": false
+      }
+    },
+    {
+      "name": "set_guides",
+      "description": "Replace project guide markers in a new file.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "output_path": {
+            "type": "string",
+            "description": "New file path in an existing directory; existing destinations are never replaced."
+          },
+          "guides": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "frame": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "comment": {
+                  "type": "string"
+                },
+                "category": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "frame",
+                "comment"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "expected_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "description": "Source revision returned by inspect_project. A mismatch rejects the edit."
+          }
+        },
+        "required": [
+          "path",
+          "output_path",
+          "guides"
+        ],
+        "additionalProperties": false
+      },
+      "output_schema": {
+        "type": "object"
+      },
+      "source_file": "scripts/set_guides.py",
+      "execution": "sync",
+      "job_strategy": "monolithic",
+      "affinity": "any",
+      "enforce_thread_affinity": true,
+      "requires_in_process": true,
+      "timeout_hint_secs": 60,
+      "annotations": {
+        "read_only_hint": false,
+        "destructive_hint": true,
+        "idempotent_hint": false,
+        "open_world_hint": true,
+        "deferred_hint": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "tools": [
+    {
+      "name": "probe_media",
+      "description": "Inspect actual audio/video streams and format using FFprobe.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "path"
+        ],
+        "additionalProperties": false
+      },
+      "output_schema": {
+        "type": "object"
+      },
+      "source_file": "scripts/probe_media.py",
+      "execution": "sync",
+      "job_strategy": "monolithic",
+      "affinity": "any",
+      "enforce_thread_affinity": true,
+      "requires_in_process": true,
+      "timeout_hint_secs": 60,
+      "annotations": {
+        "read_only_hint": true,
+        "destructive_hint": false,
+        "idempotent_hint": true,
+        "open_world_hint": true,
+        "deferred_hint": false
+      }
+    },
+    {
+      "name": "write_subtitles",
+      "description": "Write validated, ordered subtitle cues to a new UTF-8 SRT file for editor import.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "output_path": {
+            "type": "string",
+            "description": "New file path in an existing directory; existing destinations are never replaced."
+          },
+          "cues": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "start_ms": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "end_ms": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "text": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "start_ms",
+                "end_ms",
+                "text"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "output_path",
+          "cues"
+        ],
+        "additionalProperties": false
+      },
+      "output_schema": {
+        "type": "object"
+      },
+      "source_file": "scripts/write_subtitles.py",
+      "execution": "sync",
+      "job_strategy": "monolithic",
+      "affinity": "any",
+      "enforce_thread_affinity": true,
+      "requires_in_process": true,
+      "timeout_hint_secs": 60,
+      "annotations": {
+        "read_only_hint": false,
+        "destructive_hint": true,
+        "idempotent_hint": false,
+        "open_world_hint": true,
+        "deferred_hint": false
+      }
+    }
+  ]
+}

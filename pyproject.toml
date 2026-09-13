@@ -1,0 +1,42 @@
+[build-system]
+requires = ["hatchling>=1.18"]
+build-backend = "hatchling.build"
+
+[project]
+name = "dcc-mcp-kdenlive"
+version = "0.1.0" # x-release-please-version
+description = "Kdenlive project authoring, MLT rendering and scoped editor control for DCC-MCP agents"
+readme = "README.md"
+requires-python = ">=3.7"
+license = {text = "MIT"}
+authors = [{name = "loonghao", email = "hal.long@outlook.com"}]
+dependencies = ["dcc-mcp-core>=0.20.28,<1.0.0", "defusedxml>=0.7.1", "psutil>=5.9"]
+
+[project.urls]
+Repository = "https://github.com/dcc-mcp/dcc-mcp-kdenlive"
+Issues = "https://github.com/dcc-mcp/dcc-mcp-kdenlive/issues"
+
+[project.scripts]
+dcc-mcp-kdenlive = "dcc_mcp_kdenlive.cli:main"
+
+[project.entry-points."dcc_mcp.adapters"]
+kdenlive = "dcc_mcp_kdenlive:KdenliveServer"
+
+[project.optional-dependencies]
+test = ["pytest>=7", "pyyaml>=6", "jsonschema>=4"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/dcc_mcp_kdenlive"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+markers = ["live: requires installed MLT and FFmpeg"]
+
+[tool.ruff]
+target-version = "py37"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B"]
+ignore = ["E501"]

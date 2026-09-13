@@ -1,0 +1,69 @@
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_call:
+permissions:
+  contents: read
+jobs:
+  test:
+    name: Python ${{ matrix.python }} / ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-22.04, windows-2022]
+        python: ['3.7', '3.12']
+    env:
+      DCC_MCP_DISABLE_DEFAULT_SKILL_PATHS: '1'
+      DCC_MCP_DISABLE_TELEMETRY: '1'
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - uses: actions/setup-python@42375524e23c412d93fb67b49958b491fce71c38
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python -m pip install -e ".[test]"
+      - name: Require native core (py37-lite is insufficient)
+        run: python -c "from dcc_mcp_core import DccServerBase; from dcc_mcp_core import _core; print(_core.__file__)"
+      - run: python -m pytest -q
+  package:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - uses: actions/setup-python@42375524e23c412d93fb67b49958b491fce71c38
+        with:
+          python-version: '3.12'
+      - run: python -m pip install ruff build twine
+      - run: python -m ruff check src tests tools
+      - run: python -m ruff format --check src tests tools
+      - run: python -m build
+      - run: python -m twine check dist/*
+      - run: python tools/build_artifacts.py
+      - name: Install wheel outside source tree
+        run: |
+          python -m venv /tmp/wheel-smoke
+          /tmp/wheel-smoke/bin/pip install dist/*.whl
+          cd /tmp
+          /tmp/wheel-smoke/bin/dcc-mcp-kdenlive --version
+          /tmp/wheel-smoke/bin/dcc-mcp-kdenlive doctor
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: distribution
+          path: dist/
+  render:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      KDENLIVE_LIVE_TEST: '1'
+      QT_QPA_PLATFORM: offscreen
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - uses: actions/setup-python@42375524e23c412d93fb67b49958b491fce71c38
+        with:
+          python-version: '3.12'
+      - run: sudo apt-get update && sudo apt-get install -y melt ffmpeg libmlt-data
+      - run: python -m pip install -e ".[test]"
+      - run: python -m pytest tests/test_live.py -q

@@ -1,0 +1,21 @@
+---
+name: kdenlive-timeline
+description: Append a clip at or after the playlist end, inserting a gap when needed. Split an ungrouped clip at an offset while preserving source ranges. Remove an ungrouped timeline item, leaving a gap or rippling that playlist.
+compatibility: "Python 3.7+, dcc-mcp-core 0.20.28+, Kdenlive/MLT installed for native operations"
+metadata:
+  dcc-mcp:
+    dcc: kdenlive
+    layer: domain
+    version: "0.1.0" # x-release-please-version
+    tools: tools.yaml
+    tags: [kdenlive, video, pipeline]
+    search-hint: "Kdenlive timeline insert_clip split_clip remove_item"
+---
+
+# Kdenlive Timeline
+
+Discover and describe tools before calls. File edits create new artifacts; inspect the returned file before opening it in the editor. Supply expected_sha256 for revision fencing. Frames are integers; end frames are inclusive. File results are not live editor readback.
+
+Grouped clips, nested sequences, timeline model operations and other editor-only features use the shared ui-control skill on a GUI instance bound to an exact Kdenlive PID and HWND. Report provider=dcc-cua and its runtime version before UI observation. Use snapshot -> act -> snapshot and stop the session when done. Never switch to another UI provider or retry after a policy rejection or user interruption.
+
+For rendering, poll the core job ID until terminal; a timeout is not completion. Cancellation terminates the owned render process and cleans partial output.

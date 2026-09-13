@@ -1,0 +1,114 @@
+{
+  "tools": [
+    {
+      "name": "query_services",
+      "description": "Discover all installed MLT services or describe one service and its parameters.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string",
+            "default": "filters"
+          },
+          "service": {
+            "type": "string",
+            "default": ""
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "output_schema": {
+        "type": "object"
+      },
+      "source_file": "scripts/query_services.py",
+      "execution": "sync",
+      "job_strategy": "monolithic",
+      "affinity": "any",
+      "enforce_thread_affinity": true,
+      "requires_in_process": true,
+      "timeout_hint_secs": 60,
+      "annotations": {
+        "read_only_hint": true,
+        "destructive_hint": false,
+        "idempotent_hint": true,
+        "open_world_hint": true,
+        "deferred_hint": false
+      }
+    },
+    {
+      "name": "list_assets",
+      "description": "List installed Kdenlive effects, transitions, titles, profiles, export presets, generators, lumas or LUTs.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string",
+            "default": "effects"
+          },
+          "query": {
+            "type": "string",
+            "default": ""
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 0,
+            "default": 100
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "output_schema": {
+        "type": "object"
+      },
+      "source_file": "scripts/list_assets.py",
+      "execution": "sync",
+      "job_strategy": "monolithic",
+      "affinity": "any",
+      "enforce_thread_affinity": true,
+      "requires_in_process": true,
+      "timeout_hint_secs": 60,
+      "annotations": {
+        "read_only_hint": true,
+        "destructive_hint": false,
+        "idempotent_hint": true,
+        "open_world_hint": true,
+        "deferred_hint": false
+      }
+    },
+    {
+      "name": "describe_asset",
+      "description": "Read the native parameters from an installed XML asset definition.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "asset": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "asset"
+        ],
+        "additionalProperties": false
+      },
+      "output_schema": {
+        "type": "object"
+      },
+      "source_file": "scripts/describe_asset.py",
+      "execution": "sync",
+      "job_strategy": "monolithic",
+      "affinity": "any",
+      "enforce_thread_affinity": true,
+      "requires_in_process": true,
+      "timeout_hint_secs": 60,
+      "annotations": {
+        "read_only_hint": true,
+        "destructive_hint": false,
+        "idempotent_hint": true,
+        "open_world_hint": true,
+        "deferred_hint": false
+      }
+    }
+  ]
+}
