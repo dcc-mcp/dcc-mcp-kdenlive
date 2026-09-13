@@ -1,0 +1,14 @@
+{
+  "generator": "OpenAI built-in ImageGen",
+  "generated_on": "2026-09-14",
+  "purpose": "Educational concept illustration for the DCC-MCP project",
+  "image": "skills-mcp-concept.png",
+  "source_sha256": "245ed5b78537d899fa34bae57244f88a26e1db0f171f733c07823862a05464e9",
+  "published_sha256": "245ed5b78537d899fa34bae57244f88a26e1db0f171f733c07823862a05464e9",
+  "size_bytes": 2035332,
+  "width": 1254,
+  "height": 1254,
+  "processing": "Exact PNG copy of the selected ImageGen output; no crop, resize, repainting, or retouching.",
+  "disclosure": "AI-generated concept illustration. The physical objects are metaphors, not product UI, a captured software result, a benchmark, or evidence that an operation completed.",
+  "prompt": "Use case: ads-marketing, scientific-educational.\nAsset: hero scene for a premium 60-second educational explainer of DCC-MCP, an AI creative-software orchestration project.\nCreate a beautiful coherent art-directed 3D miniature studio photograph, square 2048 x 2048. A physical visual metaphor for SKILLS + MCP: an open ivory instruction book with precise but entirely nonverbal cobalt-blue line diagrams, its pages rising gracefully on the left, and a beautifully manufactured cobalt-blue connector / small articulated tool on the right. They fit into one substantial circular coral-orange hub in the center; a small sculptural completed object stands above the hub. Show the essential idea of instructions joined to execution. Tactile paper, matte ceramic, finely brushed aluminum, blue resin, restrained orange accents, off-white seamless cyclorama, long soft studio shadows. Exceptionally polished museum-science editorial aesthetic. One striking composition with strong silhouette, real crafted materials, architectural clean lighting, no busy room, no decorative dashboard, no circuit-board wallpaper. Objects occupy central 65% of canvas so crop adaptations work. Three-quarter camera, believable scale, moderate close-up. Crisp photographed high detail and subtly imperfect tactile edges. Dominant warm ivory #f3f0e9, graphite #21242a, cobalt #2958d8, muted coral #f06f4f. No text, no letters, no numbers, no watermarks, no logos, no sci-fi neon, no purple gradient, no disconnected floating cards. This is a conceptual illustration, not a screenshot."
+}
