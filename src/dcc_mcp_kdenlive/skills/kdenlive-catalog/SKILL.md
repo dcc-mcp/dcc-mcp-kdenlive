@@ -6,7 +6,7 @@ metadata:
   dcc-mcp:
     dcc: kdenlive
     layer: domain
-    version: "0.1.0" # x-release-please-version
+    version: "0.1.1" # x-release-please-version
     tools: tools.yaml
     tags: [kdenlive, video, pipeline]
     search-hint: "Kdenlive catalog query_services list_assets describe_asset"
