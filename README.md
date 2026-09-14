@@ -9,15 +9,16 @@ readback and undoable edits for a separately built, pinned Kdenlive host.
 The source overlay and protocol tests are included; stock installations do not
 expose this endpoint, and a full host binary has not yet been validated.
 
-## Skills + MCP: from method to tools
+## See a product video take shape
 
-![AI concept illustration of an instruction book and a connected tool sharing one creative workflow](docs/showcase/skills-mcp-concept.png)
+![AI-generated Kdenlive interface illustration with headphone clips, an editing timeline, narration and music tracks, and a portrait product preview](docs/images/headphones-workflow-showcase.webp)
 
-*AI-generated concept illustration.* Skills package reusable task methods; MCP
-connects the assistant to software tools. The image illustrates their roles,
-not a Kdenlive screenshot or a verified software result.
-[How Skills and MCP work together](https://dcc-mcp.github.io/why-dcc-mcp).
-[Image provenance and the real Kdenlive case](docs/showcase/README.md).
+*ImageGen interface reconstruction · workflow illustration.* A headphone video
+connects source clips, timeline edits, narration and the finished preview in one
+recognisable workspace. DCC-MCP provides project-file editing, media and subtitle
+tools, and MLT rendering; Skills package reusable methods for those tools.
+The image is a generated illustration, not a live recording or export evidence.
+[Image sources, attribution and the original Kdenlive screenshot](docs/showcase/README.md).
 
 ## Install and run
 
