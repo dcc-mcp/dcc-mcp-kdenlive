@@ -123,5 +123,9 @@ manages versions and changelogs. Release artifacts include wheel, sdist, an agen
 skill ZIP, an install manifest and SHA-256 checksums with provenance attestation.
 See [release operations](docs/releases.md) for publishing and catalog onboarding.
 
+Portable-package and AVI media evidence is indexed in
+[validation snapshots](docs/validation/README.md); those files are point-in-time
+records that pin their own versions and are not the current suite result.
+
 Kdenlive is a KDE project. This adapter is independently maintained and is not
 endorsed by KDE. It does not bundle Kdenlive or MLT binaries.
