@@ -1,0 +1,129 @@
+{
+  "status": "QUALIFIED_FOR_REVIEW_WITH_SCOPED_NATIVE_LIMITS",
+  "base_commit": "44268aab83f3867b75d39c78cc3df2b3cd096826",
+  "source_manifest_sha256": "5edb15bf392c2c2cd85371b1152c708fa4170844442890d8dd94a8adea0520c5",
+  "module_sha256": {
+    "project": "d49956843993e73109dcffddc312232f657d32851ec93dd94f3377274148e32e",
+    "catalog": "ceb9c59e0b461b58a722963d5a09a9d64d6005bc24c3bd4ebe3b329477e1f83f"
+  },
+  "unit_tests": {
+    "source_passed": 124,
+    "installed_wheel_passed": 124,
+    "each_existing_native_optin_skip": 1,
+    "ruff": "PASS"
+  },
+  "independent_source_review": "PASS on pinned bytes",
+  "independent_filesystem_probes": [
+    "Unreadable conflicting subtree rejected",
+    "External effects-root symlink rejected",
+    "Actual FIFO rejected",
+    "Regular definition replaced by FIFO at open rejected",
+    "Unknown ID, mismatched service and conflicting XML mappings rejected before output"
+  ],
+  "catalog_scope": "Installed XML-defined effects only; plugin runtime availability and hostile same-user filesystem isolation are not established by this preflight",
+  "runtime": {
+    "application": "Kdenlive 24.12.3",
+    "MLT": "7.30.0",
+    "core_server_cli": "0.20.41",
+    "SDK": "2.2.0",
+    "httpx2": "2.13.1",
+    "CPU_affinity_count": 2,
+    "optional_gateway_disabled": true
+  },
+  "typed_MCP_source_pilot": {
+    "events": 31,
+    "operations": [
+      "discover",
+      "load",
+      "describe/list schemas",
+      "create project",
+      "add color media",
+      "insert clip",
+      "add five effects",
+      "reject identity override",
+      "inspect",
+      "validate",
+      "package",
+      "render",
+      "probe"
+    ],
+    "effect_definitions": [
+      "dynamictext",
+      "brightness",
+      "fade_from_black"
+    ],
+    "output_frames": 24,
+    "dimensions": [
+      640,
+      360
+    ],
+    "fps": 24,
+    "package_root": "",
+    "source_preserved": true
+  },
+  "installed_wheel": {
+    "bytes": 56711,
+    "sha256": "914baf2e5fb260e95a7746a48ffa91d225df88b85d64b35f3dad47fec289cd02",
+    "runtime_files_equal_source": 56,
+    "actual_MCP_events": 30,
+    "movie_bytes_equal_source_pilot": true,
+    "offscreen_movie_sha256": "cd1cf2a988ee6995958049c5db4ba12d11af668d19a32e96263ac86429f42f13",
+    "GUI_scope": "Exact-source GUI evidence is bound by all runtime bytes; installed wheel itself ran fresh MCP authoring/package/render, not a second GUI session"
+  },
+  "native_GUI": {
+    "controls_before_and_after_reopen": {
+      "clip": [
+        "dynamictext",
+        "fade_from_black"
+      ],
+      "track": [
+        "brightness"
+      ],
+      "master": [
+        "dynamictext",
+        "dynamictext"
+      ]
+    },
+    "sampled_frames": [
+      0,
+      5,
+      11,
+      12,
+      23
+    ],
+    "all_three_caption_values_preserved": true,
+    "untouched_Save_Copy_reopen": true,
+    "actual_cwd_outside_project_directory": true,
+    "manual_relink": false,
+    "initial_notice": "Unused black resource marked Fixed; no missing media",
+    "same_display_export": {
+      "frames": 24,
+      "all_RGB_and_RGBA_frames_exact": true,
+      "MP4_bytes_exact": true,
+      "MP4_bytes": 17868,
+      "MP4_sha256": "01ff782404c9b2c919aa29f7cdb818f069e9ec50cc921b4da15cc54618daa9f8",
+      "MCP_events": 26,
+      "MCP_render_calls": 2,
+      "independent_decoder_verification": true
+    },
+    "source_and_saved_native_unchanged_after_proof": true,
+    "owned_processes_closed_normally": true
+  },
+  "retained_separate_failure": {
+    "parameter_edit_observed": true,
+    "parameter_Undo_preservation": "FAIL in separate Kdenlive 24.12.3 diagnostic; not included in clean save acceptance",
+    "source_supported_explanation": "v24.12.3 AssetCommand reads local oldValue but undo uses member m_oldValue; v26.08.1 assigns the member",
+    "exact_installed_binary_source_match": false,
+    "references": [
+      "https://github.com/KDE/kdenlive/blob/v24.12.3/src/assets/model/assetcommand.cpp#L29",
+      "https://github.com/KDE/kdenlive/blob/v26.08.1/src/assets/model/assetcommand.cpp#L29"
+    ]
+  },
+  "limits": [
+    "No blanket plugin or operating-system acceptance",
+    "No parameter edit/Undo preservation claim",
+    "No cross-display pixel identity claim",
+    "No software or package release",
+    "No original artwork license change"
+  ]
+}

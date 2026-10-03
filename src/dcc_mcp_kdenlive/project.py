@@ -9,6 +9,7 @@ from fractions import Fraction
 from pathlib import Path
 from xml.etree import ElementTree as ET
 
+from .catalog import validate_effect_identity
 from .storage import digest, publish, read_xml, xml_bytes
 
 
@@ -459,18 +460,20 @@ def add_effect(
     element = project.element(element_id, ("producer", "chain", "tractor"))
     if not re.fullmatch(r"[A-Za-z0-9_.-]+", service):
         raise ValueError("Invalid MLT service identifier")
+    native_effect_id = validate_effect_identity(effect_id or service, service)
     effect = ET.SubElement(element, "filter", id=project.fresh_id("effect_"))
     for key, value in parameters.items():
         if not isinstance(value, str) or key in {
             "mlt_service",
             "kdenlive:id",
+            "kdenlive_id",
             "kdenlive:ix",
             "internal_added",
         }:
             raise ValueError("Invalid effect parameter")
         put(effect, key, value)
     put(effect, "mlt_service", service)
-    put(effect, "kdenlive:id", effect_id or service)
+    put(effect, "kdenlive_id", native_effect_id)
     put(effect, "kdenlive:ix", len(element.findall("filter")))
     return dict(project.save(output_path), effect_id=effect.get("id"))
 
