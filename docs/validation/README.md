@@ -31,6 +31,15 @@ JSON is clearly labeled source-author reported native evidence; raw traces and
 native artifacts were not provided to the publication environment. It is separate
 from the six portable-package snapshots above.
 
+## Portable project document root
+
+[`document-root.md`](document-root.md) covers the empty native root used to recover
+media from the opened Kdenlive document, with a real moved-bundle/cross-cwd adapter
+regression. Its linked source-author qualification is a later, separate snapshot
+for the merged PNG importer and this packaging fix, including reported fresh Linux
+GUI and 24-frame native comparisons. Raw native traces/artifacts were not supplied
+to the publication environment; local source/unit/package checks are distinct.
+
 ## What the six portable-package snapshots do not cover
 
 - No Kdenlive editor GUI acceptance. Every run is standalone file-mode or CLI/SDK work,

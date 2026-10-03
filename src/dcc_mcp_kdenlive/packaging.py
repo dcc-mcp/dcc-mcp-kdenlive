@@ -270,7 +270,9 @@ def package_project(
             put(node, "resource", relative[candidate])
             if node.find("property[@name='kdenlive:originalurl']") is not None:
                 put(node, "kdenlive:originalurl", relative[candidate])
-        project.root.set("root", ".")
+        # An empty root lets Kdenlive recover the directory from the document
+        # URL. A literal dot instead selects the editor's launch directory.
+        project.root.set("root", "")
         # Reject residual absolute paths or remote resources; do not guess how
         # to redact unknown metadata or silently discard editable content.
         for node in project.root.iter():

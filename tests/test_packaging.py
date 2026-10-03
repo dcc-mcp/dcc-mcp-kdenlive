@@ -3,6 +3,7 @@
 import errno
 import json
 import os
+import shutil
 import stat
 from pathlib import Path
 from types import SimpleNamespace
@@ -60,7 +61,7 @@ def test_same_basename_and_relative_portability(tmp_path):
     assert {p.read_bytes() for p in (out / "media").iterdir()} == {b"a", b"b"}
     text = (out / "project.kdenlive").read_text() + (out / "manifest.json").read_text()
     assert str(tmp_path) not in text
-    assert Project(str(out / "project.kdenlive")).root.get("root") == "."
+    assert Project(str(out / "project.kdenlive")).root.get("root") == ""
     assert all(not Path(x["path"]).is_absolute() for x in manifest["files"])
 
 
@@ -70,6 +71,33 @@ def test_duplicate_content_deduplicates(tmp_path):
     source = make_project(tmp_path, [a, b])
     result = packaging.package_project(str(source), str(tmp_path / "out"), [str(tmp_path)])
     assert result["media_files"] == 1
+
+
+def test_moved_bundle_can_be_edited_and_repackaged_from_another_cwd(tmp_path, monkeypatch):
+    media = media_file(tmp_path / "original-media/frame.png", b"retained bytes")
+    source = make_project(tmp_path, [media])
+    bundle = tmp_path / "portable"
+    packaging.package_project(str(source), str(bundle), [str(media.parent)])
+    moved = tmp_path / "moved"
+    shutil.copytree(bundle, moved)
+    media.parent.rename(tmp_path / "original-media-unavailable")
+    bundle.rename(tmp_path / "original-bundle-unavailable")
+    elsewhere = tmp_path / "unrelated-working-directory"
+    elsewhere.mkdir()
+    monkeypatch.chdir(elsewhere)
+
+    # Empty root is the native editor's document-directory recovery contract.
+    # Actual editor opening is a separate GUI acceptance, not simulated here.
+    project = Project(str(moved / "project.kdenlive"))
+    assert project.root.get("root") == ""
+    edited = elsewhere / "edited.kdenlive"
+    project.save(str(edited))
+    assert Project(str(edited)).root.get("root") == str(moved)
+    again = elsewhere / "repackaged"
+    packaging.package_project(str(edited), str(again), [str(moved / "media")])
+    assert (again / "project.kdenlive").read_bytes() == (moved / "project.kdenlive").read_bytes()
+    assert [p.read_bytes() for p in (again / "media").iterdir()] == [b"retained bytes"]
+    assert str(tmp_path) not in (again / "project.kdenlive").read_text()
 
 
 @pytest.mark.skipif(os.name == "nt", reason="POSIX directory permissions")

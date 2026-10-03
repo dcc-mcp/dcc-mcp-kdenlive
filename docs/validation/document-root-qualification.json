@@ -1,0 +1,129 @@
+{
+  "evidence_origin": "New source-author qualification reported from independent cloud checks on current merged importer50ed plus root-fix packagingc5d. Raw native artifacts/traces/GUI receipts/decoder outputs were not provided or independently decoded/rerun in the publication environment.",
+  "publication_native_reexecution": false,
+  "source_author_report": {
+    "status": "PASS_CURRENT_MERGED_SOURCE_AND_SEPARATE_ROOT_FIX_NATIVE_QUALIFICATION",
+    "base_commit": "783d2666ccedb944851c48e5e171d3628aa9db1d",
+    "base_git_blobs_verified": 104,
+    "patch_sha256": "8a051854556ba0be7ad7f27ede52188a6ca236119a4d659ca228f371d6442179",
+    "modules": {
+      "merged_project_sha256": "50edc7d45d55dd3fb6d1e00b4b1a68bd618fa20bcfda612adc580a73556b9fe0",
+      "base_packaging_sha256": "c77cea3d60710a0ddea317e213654cd44e9999d3348023f908a465406d8a9bc2",
+      "root_fix_packaging_sha256": "c5d189886273ea5b9b6b3797b63478797aee5f8df64974a17b9d60424d070bed"
+    },
+    "tests": {
+      "exact_merged_main_passed": 108,
+      "root_fix_passed": 109,
+      "each_existing_optin_skip": 1,
+      "ruff": "PASS",
+      "independent_source_review": "PASS; historical78-test run is not counted as current-source testing"
+    },
+    "runtime": {
+      "native_application": "Kdenlive 24.12.3",
+      "MLT": "7.30.0",
+      "core_server_CLI": "0.20.41",
+      "SDK": "2.2.0",
+      "httpx2": "2.13.1",
+      "cpu_affinity_limit": 2,
+      "optional_gateway_disabled": true
+    },
+    "fresh_merged_main": {
+      "authoring_events": 30,
+      "authoring_tool_calls": 27,
+      "image_producers": 2,
+      "positive_operations": [
+        "create",
+        "import PNG as image",
+        "insert timeline clips",
+        "relink to alternate literal file and back",
+        "guides",
+        "inspect",
+        "validate",
+        "render",
+        "probe"
+      ],
+      "typed_negative_rejections": [
+        "reserved resource filename on import",
+        "reserved resource filename on relink",
+        "opened PNG file larger than64MiB"
+      ],
+      "rejected_outputs_absent": true,
+      "source_revision_preserved": true,
+      "opened_file_replacement_race_unit_regression": "PASS; real filesystem replacement before open; not represented as a native GUI attack test",
+      "package_render_events": 26,
+      "package_render_tool_calls": 23,
+      "moved_movie_bytes_exact": true,
+      "GUI_frames": [
+        0,
+        12,
+        23
+      ],
+      "GUI_source_local_frame": 1,
+      "GUI_scope": "Fresh main-generated root-dot bundle launched from its own directory; unrestricted native opening is the separate root-fix gate."
+    },
+    "root_fix": {
+      "package_render_events": 26,
+      "package_render_tool_calls": 23,
+      "serialized_root": "",
+      "all_media_relative": true,
+      "new_original_package_unavailable_during_moved_render": true,
+      "new_package_restored_exact": true,
+      "movie_bytes_exact": true,
+      "GUI_normal_File_Open_from_different_folder": true,
+      "actual_process_cwd_verified_outside_package": true,
+      "manual_relink": false,
+      "native_missing_media_notice": false,
+      "GUI_project_frames": [
+        0,
+        12,
+        23
+      ],
+      "GUI_source_local_frame": 1,
+      "native_Save_Copy_reopen": true,
+      "reopened_frames": [
+        0,
+        12,
+        23
+      ],
+      "same_display_full_frame_comparison": {
+        "frames": 24,
+        "dimensions": [
+          1280,
+          900
+        ],
+        "fps": 24,
+        "all_RGB_RGBA_frames_exact": true,
+        "MP4_bytes_exact": true,
+        "movie_sha256": "206ff489d198451d26326785aad0213796929d78cc801b54a31790888d4a1acf",
+        "movie_bytes": 300218,
+        "actual_MCP_render_calls": 2,
+        "MCP_events": 26,
+        "schema_validated_calls": 20,
+        "independent_decode_and_byte_check": true
+      }
+    },
+    "native_project_hashes": {
+      "main_packaged": "7858a9324db51c120f8d2689ea33637c50a46b6c30dc3d07cffe26a514d7ce59",
+      "root_empty_packaged": "4bbf52b82786796742d7de2914566323f15665338fee5533a1056ffd01b25973",
+      "GUI_save_copy": "d3efea54b5df5ceae1d28b4008e6971851b34c523e45d5d04f016e1ec44e0ef4"
+    },
+    "cleanup": {
+      "all_owned_hosts_stopped": true,
+      "all_sources_preserved": true,
+      "GUI_and_export_endpoints_closed": true
+    },
+    "limits": [
+      "Linux native editor coverage; no Windows or macOS editor run claimed",
+      "Bounded GUI seeks and source preview; no all-frame live-playback assertion",
+      "Native Save Copy can add normal editor metadata and is not XML-byte-identical",
+      "Initial unused black resource Fixed notice persists; this is separate from missing media",
+      "PNG header/size preflight is not full decode, immutable media capture, or parser isolation"
+    ],
+    "public_contents": {
+      "raw_private_logs": false,
+      "native_artwork_or_media": false,
+      "original_art_license_grant": false,
+      "software_release": false
+    }
+  }
+}
