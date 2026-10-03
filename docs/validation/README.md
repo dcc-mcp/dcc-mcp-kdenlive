@@ -31,6 +31,13 @@ JSON is clearly labeled source-author reported native evidence; raw traces and
 native artifacts were not provided to the publication environment. It is separate
 from the six portable-package snapshots above.
 
+## Lossless PNG frame export
+
+[`lossless-png.md`](lossless-png.md) records the bounded single-frame RGBA export,
+source and installed-wheel tests, actual MCP exports, independent decoding, and
+the separate native CI fixture. Its linked receipt is a selected, normalized
+summary of the recorded native runs; it does not claim video-codec equivalence.
+
 ## Portable project document root
 
 [`document-root.md`](document-root.md) covers the empty native root used to recover

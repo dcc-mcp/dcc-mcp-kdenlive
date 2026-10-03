@@ -1,0 +1,428 @@
+{
+  "kind": "selected_native_qualification_summary",
+  "date_utc": "2026-10-03",
+  "base_commit": "d8dc9773dfa89ecac21a449493b6338ca4607d6f",
+  "versions": {
+    "core": "0.20.41",
+    "server": "0.20.41",
+    "cli": "0.20.41",
+    "mcp_sdk": "2.2.0",
+    "python": "3.13.5",
+    "kdenlive": "24.12.3",
+    "MLT": "7.30.0"
+  },
+  "render_module_sha256": "8122d704fc548800df3258d7da8e3ae79c36566aaa8f359365e58c9214026f92",
+  "wheel_sha256": "7e6d7622398fb96a0915f7f4dc9c1d0dee0ed8904e2d6d1d9fb1fdab3a718880",
+  "source_and_wheel_payload_files_equal": 56,
+  "tests": {
+    "source_passed": 141,
+    "installed_wheel_passed": 141,
+    "existing_optin_skip_each": 1,
+    "new_public_branch_optin_test": "test_real_mlt_png_nonzero_frame_and_full_decode",
+    "both_optin_tests_native_passed": 2,
+    "new_live_test_module_sha256": "4f1ff774d81ce728f17b14b189425c3231b01bb94fa4fd16729d2972a242839a"
+  },
+  "source_MCP": {
+    "successful_PNG_exports": 10,
+    "expected_semantic_rejections": 2,
+    "frames": [
+      0,
+      6,
+      12,
+      18,
+      23
+    ],
+    "trace_events": 62,
+    "raw_trace_sha256": "b9cc2084ad9b349da45e6e542c67a9a29ed0c39c0e3925c33418df4d0aabe449"
+  },
+  "installed_wheel_MCP": {
+    "successful_PNG_exports": 40,
+    "frames": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10,
+      11,
+      13,
+      14,
+      15,
+      16,
+      17,
+      19,
+      20,
+      21,
+      22
+    ],
+    "raw_trace_sha256": "9c05dba7ba43fae3c5a384dac6871180253fb28fc032b001f24462496fe1b545",
+    "frame0_matches_source_run": true
+  },
+  "combined_explicit_frames": 24,
+  "fixture": {
+    "dimensions": [
+      1280,
+      800
+    ],
+    "frame_rate": [
+      24,
+      1
+    ],
+    "labels": [
+      "01",
+      "02",
+      "03",
+      "04"
+    ],
+    "encoded_label_suffix": "U+2060",
+    "purpose": "Synthetic lossless export and untouched native Save Copy comparison",
+    "before_sha256": "997f57336945a259c9b4b1b79cc854ff7d38db53c6fef45ac4982f2dc1908c61",
+    "native_saved_sha256": "23becfd1d0e08345c6bd62fdb132d28706f60c883fbfdc970db0d1c755063434"
+  },
+  "selected_actual_request": {
+    "tool": "render_project",
+    "arguments": {
+      "path": "fixture/before.kdenlive",
+      "output_path": "results/before-0.png",
+      "preset": "png",
+      "start": 0,
+      "end": 0,
+      "timeout": 60
+    },
+    "path_normalization": "Filesystem roots replaced with relative fixture/result aliases; numerical arguments unchanged"
+  },
+  "selected_actual_result": {
+    "bytes": 8008,
+    "source_sha256": "997f57336945a259c9b4b1b79cc854ff7d38db53c6fef45ac4982f2dc1908c61",
+    "status": "completed",
+    "streams": [
+      {
+        "index": 0,
+        "codec_name": "png",
+        "codec_long_name": "PNG (Portable Network Graphics) image",
+        "codec_type": "video",
+        "codec_tag_string": "[0][0][0][0]",
+        "codec_tag": "0x0000",
+        "width": 1280,
+        "height": 800,
+        "coded_width": 1280,
+        "coded_height": 800,
+        "closed_captions": 0,
+        "film_grain": 0,
+        "has_b_frames": 0,
+        "sample_aspect_ratio": "1:1",
+        "display_aspect_ratio": "8:5",
+        "pix_fmt": "rgba",
+        "level": -99,
+        "color_range": "pc",
+        "color_space": "gbr",
+        "refs": 1,
+        "r_frame_rate": "25/1",
+        "avg_frame_rate": "25/1",
+        "time_base": "1/25",
+        "disposition": {
+          "default": 0,
+          "dub": 0,
+          "original": 0,
+          "comment": 0,
+          "lyrics": 0,
+          "karaoke": 0,
+          "forced": 0,
+          "hearing_impaired": 0,
+          "visual_impaired": 0,
+          "clean_effects": 0,
+          "attached_pic": 0,
+          "timed_thumbnails": 0,
+          "non_diegetic": 0,
+          "captions": 0,
+          "descriptions": 0,
+          "metadata": 0,
+          "dependent": 0,
+          "still_image": 0,
+          "multilayer": 0
+        }
+      }
+    ],
+    "format": {
+      "nb_streams": 1,
+      "nb_programs": 0,
+      "nb_stream_groups": 0,
+      "format_name": "png_pipe",
+      "format_long_name": "piped png sequence",
+      "size": "8008",
+      "probe_score": 99
+    }
+  },
+  "frame_results": [
+    {
+      "frame": 0,
+      "lane": "installed-wheel",
+      "PNG_sha256": "94f75718cda12b66ef3ffc3d899a17256b63ca24b10305e638444c0244c25510",
+      "RGB_sha256": "e054786a98f1657de286c6b3277ff7f443f2bdaff66456b9b7d8bcdd3a6bb299",
+      "RGBA_sha256": "c5a9128a42f760c5651e0cdfe62e246b621883407d1cf8e2a856d45e4463b5f5",
+      "RGB_exact": true,
+      "RGBA_exact": true,
+      "PNG_bytes_exact": true
+    },
+    {
+      "frame": 1,
+      "lane": "installed-wheel",
+      "PNG_sha256": "94f75718cda12b66ef3ffc3d899a17256b63ca24b10305e638444c0244c25510",
+      "RGB_sha256": "e054786a98f1657de286c6b3277ff7f443f2bdaff66456b9b7d8bcdd3a6bb299",
+      "RGBA_sha256": "c5a9128a42f760c5651e0cdfe62e246b621883407d1cf8e2a856d45e4463b5f5",
+      "RGB_exact": true,
+      "RGBA_exact": true,
+      "PNG_bytes_exact": true
+    },
+    {
+      "frame": 2,
+      "lane": "installed-wheel",
+      "PNG_sha256": "94f75718cda12b66ef3ffc3d899a17256b63ca24b10305e638444c0244c25510",
+      "RGB_sha256": "e054786a98f1657de286c6b3277ff7f443f2bdaff66456b9b7d8bcdd3a6bb299",
+      "RGBA_sha256": "c5a9128a42f760c5651e0cdfe62e246b621883407d1cf8e2a856d45e4463b5f5",
+      "RGB_exact": true,
+      "RGBA_exact": true,
+      "PNG_bytes_exact": true
+    },
+    {
+      "frame": 3,
+      "lane": "installed-wheel",
+      "PNG_sha256": "94f75718cda12b66ef3ffc3d899a17256b63ca24b10305e638444c0244c25510",
+      "RGB_sha256": "e054786a98f1657de286c6b3277ff7f443f2bdaff66456b9b7d8bcdd3a6bb299",
+      "RGBA_sha256": "c5a9128a42f760c5651e0cdfe62e246b621883407d1cf8e2a856d45e4463b5f5",
+      "RGB_exact": true,
+      "RGBA_exact": true,
+      "PNG_bytes_exact": true
+    },
+    {
+      "frame": 4,
+      "lane": "installed-wheel",
+      "PNG_sha256": "94f75718cda12b66ef3ffc3d899a17256b63ca24b10305e638444c0244c25510",
+      "RGB_sha256": "e054786a98f1657de286c6b3277ff7f443f2bdaff66456b9b7d8bcdd3a6bb299",
+      "RGBA_sha256": "c5a9128a42f760c5651e0cdfe62e246b621883407d1cf8e2a856d45e4463b5f5",
+      "RGB_exact": true,
+      "RGBA_exact": true,
+      "PNG_bytes_exact": true
+    },
+    {
+      "frame": 5,
+      "lane": "installed-wheel",
+      "PNG_sha256": "94f75718cda12b66ef3ffc3d899a17256b63ca24b10305e638444c0244c25510",
+      "RGB_sha256": "e054786a98f1657de286c6b3277ff7f443f2bdaff66456b9b7d8bcdd3a6bb299",
+      "RGBA_sha256": "c5a9128a42f760c5651e0cdfe62e246b621883407d1cf8e2a856d45e4463b5f5",
+      "RGB_exact": true,
+      "RGBA_exact": true,
+      "PNG_bytes_exact": true
+    },
+    {
+      "frame": 6,
+      "lane": "source",
+      "PNG_sha256": "e0500b8aabba7f9bbfeca7f0038ba35388d54256114042247cd1c5e391b1fb9d",
+      "RGB_sha256": "430923fa307cba23d8fc4b5772ef1d6e734428d02e591f4f21e1043cca7ef4e6",
+      "RGBA_sha256": "7578c3757f7f10d9915892726560e0571989c226cfc896303a6fd29b8349a308",
+      "RGB_exact": true,
+      "RGBA_exact": true,
+      "PNG_bytes_exact": true
+    },
+    {
+      "frame": 7,
+      "lane": "installed-wheel",
+      "PNG_sha256": "e0500b8aabba7f9bbfeca7f0038ba35388d54256114042247cd1c5e391b1fb9d",
+      "RGB_sha256": "430923fa307cba23d8fc4b5772ef1d6e734428d02e591f4f21e1043cca7ef4e6",
+      "RGBA_sha256": "7578c3757f7f10d9915892726560e0571989c226cfc896303a6fd29b8349a308",
+      "RGB_exact": true,
+      "RGBA_exact": true,
+      "PNG_bytes_exact": true
+    },
+    {
+      "frame": 8,
+      "lane": "installed-wheel",
+      "PNG_sha256": "e0500b8aabba7f9bbfeca7f0038ba35388d54256114042247cd1c5e391b1fb9d",
+      "RGB_sha256": "430923fa307cba23d8fc4b5772ef1d6e734428d02e591f4f21e1043cca7ef4e6",
+      "RGBA_sha256": "7578c3757f7f10d9915892726560e0571989c226cfc896303a6fd29b8349a308",
+      "RGB_exact": true,
+      "RGBA_exact": true,
+      "PNG_bytes_exact": true
+    },
+    {
+      "frame": 9,
+      "lane": "installed-wheel",
+      "PNG_sha256": "e0500b8aabba7f9bbfeca7f0038ba35388d54256114042247cd1c5e391b1fb9d",
+      "RGB_sha256": "430923fa307cba23d8fc4b5772ef1d6e734428d02e591f4f21e1043cca7ef4e6",
+      "RGBA_sha256": "7578c3757f7f10d9915892726560e0571989c226cfc896303a6fd29b8349a308",
+      "RGB_exact": true,
+      "RGBA_exact": true,
+      "PNG_bytes_exact": true
+    },
+    {
+      "frame": 10,
+      "lane": "installed-wheel",
+      "PNG_sha256": "e0500b8aabba7f9bbfeca7f0038ba35388d54256114042247cd1c5e391b1fb9d",
+      "RGB_sha256": "430923fa307cba23d8fc4b5772ef1d6e734428d02e591f4f21e1043cca7ef4e6",
+      "RGBA_sha256": "7578c3757f7f10d9915892726560e0571989c226cfc896303a6fd29b8349a308",
+      "RGB_exact": true,
+      "RGBA_exact": true,
+      "PNG_bytes_exact": true
+    },
+    {
+      "frame": 11,
+      "lane": "installed-wheel",
+      "PNG_sha256": "e0500b8aabba7f9bbfeca7f0038ba35388d54256114042247cd1c5e391b1fb9d",
+      "RGB_sha256": "430923fa307cba23d8fc4b5772ef1d6e734428d02e591f4f21e1043cca7ef4e6",
+      "RGBA_sha256": "7578c3757f7f10d9915892726560e0571989c226cfc896303a6fd29b8349a308",
+      "RGB_exact": true,
+      "RGBA_exact": true,
+      "PNG_bytes_exact": true
+    },
+    {
+      "frame": 12,
+      "lane": "source",
+      "PNG_sha256": "b3fe4465b7133afca9f1513a3cf4566cf04b19eca243ae61551891f106c4e0df",
+      "RGB_sha256": "14fa737c0d1f01298372d9d91752fff4f1d8f14d2959412e72aec8ef34b69ad6",
+      "RGBA_sha256": "5f0fe572b76dbee7c2760b8326969a1bc92e7c10346ea6759f9b7b7635800132",
+      "RGB_exact": true,
+      "RGBA_exact": true,
+      "PNG_bytes_exact": true
+    },
+    {
+      "frame": 13,
+      "lane": "installed-wheel",
+      "PNG_sha256": "b3fe4465b7133afca9f1513a3cf4566cf04b19eca243ae61551891f106c4e0df",
+      "RGB_sha256": "14fa737c0d1f01298372d9d91752fff4f1d8f14d2959412e72aec8ef34b69ad6",
+      "RGBA_sha256": "5f0fe572b76dbee7c2760b8326969a1bc92e7c10346ea6759f9b7b7635800132",
+      "RGB_exact": true,
+      "RGBA_exact": true,
+      "PNG_bytes_exact": true
+    },
+    {
+      "frame": 14,
+      "lane": "installed-wheel",
+      "PNG_sha256": "b3fe4465b7133afca9f1513a3cf4566cf04b19eca243ae61551891f106c4e0df",
+      "RGB_sha256": "14fa737c0d1f01298372d9d91752fff4f1d8f14d2959412e72aec8ef34b69ad6",
+      "RGBA_sha256": "5f0fe572b76dbee7c2760b8326969a1bc92e7c10346ea6759f9b7b7635800132",
+      "RGB_exact": true,
+      "RGBA_exact": true,
+      "PNG_bytes_exact": true
+    },
+    {
+      "frame": 15,
+      "lane": "installed-wheel",
+      "PNG_sha256": "b3fe4465b7133afca9f1513a3cf4566cf04b19eca243ae61551891f106c4e0df",
+      "RGB_sha256": "14fa737c0d1f01298372d9d91752fff4f1d8f14d2959412e72aec8ef34b69ad6",
+      "RGBA_sha256": "5f0fe572b76dbee7c2760b8326969a1bc92e7c10346ea6759f9b7b7635800132",
+      "RGB_exact": true,
+      "RGBA_exact": true,
+      "PNG_bytes_exact": true
+    },
+    {
+      "frame": 16,
+      "lane": "installed-wheel",
+      "PNG_sha256": "b3fe4465b7133afca9f1513a3cf4566cf04b19eca243ae61551891f106c4e0df",
+      "RGB_sha256": "14fa737c0d1f01298372d9d91752fff4f1d8f14d2959412e72aec8ef34b69ad6",
+      "RGBA_sha256": "5f0fe572b76dbee7c2760b8326969a1bc92e7c10346ea6759f9b7b7635800132",
+      "RGB_exact": true,
+      "RGBA_exact": true,
+      "PNG_bytes_exact": true
+    },
+    {
+      "frame": 17,
+      "lane": "installed-wheel",
+      "PNG_sha256": "b3fe4465b7133afca9f1513a3cf4566cf04b19eca243ae61551891f106c4e0df",
+      "RGB_sha256": "14fa737c0d1f01298372d9d91752fff4f1d8f14d2959412e72aec8ef34b69ad6",
+      "RGBA_sha256": "5f0fe572b76dbee7c2760b8326969a1bc92e7c10346ea6759f9b7b7635800132",
+      "RGB_exact": true,
+      "RGBA_exact": true,
+      "PNG_bytes_exact": true
+    },
+    {
+      "frame": 18,
+      "lane": "source",
+      "PNG_sha256": "3b1870d6d2bc792e6a7353f530958451b483ac605ac572d144dc41dac5a51c67",
+      "RGB_sha256": "f107b13ae098042e5cc447d3eba425f6e8d1d88746204f639c471f3263ba0ff0",
+      "RGBA_sha256": "8e50e97009aa30d00b35eafc19ed3851fc6f76726eb2ceb8c690ffd0026a1c44",
+      "RGB_exact": true,
+      "RGBA_exact": true,
+      "PNG_bytes_exact": true
+    },
+    {
+      "frame": 19,
+      "lane": "installed-wheel",
+      "PNG_sha256": "3b1870d6d2bc792e6a7353f530958451b483ac605ac572d144dc41dac5a51c67",
+      "RGB_sha256": "f107b13ae098042e5cc447d3eba425f6e8d1d88746204f639c471f3263ba0ff0",
+      "RGBA_sha256": "8e50e97009aa30d00b35eafc19ed3851fc6f76726eb2ceb8c690ffd0026a1c44",
+      "RGB_exact": true,
+      "RGBA_exact": true,
+      "PNG_bytes_exact": true
+    },
+    {
+      "frame": 20,
+      "lane": "installed-wheel",
+      "PNG_sha256": "3b1870d6d2bc792e6a7353f530958451b483ac605ac572d144dc41dac5a51c67",
+      "RGB_sha256": "f107b13ae098042e5cc447d3eba425f6e8d1d88746204f639c471f3263ba0ff0",
+      "RGBA_sha256": "8e50e97009aa30d00b35eafc19ed3851fc6f76726eb2ceb8c690ffd0026a1c44",
+      "RGB_exact": true,
+      "RGBA_exact": true,
+      "PNG_bytes_exact": true
+    },
+    {
+      "frame": 21,
+      "lane": "installed-wheel",
+      "PNG_sha256": "3b1870d6d2bc792e6a7353f530958451b483ac605ac572d144dc41dac5a51c67",
+      "RGB_sha256": "f107b13ae098042e5cc447d3eba425f6e8d1d88746204f639c471f3263ba0ff0",
+      "RGBA_sha256": "8e50e97009aa30d00b35eafc19ed3851fc6f76726eb2ceb8c690ffd0026a1c44",
+      "RGB_exact": true,
+      "RGBA_exact": true,
+      "PNG_bytes_exact": true
+    },
+    {
+      "frame": 22,
+      "lane": "installed-wheel",
+      "PNG_sha256": "3b1870d6d2bc792e6a7353f530958451b483ac605ac572d144dc41dac5a51c67",
+      "RGB_sha256": "f107b13ae098042e5cc447d3eba425f6e8d1d88746204f639c471f3263ba0ff0",
+      "RGBA_sha256": "8e50e97009aa30d00b35eafc19ed3851fc6f76726eb2ceb8c690ffd0026a1c44",
+      "RGB_exact": true,
+      "RGBA_exact": true,
+      "PNG_bytes_exact": true
+    },
+    {
+      "frame": 23,
+      "lane": "source",
+      "PNG_sha256": "3b1870d6d2bc792e6a7353f530958451b483ac605ac572d144dc41dac5a51c67",
+      "RGB_sha256": "f107b13ae098042e5cc447d3eba425f6e8d1d88746204f639c471f3263ba0ff0",
+      "RGBA_sha256": "8e50e97009aa30d00b35eafc19ed3851fc6f76726eb2ceb8c690ffd0026a1c44",
+      "RGB_exact": true,
+      "RGBA_exact": true,
+      "PNG_bytes_exact": true
+    }
+  ],
+  "independent_decode": {
+    "decoder": "Pillow",
+    "version": "11.1.0",
+    "every_PNG_fully_decoded": true,
+    "all_chunk_CRCs_verified": true,
+    "samples_visually_checked": [
+      "01",
+      "02",
+      "03",
+      "04",
+      "04"
+    ]
+  },
+  "cleanup": {
+    "source_host_stopped": true,
+    "installed_host_stopped": true,
+    "all_decoders_stopped": true
+  },
+  "limits": [
+    "This selected summary is not the complete raw MCP trace or an independently rerunnable artifact bundle.",
+    "The same fixture still has a failed lossy MP4 comparison; no cause is established.",
+    "Default editor export range, production films and other platforms are not qualified.",
+    "Header and FFprobe checks in production do not constitute a full PNG decode.",
+    "Cancellation after readback has an injected unit case, without a new live-cancellation claim.",
+    "No software release was published."
+  ]
+}

@@ -75,7 +75,7 @@ Eight progressively loaded skill packages ship in the wheel:
 | `kdenlive-timeline` | Append with gaps, split, remove and ripple |
 | `kdenlive-effects` | Add/remove effects, keyframe parameters, compositions |
 | `kdenlive-catalog` | Query **installed** MLT services and native asset definitions |
-| `kdenlive-export` | Async MP4, WebM, ProRes MOV and WAV rendering |
+| `kdenlive-export` | Async MP4, WebM, ProRes MOV, WAV and single-frame RGBA PNG rendering |
 | `kdenlive-interchange` | FFprobe inspection and SRT subtitle authoring |
 | `kdenlive-setup` | Host and executable readiness |
 
