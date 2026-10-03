@@ -76,7 +76,7 @@ GROUPS = {
     "export": (
         "render",
         {
-            "render_project": "Render an explicit MLT frame range to MP4, WebM, ProRes MOV or WAV, or exactly one 8-bit RGBA PNG frame (start=end; dimensions each at most4096). Poll core jobs_get_status; use jobs_cancel to cancel."
+            "render_project": "Render an explicit MLT frame range to MP4, WebM, ProRes MOV or WAV, or exactly one 8-bit RGBA PNG frame (start=end; dimensions each at most 4096). Poll core jobs_get_status; use jobs_cancel to cancel."
         },
     ),
     "interchange": (

@@ -13,7 +13,6 @@
   },
   "render_module_sha256": "8122d704fc548800df3258d7da8e3ae79c36566aaa8f359365e58c9214026f92",
   "wheel_sha256": "7e6d7622398fb96a0915f7f4dc9c1d0dee0ed8904e2d6d1d9fb1fdab3a718880",
-  "source_and_wheel_payload_files_equal": 56,
   "tests": {
     "source_passed": 141,
     "installed_wheel_passed": 141,
@@ -424,5 +423,12 @@
     "Header and FFprobe checks in production do not constitute a full PNG decode.",
     "Cancellation after readback has an injected unit case, without a new live-cancellation claim.",
     "No software release was published."
-  ]
+  ],
+  "qualified_source_and_wheel_payload_files_equal": 56,
+  "post_qualification_delta": {
+    "scope": "One space added in the human-readable tool description, plus the matching author-time generator description; no implementation, input/output schema, execution settings or PNG encoding argument changed.",
+    "current_runtime_files_identical_to_qualified_wheel": 55,
+    "description_only_runtime_files": 1,
+    "fresh_native_run_for_prose_only_delta": false
+  }
 }
