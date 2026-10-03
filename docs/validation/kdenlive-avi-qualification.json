@@ -1,0 +1,27 @@
+{
+  "base_commit": "4703e75",
+  "base_packaging_sha256": "55a60c4770ebade80d489046e239fa129f98f9170cace624a4135acdb9d6e5c8",
+  "modified_packaging_sha256": "1178812e305b94dac8bdefd05e107558e9e6eefc1bb406896aa9aaa31e51d8cb",
+  "tests": {
+    "passed": 64,
+    "skipped": 1
+  },
+  "native_capture": {
+    "provider": "Godot MovieWriter",
+    "container": "RIFF AVI",
+    "width": 1280,
+    "height": 800,
+    "fps": 24,
+    "frames": 699,
+    "bytes": 49121546,
+    "sha256": "752c73d7a9cf9c4d51066015200c4144a7dbe23762f6ee487d702b9eac74911c",
+    "packaged_bytes_exact": true
+  },
+  "native_mlt_relocated_rerender": {
+    "frames": 673,
+    "every_decoded_frame_exact": true,
+    "original_capture_and_package_unavailable": true
+  },
+  "scope": "Narrow AVI addition layered over the existing exact-originalurl packaging fix; no release or publication claim",
+  "avi_guard": "Minimum 12-byte length plus RIFF/AVI primary-header guard; full native container is separately probed and rendered"
+}

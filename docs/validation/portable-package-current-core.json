@@ -1,0 +1,2732 @@
+{
+  "validation": {
+    "status": "PASS",
+    "core": "0.20.41",
+    "server": "0.20.41",
+    "relocated_decoded_frames_equal": 180,
+    "original_media_and_package_unavailable": true,
+    "sources_restored": true,
+    "scope": "Exact formatted PR runtime source, actual typed MCP package/reopen/native MLT render",
+    "packaging_source_sha256": "55a60c4770ebade80d489046e239fa129f98f9170cace624a4135acdb9d6e5c8",
+    "trace_sha256": "00ad53fbcd0deded6fab3d44415df925704bc9c6daabcf70a55bcf087f335461"
+  },
+  "source_trace_sha256": "00ad53fbcd0deded6fab3d44415df925704bc9c6daabcf70a55bcf087f335461",
+  "redaction": "Absolute task workspace/home prefixes replaced by CASE_ROOT/WORKSPACE/HOST_HOME; actual tool arguments and returns otherwise retained",
+  "selected_actual_mcp_requests": [
+    {
+      "event": "tools/call",
+      "tool": "search_skills",
+      "arguments": {
+        "query": "kdenlive project package"
+      },
+      "response": {
+        "meta": null,
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"total\":9,\"skill_total\":9,\"skipped_count\":0,\"query\":\"kdenlive project package\",\"skills\":[{\"name\":\"kdenlive-project\",\"description\":\"Create a Kdenlive project with audio and video tracks. Inspect the file profile, bin, tracks, clips and effects; does not read live editor state. Validate XML references, IDs, frame rate and entry ranges. Replace project guide markers in a new file.\",\"tools\":5,\"loaded\":false,\"dcc\":\"kdenlive\",\"scope\":\"repo\",\"tags\":[\"kdenlive\",\"video\",\"pipeline\"],\"search_hint\":\"Kdenlive project create_project inspect_project validate_project set_guides\"},{\"name\":\"kdenlive-media\",\"description\":\"Add file media, a color producer, or a Kdenlive title template to the project bin. Relink bin media and timeline instances to an existing local media file.\",\"tools\":2,\"loaded\":false,\"dcc\":\"kdenlive\",\"scope\":\"repo\",\"tags\":[\"kdenlive\",\"video\",\"pipeline\"],\"search_hint\":\"Kdenlive media add_media relink_media\"},{\"name\":\"kdenlive-export\",\"description\":\"Render an explicit frame range through MLT to MP4, WebM, ProRes MOV or WAV. Poll core jobs_get_status; use jobs_cancel to cancel.\",\"tools\":1,\"loaded\":false,\"dcc\":\"kdenlive\",\"scope\":\"repo\",\"tags\":[\"kdenlive\",\"video\",\"pipeline\"],\"search_hint\":\"Kdenlive export render_project\"},{\"name\":\"kdenlive-native\",\"description\":\"Read and edit the live Kdenlive timeline through the opt-in C++ bridge with native undo and revision checks.\",\"tools\":6,\"loaded\":false,\"dcc\":\"kdenlive\",\"scope\":\"repo\",\"tags\":[\"kdenlive\",\"native\",\"timeline\"],\"search_hint\":\"Kdenlive live native bridge timeline insert move undo redo\"},{\"name\":\"kdenlive-catalog\",\"description\":\"Discover all installed MLT services or describe one service and its parameters. List installed Kdenlive effects, transitions, titles, profiles, export presets, generators, lumas or LUTs. Read the native parameters from an installed XML asset definition.\",\"tools\":3,\"loaded\":false,\"dcc\":\"kdenlive\",\"scope\":\"repo\",\"tags\":[\"kdenlive\",\"video\",\"pipeline\"],\"search_hint\":\"Kdenlive catalog query_services list_assets describe_asset\"},{\"name\":\"kdenlive-effects\",\"description\":\"Attach an installed MLT audio/video effect to a producer or track. Producer effects affect all its uses. Update effect or composition parameters, including native MLT keyframe strings. Remove a user effect while preserving internal mixer filters. Add a composition between two tractor tracks for an inclusive frame range.\",\"tools\":4,\"loaded\":false,\"dcc\":\"kdenlive\",\"scope\":\"repo\",\"tags\":[\"kdenlive\",\"video\",\"pipeline\"],\"search_hint\":\"Kdenlive effects add_effect set_properties remove_effect add_transition\"},{\"name\":\"kdenlive-interchange\",\"description\":\"Inspect actual audio/video streams and format using FFprobe. Write validated, ordered subtitle cues to a new UTF-8 SRT file for editor import.\",\"tools\":2,\"loaded\":false,\"dcc\":\"kdenlive\",\"scope\":\"repo\",\"tags\":[\"kdenlive\",\"video\",\"pipeline\"],\"search_hint\":\"Kdenlive interchange probe_media write_subtitles\"},{\"name\":\"kdenlive-setup\",\"description\":\"Report installed renderer tools and running Kdenlive processes without installing or starting the editor.\",\"tools\":1,\"loaded\":false,\"dcc\":\"kdenlive\",\"scope\":\"repo\",\"tags\":[\"kdenlive\",\"video\",\"pipeline\"],\"search_hint\":\"Kdenlive setup get_status\"},{\"name\":\"kdenlive-timeline\",\"description\":\"Append a clip at or after the playlist end, inserting a gap when needed. Split an ungrouped clip at an offset while preserving source ranges. Remove an ungrouped timeline item, leaving a gap or rippling that playlist.\",\"tools\":3,\"loaded\":false,\"dcc\":\"kdenlive\",\"scope\":\"repo\",\"tags\":[\"kdenlive\",\"video\",\"pipeline\"],\"search_hint\":\"Kdenlive timeline insert_clip split_clip remove_item\"}],\"skipped\":[]}",
+            "annotations": null,
+            "meta": null
+          }
+        ],
+        "structured_content": null,
+        "is_error": false,
+        "result_type": "complete"
+      }
+    },
+    {
+      "event": "tools/call",
+      "tool": "load_skill",
+      "arguments": {
+        "skill_name": "kdenlive-project"
+      },
+      "response": {
+        "meta": null,
+        "content": [
+          {
+            "type": "text",
+            "text": "{\n  \"loaded\": true,\n  \"partial\": false,\n  \"registered_tools\": [\n    \"kdenlive_project__create_project\",\n    \"kdenlive_project__inspect_project\",\n    \"kdenlive_project__validate_project\",\n    \"kdenlive_project__set_guides\",\n    \"kdenlive_project__package_project\"\n  ],\n  \"tool_count\": 5,\n  \"newly_loaded\": [\n    \"kdenlive-project\"\n  ],\n  \"already_loaded\": [],\n  \"available_groups\": [],\n  \"activated_groups\": [],\n  \"tools\": [\n    {\n      \"name\": \"kdenlive_project__validate_project\",\n      \"description\": \"Validate XML references, IDs, frame rate and entry ranges.\",\n      \"inputSchema\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"path\": {\n            \"type\": \"string\"\n          }\n        },\n        \"required\": [\n          \"path\"\n        ],\n        \"additionalProperties\": false\n      },\n      \"outputSchema\": {\n        \"type\": \"object\"\n      },\n      \"skill_name\": \"kdenlive-project\",\n      \"annotations\": {\n        \"read_only_hint\": true,\n        \"destructive_hint\": false,\n        \"idempotent_hint\": true,\n        \"open_world_hint\": true,\n        \"deferred_hint\": false\n      },\n      \"metadata\": {\n        \"dcc\": {\n          \"affinity\": \"any\",\n          \"execution\": \"sync\",\n          \"timeoutHintSecs\": 60,\n          \"jobStrategy\": \"monolithic\",\n          \"enforceThreadAffinity\": true\n        }\n      }\n    },\n    {\n      \"name\": \"kdenlive_project__set_guides\",\n      \"description\": \"Replace project guide markers in a new file.\",\n      \"inputSchema\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"path\": {\n            \"type\": \"string\"\n          },\n          \"output_path\": {\n            \"type\": \"string\",\n            \"description\": \"New file path in an existing directory; existing destinations are never replaced.\"\n          },\n          \"guides\": {\n            \"type\": \"array\",\n            \"items\": {\n              \"type\": \"object\",\n              \"properties\": {\n                \"frame\": {\n                  \"type\": \"integer\",\n                  \"minimum\": 0\n                },\n                \"comment\": {\n                  \"type\": \"string\"\n                },\n                \"category\": {\n                  \"type\": \"integer\",\n                  \"minimum\": 0\n                }\n              },\n              \"required\": [\n                \"frame\",\n                \"comment\"\n              ],\n              \"additionalProperties\": false\n            }\n          },\n          \"expected_sha256\": {\n            \"type\": \"string\",\n            \"pattern\": \"^[0-9a-f]{64}$\",\n            \"description\": \"Source revision returned by inspect_project. A mismatch rejects the edit.\"\n          }\n        },\n        \"required\": [\n          \"path\",\n          \"output_path\",\n          \"guides\"\n        ],\n        \"additionalProperties\": false\n      },\n      \"outputSchema\": {\n        \"type\": \"object\"\n      },\n      \"skill_name\": \"kdenlive-project\",\n      \"annotations\": {\n        \"read_only_hint\": false,\n        \"destructive_hint\": true,\n        \"idempotent_hint\": false,\n        \"open_world_hint\": true,\n        \"deferred_hint\": false\n      },\n      \"metadata\": {\n        \"dcc\": {\n          \"affinity\": \"any\",\n          \"execution\": \"sync\",\n          \"timeoutHintSecs\": 60,\n          \"jobStrategy\": \"monolithic\",\n          \"enforceThreadAffinity\": true\n        }\n      }\n    },\n    {\n      \"name\": \"kdenlive_project__package_project\",\n      \"description\": \"Stage and hash a portable editable project with explicit task-authorized media roots; reject symlinks, missing/remote/out-of-root dependencies and existing destinations. Native render/reopen is separate.\",\n      \"inputSchema\": {\n        \"type\": \"object\",\n        \"additionalProperties\": false,\n        \"required\": [\n          \"path\",\n          \"output_directory\",\n          \"allowed_media_roots\"\n        ],\n        \"properties\": {\n          \"path\": {\n            \"type\": \"string\",\n            \"minLength\": 1\n          },\n          \"output_directory\": {\n            \"type\": \"string\",\n            \"minLength\": 1\n          },\n          \"allowed_media_roots\": {\n            \"type\": \"array\",\n            \"minItems\": 1,\n            \"maxItems\": 16,\n            \"items\": {\n              \"type\": \"string\",\n              \"minLength\": 1\n            }\n          },\n          \"max_total_bytes\": {\n            \"type\": \"integer\",\n            \"minimum\": 1,\n            \"maximum\": 2147483648,\n            \"default\": 536870912\n          },\n          \"expected_sha256\": {\n            \"type\": \"string\",\n            \"pattern\": \"^[0-9a-f]{64}$\"\n          }\n        }\n      },\n      \"outputSchema\": {\n        \"type\": \"object\"\n      },\n      \"skill_name\": \"kdenlive-project\",\n      \"annotations\": {\n        \"read_only_hint\": false,\n        \"destructive_hint\": false,\n        \"idempotent_hint\": false,\n        \"open_world_hint\": false,\n        \"deferred_hint\": true\n      },\n      \"metadata\": {\n        \"dcc\": {\n          \"affinity\": \"any\",\n          \"execution\": \"async\",\n          \"timeoutHintSecs\": 1800,\n          \"jobStrategy\": \"monolithic\",\n          \"enforceThreadAffinity\": true\n        }\n      }\n    },\n    {\n      \"name\": \"kdenlive_project__inspect_project\",\n      \"description\": \"Inspect the file profile, bin, tracks, clips and effects; does not read live editor state.\",\n      \"inputSchema\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"path\": {\n            \"type\": \"string\"\n          }\n        },\n        \"required\": [\n          \"path\"\n        ],\n        \"additionalProperties\": false\n      },\n      \"outputSchema\": {\n        \"type\": \"object\"\n      },\n      \"skill_name\": \"kdenlive-project\",\n      \"annotations\": {\n        \"read_only_hint\": true,\n        \"destructive_hint\": false,\n        \"idempotent_hint\": true,\n        \"open_world_hint\": true,\n        \"deferred_hint\": false\n      },\n      \"metadata\": {\n        \"dcc\": {\n          \"affinity\": \"any\",\n          \"execution\": \"sync\",\n          \"timeoutHintSecs\": 60,\n          \"jobStrategy\": \"monolithic\",\n          \"enforceThreadAffinity\": true\n        }\n      }\n    },\n    {\n      \"name\": \"kdenlive_project__create_project\",\n      \"description\": \"Create a Kdenlive project with audio and video tracks.\",\n      \"inputSchema\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"output_path\": {\n            \"type\": \"string\",\n            \"description\": \"New file path in an existing directory; existing destinations are never replaced.\"\n          },\n          \"width\": {\n            \"type\": \"integer\",\n            \"minimum\": 0,\n            \"default\": 1920\n          },\n          \"height\": {\n            \"type\": \"integer\",\n            \"minimum\": 0,\n            \"default\": 1080\n          },\n          \"fps_num\": {\n            \"type\": \"integer\",\n            \"minimum\": 0,\n            \"default\": 25\n          },\n          \"fps_den\": {\n            \"type\": \"integer\",\n            \"minimum\": 0,\n            \"default\": 1\n          },\n          \"video_tracks\": {\n            \"type\": \"integer\",\n            \"minimum\": 0,\n            \"default\": 2\n          },\n          \"audio_tracks\": {\n            \"type\": \"integer\",\n            \"minimum\": 0,\n            \"default\": 2\n          }\n        },\n        \"required\": [\n          \"output_path\"\n        ],\n        \"additionalProperties\": false\n      },\n      \"outputSchema\": {\n        \"type\": \"object\"\n      },\n      \"skill_name\": \"kdenlive-project\",\n      \"annotations\": {\n        \"read_only_hint\": false,\n        \"destructive_hint\": true,\n        \"idempotent_hint\": false,\n        \"open_world_hint\": true,\n        \"deferred_hint\": false\n      },\n      \"metadata\": {\n        \"dcc\": {\n          \"affinity\": \"any\",\n          \"execution\": \"sync\",\n          \"timeoutHintSecs\": 60,\n          \"jobStrategy\": \"monolithic\",\n          \"enforceThreadAffinity\": true\n        }\n      }\n    }\n  ]\n}",
+            "annotations": null,
+            "meta": null
+          }
+        ],
+        "structured_content": null,
+        "is_error": false,
+        "result_type": "complete"
+      }
+    },
+    {
+      "event": "tools/call",
+      "tool": "load_skill",
+      "arguments": {
+        "skill_name": "kdenlive-media"
+      },
+      "response": {
+        "meta": null,
+        "content": [
+          {
+            "type": "text",
+            "text": "{\n  \"loaded\": true,\n  \"partial\": false,\n  \"registered_tools\": [\n    \"kdenlive_media__add_media\",\n    \"kdenlive_media__relink_media\"\n  ],\n  \"tool_count\": 2,\n  \"newly_loaded\": [\n    \"kdenlive-media\"\n  ],\n  \"already_loaded\": [],\n  \"available_groups\": [],\n  \"activated_groups\": [],\n  \"tools\": [\n    {\n      \"name\": \"kdenlive_media__add_media\",\n      \"description\": \"Add file media, a color producer, or a Kdenlive title template to the project bin.\",\n      \"inputSchema\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"path\": {\n            \"type\": \"string\"\n          },\n          \"output_path\": {\n            \"type\": \"string\",\n            \"description\": \"New file path in an existing directory; existing destinations are never replaced.\"\n          },\n          \"resource\": {\n            \"type\": \"string\"\n          },\n          \"duration\": {\n            \"type\": \"integer\",\n            \"minimum\": 0\n          },\n          \"kind\": {\n            \"type\": \"string\",\n            \"default\": \"file\"\n          },\n          \"name\": {\n            \"type\": \"string\",\n            \"default\": \"\"\n          },\n          \"expected_sha256\": {\n            \"type\": \"string\",\n            \"pattern\": \"^[0-9a-f]{64}$\",\n            \"description\": \"Source revision returned by inspect_project. A mismatch rejects the edit.\"\n          }\n        },\n        \"required\": [\n          \"path\",\n          \"output_path\",\n          \"resource\",\n          \"duration\"\n        ],\n        \"additionalProperties\": false\n      },\n      \"outputSchema\": {\n        \"type\": \"object\"\n      },\n      \"skill_name\": \"kdenlive-media\",\n      \"annotations\": {\n        \"read_only_hint\": false,\n        \"destructive_hint\": true,\n        \"idempotent_hint\": false,\n        \"open_world_hint\": true,\n        \"deferred_hint\": false\n      },\n      \"metadata\": {\n        \"dcc\": {\n          \"affinity\": \"any\",\n          \"execution\": \"sync\",\n          \"timeoutHintSecs\": 60,\n          \"jobStrategy\": \"monolithic\",\n          \"enforceThreadAffinity\": true\n        }\n      }\n    },\n    {\n      \"name\": \"kdenlive_media__relink_media\",\n      \"description\": \"Relink bin media and timeline instances to an existing local media file.\",\n      \"inputSchema\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"path\": {\n            \"type\": \"string\"\n          },\n          \"output_path\": {\n            \"type\": \"string\",\n            \"description\": \"New file path in an existing directory; existing destinations are never replaced.\"\n          },\n          \"producer_id\": {\n            \"type\": \"string\"\n          },\n          \"resource\": {\n            \"type\": \"string\"\n          },\n          \"expected_sha256\": {\n            \"type\": \"string\",\n            \"pattern\": \"^[0-9a-f]{64}$\",\n            \"description\": \"Source revision returned by inspect_project. A mismatch rejects the edit.\"\n          }\n        },\n        \"required\": [\n          \"path\",\n          \"output_path\",\n          \"producer_id\",\n          \"resource\"\n        ],\n        \"additionalProperties\": false\n      },\n      \"outputSchema\": {\n        \"type\": \"object\"\n      },\n      \"skill_name\": \"kdenlive-media\",\n      \"annotations\": {\n        \"read_only_hint\": false,\n        \"destructive_hint\": true,\n        \"idempotent_hint\": false,\n        \"open_world_hint\": true,\n        \"deferred_hint\": false\n      },\n      \"metadata\": {\n        \"dcc\": {\n          \"affinity\": \"any\",\n          \"execution\": \"sync\",\n          \"timeoutHintSecs\": 60,\n          \"jobStrategy\": \"monolithic\",\n          \"enforceThreadAffinity\": true\n        }\n      }\n    }\n  ]\n}",
+            "annotations": null,
+            "meta": null
+          }
+        ],
+        "structured_content": null,
+        "is_error": false,
+        "result_type": "complete"
+      }
+    },
+    {
+      "event": "tools/call",
+      "tool": "load_skill",
+      "arguments": {
+        "skill_name": "kdenlive-export"
+      },
+      "response": {
+        "meta": null,
+        "content": [
+          {
+            "type": "text",
+            "text": "{\n  \"loaded\": true,\n  \"partial\": false,\n  \"registered_tools\": [\n    \"kdenlive_export__render_project\"\n  ],\n  \"tool_count\": 1,\n  \"newly_loaded\": [\n    \"kdenlive-export\"\n  ],\n  \"already_loaded\": [],\n  \"available_groups\": [],\n  \"activated_groups\": [],\n  \"tools\": [\n    {\n      \"name\": \"kdenlive_export__render_project\",\n      \"description\": \"Render an explicit frame range through MLT to MP4, WebM, ProRes MOV or WAV. Poll core jobs_get_status; use jobs_cancel to cancel.\",\n      \"inputSchema\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"path\": {\n            \"type\": \"string\"\n          },\n          \"output_path\": {\n            \"type\": \"string\",\n            \"description\": \"New file path in an existing directory; existing destinations are never replaced.\"\n          },\n          \"preset\": {\n            \"type\": \"string\",\n            \"default\": \"mp4\"\n          },\n          \"start\": {\n            \"type\": \"integer\",\n            \"minimum\": 0,\n            \"default\": 0\n          },\n          \"end\": {\n            \"type\": \"integer\",\n            \"minimum\": 0,\n            \"default\": 0\n          },\n          \"timeout\": {\n            \"type\": \"integer\",\n            \"minimum\": 0,\n            \"default\": 3600\n          }\n        },\n        \"required\": [\n          \"path\",\n          \"output_path\",\n          \"start\",\n          \"end\"\n        ],\n        \"additionalProperties\": false\n      },\n      \"outputSchema\": {\n        \"type\": \"object\"\n      },\n      \"skill_name\": \"kdenlive-export\",\n      \"annotations\": {\n        \"read_only_hint\": false,\n        \"destructive_hint\": true,\n        \"idempotent_hint\": false,\n        \"open_world_hint\": true,\n        \"deferred_hint\": true\n      },\n      \"metadata\": {\n        \"dcc\": {\n          \"affinity\": \"any\",\n          \"execution\": \"async\",\n          \"timeoutHintSecs\": 86400,\n          \"jobStrategy\": \"monolithic\",\n          \"enforceThreadAffinity\": true\n        }\n      }\n    }\n  ]\n}",
+            "annotations": null,
+            "meta": null
+          }
+        ],
+        "structured_content": null,
+        "is_error": false,
+        "result_type": "complete"
+      }
+    },
+    {
+      "event": "tools/call",
+      "tool": "load_skill",
+      "arguments": {
+        "skill_name": "kdenlive-interchange"
+      },
+      "response": {
+        "meta": null,
+        "content": [
+          {
+            "type": "text",
+            "text": "{\n  \"loaded\": true,\n  \"partial\": false,\n  \"registered_tools\": [\n    \"kdenlive_interchange__probe_media\",\n    \"kdenlive_interchange__write_subtitles\"\n  ],\n  \"tool_count\": 2,\n  \"newly_loaded\": [\n    \"kdenlive-interchange\"\n  ],\n  \"already_loaded\": [],\n  \"available_groups\": [],\n  \"activated_groups\": [],\n  \"tools\": [\n    {\n      \"name\": \"kdenlive_interchange__probe_media\",\n      \"description\": \"Inspect actual audio/video streams and format using FFprobe.\",\n      \"inputSchema\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"path\": {\n            \"type\": \"string\"\n          }\n        },\n        \"required\": [\n          \"path\"\n        ],\n        \"additionalProperties\": false\n      },\n      \"outputSchema\": {\n        \"type\": \"object\"\n      },\n      \"skill_name\": \"kdenlive-interchange\",\n      \"annotations\": {\n        \"read_only_hint\": true,\n        \"destructive_hint\": false,\n        \"idempotent_hint\": true,\n        \"open_world_hint\": true,\n        \"deferred_hint\": false\n      },\n      \"metadata\": {\n        \"dcc\": {\n          \"affinity\": \"any\",\n          \"execution\": \"sync\",\n          \"timeoutHintSecs\": 60,\n          \"jobStrategy\": \"monolithic\",\n          \"enforceThreadAffinity\": true\n        }\n      }\n    },\n    {\n      \"name\": \"kdenlive_interchange__write_subtitles\",\n      \"description\": \"Write validated, ordered subtitle cues to a new UTF-8 SRT file for editor import.\",\n      \"inputSchema\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"output_path\": {\n            \"type\": \"string\",\n            \"description\": \"New file path in an existing directory; existing destinations are never replaced.\"\n          },\n          \"cues\": {\n            \"type\": \"array\",\n            \"items\": {\n              \"type\": \"object\",\n              \"properties\": {\n                \"start_ms\": {\n                  \"type\": \"integer\",\n                  \"minimum\": 0\n                },\n                \"end_ms\": {\n                  \"type\": \"integer\",\n                  \"minimum\": 0\n                },\n                \"text\": {\n                  \"type\": \"string\"\n                }\n              },\n              \"required\": [\n                \"start_ms\",\n                \"end_ms\",\n                \"text\"\n              ],\n              \"additionalProperties\": false\n            }\n          }\n        },\n        \"required\": [\n          \"output_path\",\n          \"cues\"\n        ],\n        \"additionalProperties\": false\n      },\n      \"outputSchema\": {\n        \"type\": \"object\"\n      },\n      \"skill_name\": \"kdenlive-interchange\",\n      \"annotations\": {\n        \"read_only_hint\": false,\n        \"destructive_hint\": true,\n        \"idempotent_hint\": false,\n        \"open_world_hint\": true,\n        \"deferred_hint\": false\n      },\n      \"metadata\": {\n        \"dcc\": {\n          \"affinity\": \"any\",\n          \"execution\": \"sync\",\n          \"timeoutHintSecs\": 60,\n          \"jobStrategy\": \"monolithic\",\n          \"enforceThreadAffinity\": true\n        }\n      }\n    }\n  ]\n}",
+            "annotations": null,
+            "meta": null
+          }
+        ],
+        "structured_content": null,
+        "is_error": false,
+        "result_type": "complete"
+      }
+    },
+    {
+      "event": "tools/call",
+      "tool": "inspect_project",
+      "arguments": {
+        "path": "CASE_ROOT/brass-relay/film-core2041-proof-01/native-versions/edit-0058.kdenlive"
+      },
+      "response": {
+        "meta": null,
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"path\":\"CASE_ROOT/brass-relay/film-core2041-proof-01/native-versions/edit-0058.kdenlive\",\"sha256\":\"beac0c151769b5d557de94955a8a678c7cad946d3f9641a9f6494dbaa7e0db72\",\"profile\":{\"width\":\"1280\",\"height\":\"800\",\"frame_rate_num\":\"24\",\"frame_rate_den\":\"1\",\"progressive\":\"1\",\"sample_aspect_num\":\"1\",\"sample_aspect_den\":\"1\",\"display_aspect_num\":\"8\",\"display_aspect_den\":\"5\",\"colorspace\":\"709\",\"description\":\"DCC-MCP project\"},\"elements\":[{\"id\":\"clip_13\",\"type\":\"producer\",\"properties\":{\"mlt_service\":\"avformat\",\"resource\":\"CASE_ROOT/brass-relay/delivery-media/plan.png\",\"length\":\"96\",\"eof\":\"pause\",\"kdenlive:id\":\"14\",\"kdenlive:clipname\":\"Orthogonal native view / input ninety degrees\"},\"effects\":[{\"id\":\"effect_26\",\"properties\":{\"argument\":\"03  /  THE GEOMETRY BEHIND THE MOTION\",\"geometry\":\"50 36 1170 36\",\"family\":\"DejaVu Sans\",\"size\":\"21\",\"weight\":\"600\",\"fgcolour\":\"#fff0e8d8\",\"bgcolour\":\"#00000000\",\"olcolour\":\"#aa000000\",\"outline\":\"1\",\"pad\":\"0\",\"halign\":\"left\",\"valign\":\"top\",\"mlt_service\":\"dynamictext\",\"kdenlive:id\":\"dynamictext\",\"kdenlive:ix\":\"1\"}},{\"id\":\"effect_27\",\"properties\":{\"argument\":\"Top view at 90\u00b0 input  \u00b7  Parametric FCStd \u2192 native Blender assembly\",\"geometry\":\"50 750 1180 30\",\"family\":\"DejaVu Sans\",\"size\":\"17\",\"weight\":\"400\",\"fgcolour\":\"#ffd6dedb\",\"bgcolour\":\"#00000000\",\"olcolour\":\"#aa000000\",\"outline\":\"1\",\"pad\":\"0\",\"halign\":\"left\",\"valign\":\"top\",\"mlt_service\":\"dynamictext\",\"kdenlive:id\":\"dynamictext\",\"kdenlive:ix\":\"2\"}}]},{\"id\":\"clip_12\",\"type\":\"producer\",\"properties\":{\"mlt_service\":\"avformat\",\"resource\":\"CASE_ROOT/brass-relay/delivery-media/frame-0012.png\",\"length\":\"1\",\"eof\":\"pause\",\"kdenlive:id\":\"13\",\"kdenlive:clipname\":\"Native motion frame 012 / pass 1\"},\"effects\":[{\"id\":\"effect_24\",\"properties\":{\"argument\":\"01  /  CONTINUOUS INPUT\",\"geometry\":\"50 36 1170 36\",\"family\":\"DejaVu Sans\",\"size\":\"21\",\"weight\":\"600\",\"fgcolour\":\"#fff0e8d8\",\"bgcolour\":\"#00000000\",\"olcolour\":\"#aa000000\",\"outline\":\"1\",\"pad\":\"0\",\"halign\":\"left\",\"valign\":\"top\",\"mlt_service\":\"dynamictext\",\"kdenlive:id\":\"dynamictext\",\"kdenlive:ix\":\"1\"}},{\"id\":\"effect_25\",\"properties\":{\"argument\":\"Input 25 mm  \u00b7  Coupler 80 mm  \u00b7  Rocker 50 mm\",\"geometry\":\"50 750 1180 30\",\"family\":\"DejaVu Sans\",\"size\":\"17\",\"weight\":\"400\",\"fgcolour\":\"#ffd6dedb\",\"bgcolour\":\"#00000000\",\"olcolour\":\"#aa000000\",\"outline\":\"1\",\"pad\":\"0\",\"halign\":\"left\",\"valign\":\"top\",\"mlt_service\":\"dynamictext\",\"kdenlive:id\":\"dynamictext\",\"kdenlive:ix\":\"2\"}}]},{\"id\":\"clip_11\",\"type\":\"producer\",\"properties\":{\"mlt_service\":\"avformat\",\"resource\":\"CASE_ROOT/brass-relay/delivery-media/frame-0011.png\",\"length\":\"1\",\"eof\":\"pause\",\"kdenlive:id\":\"12\",\"kdenlive:clipname\":\"Native motion frame 011 / pass 1\"},\"effects\":[{\"id\":\"effect_22\",\"properties\":{\"argument\":\"01  /  CONTINUOUS INPUT\",\"geometry\":\"50 36 1170 36\",\"family\":\"DejaVu Sans\",\"size\":\"21\",\"weight\":\"600\",\"fgcolour\":\"#fff0e8d8\",\"bgcolour\":\"#00000000\",\"olcolour\":\"#aa000000\",\"outline\":\"1\",\"pad\":\"0\",\"halign\":\"left\",\"valign\":\"top\",\"mlt_service\":\"dynamictext\",\"kdenlive:id\":\"dynamictext\",\"kdenlive:ix\":\"1\"}},{\"id\":\"effect_23\",\"properties\":{\"argument\":\"Input 25 mm  \u00b7  Coupler 80 mm  \u00b7  Rocker 50 mm\",\"geometry\":\"50 750 1180 30\",\"family\":\"DejaVu Sans\",\"size\":\"17\",\"weight\":\"400\",\"fgcolour\":\"#ffd6dedb\",\"bgcolour\":\"#00000000\",\"olcolour\":\"#aa000000\",\"outline\":\"1\",\"pad\":\"0\",\"halign\":\"left\",\"valign\":\"top\",\"mlt_service\":\"dynamictext\",\"kdenlive:id\":\"dynamictext\",\"kdenlive:ix\":\"2\"}}]},{\"id\":\"clip_10\",\"type\":\"producer\",\"properties\":{\"mlt_service\":\"avformat\",\"resource\":\"CASE_ROOT/brass-relay/delivery-media/frame-0010.png\",\"length\":\"1\",\"eof\":\"pause\",\"kdenlive:id\":\"11\",\"kdenlive:clipname\":\"Native motion frame 010 / pass 1\"},\"effects\":[{\"id\":\"effect_20\",\"properties\":{\"argument\":\"01  /  CONTINUOUS INPUT\",\"geometry\":\"50 36 1170 36\",\"family\":\"DejaVu Sans\",\"size\":\"21\",\"weight\":\"600\",\"fgcolour\":\"#fff0e8d8\",\"bgcolour\":\"#00000000\",\"olcolour\":\"#aa000000\",\"outline\":\"1\",\"pad\":\"0\",\"halign\":\"left\",\"valign\":\"top\",\"mlt_service\":\"dynamictext\",\"kdenlive:id\":\"dynamictext\",\"kdenlive:ix\":\"1\"}},{\"id\":\"effect_21\",\"properties\":{\"argument\":\"Input 25 mm  \u00b7  Coupler 80 mm  \u00b7  Rocker 50 mm\",\"geometry\":\"50 750 1180 30\",\"family\":\"DejaVu Sans\",\"size\":\"17\",\"weight\":\"400\",\"fgcolour\":\"#ffd6dedb\",\"bgcolour\":\"#00000000\",\"olcolour\":\"#aa000000\",\"outline\":\"1\",\"pad\":\"0\",\"halign\":\"left\",\"valign\":\"top\",\"mlt_service\":\"dynamictext\",\"kdenlive:id\":\"dynamictext\",\"kdenlive:ix\":\"2\"}}]},{\"id\":\"clip_9\",\"type\":\"producer\",\"properties\":{\"mlt_service\":\"avformat\",\"resource\":\"CASE_ROOT/brass-relay/delivery-media/frame-0009.png\",\"length\":\"1\",\"eof\":\"pause\",\"kdenlive:id\":\"10\",\"kdenlive:clipname\":\"Native motion frame 009 / pass 1\"},\"effects\":[{\"id\":\"effect_18\",\"properties\":{\"argument\":\"01  /  CONTINUOUS INPUT\",\"geometry\":\"50 36 1170 36\",\"family\":\"DejaVu Sans\",\"size\":\"21\",\"weight\":\"600\",\"fgcolour\":\"#fff0e8d8\",\"bgcolour\":\"#00000000\",\"olcolour\":\"#aa000000\",\"outline\":\"1\",\"pad\":\"0\",\"halign\":\"left\",\"valign\":\"top\",\"mlt_service\":\"dynamictext\",\"kdenlive:id\":\"dynamictext\",\"kdenlive:ix\":\"1\"}},{\"id\":\"effect_19\",\"properties\":{\"argument\":\"Input 25 mm  \u00b7  Coupler 80 mm  \u00b7  Rocker 50 mm\",\"geometry\":\"50 750 1180 30\",\"family\":\"DejaVu Sans\",\"size\":\"17\",\"weight\":\"400\",\"fgcolour\":\"#ffd6dedb\",\"bgcolour\":\"#00000000\",\"olcolour\":\"#aa000000\",\"outline\":\"1\",\"pad\":\"0\",\"halign\":\"left\",\"valign\":\"top\",\"mlt_service\":\"dynamictext\",\"kdenlive:id\":\"dynamictext\",\"kdenlive:ix\":\"2\"}}]},{\"id\":\"clip_8\",\"type\":\"producer\",\"properties\":{\"mlt_service\":\"avformat\",\"resource\":\"CASE_ROOT/brass-relay/delivery-media/frame-0008.png\",\"length\":\"1\",\"eof\":\"pause\",\"kdenlive:id\":\"9\",\"kdenlive:clipname\":\"Native motion frame 008 / pass 1\"},\"effects\":[{\"id\":\"effect_16\",\"properties\":{\"argument\":\"01  /  CONTINUOUS INPUT\",\"geometry\":\"50 36 1170 36\",\"family\":\"DejaVu Sans\",\"size\":\"21\",\"weight\":\"600\",\"fgcolour\":\"#fff0e8d8\",\"bgcolour\":\"#00000000\",\"olcolour\":\"#aa000000\",\"outline\":\"1\",\"pad\":\"0\",\"halign\":\"left\",\"valign\":\"top\",\"mlt_service\":\"dynamictext\",\"kdenlive:id\":\"dynamictext\",\"kdenlive:ix\":\"1\"}},{\"id\":\"effect_17\",\"properties\":{\"argument\":\"Input 25 mm  \u00b7  Coupler 80 mm  \u00b7  Rocker 50 mm\",\"geometry\":\"50 750 1180 30\",\"family\":\"DejaVu Sans\",\"size\":\"17\",\"weight\":\"400\",\"fgcolour\":\"#ffd6dedb\",\"bgcolour\":\"#00000000\",\"olcolour\":\"#aa000000\",\"outline\":\"1\",\"pad\":\"0\",\"halign\":\"left\",\"valign\":\"top\",\"mlt_service\":\"dynamictext\",\"kdenlive:id\":\"dynamictext\",\"kdenlive:ix\":\"2\"}}]},{\"id\":\"clip_7\",\"type\":\"producer\",\"properties\":{\"mlt_service\":\"avformat\",\"resource\":\"CASE_ROOT/brass-relay/delivery-media/frame-0007.png\",\"length\":\"1\",\"eof\":\"pause\",\"kdenlive:id\":\"8\",\"kdenlive:clipname\":\"Native motion frame 007 / pass 1\"},\"effects\":[{\"id\":\"effect_14\",\"properties\":{\"argument\":\"01  /  CONTINUOUS INPUT\",\"geometry\":\"50 36 1170 36\",\"family\":\"DejaVu Sans\",\"size\":\"21\",\"weight\":\"600\",\"fgcolour\":\"#fff0e8d8\",\"bgcolour\":\"#00000000\",\"olcolour\":\"#aa000000\",\"outline\":\"1\",\"pad\":\"0\",\"halign\":\"left\",\"valign\":\"top\",\"mlt_service\":\"dynamictext\",\"kdenlive:id\":\"dynamictext\",\"kdenlive:ix\":\"1\"}},{\"id\":\"effect_15\",\"properties\":{\"argument\":\"Input 25 mm  \u00b7  Coupler 80 mm  \u00b7  Rocker 50 mm\",\"geometry\":\"50 750 1180 30\",\"family\":\"DejaVu Sans\",\"size\":\"17\",\"weight\":\"400\",\"fgcolour\":\"#ffd6dedb\",\"bgcolour\":\"#00000000\",\"olcolour\":\"#aa000000\",\"outline\":\"1\",\"pad\":\"0\",\"halign\":\"left\",\"valign\":\"top\",\"mlt_service\":\"dynamictext\",\"kdenlive:id\":\"dynamictext\",\"kdenlive:ix\":\"2\"}}]},{\"id\":\"clip_6\",\"type\":\"producer\",\"properties\":{\"mlt_service\":\"avformat\",\"resource\":\"CASE_ROOT/brass-relay/delivery-media/frame-0006.png\",\"length\":\"1\",\"eof\":\"pause\",\"kdenlive:id\":\"7\",\"kdenlive:clipname\":\"Native motion frame 006 / pass 1\"},\"effects\":[{\"id\":\"effect_12\",\"properties\":{\"argument\":\"01  /  CONTINUOUS INPUT\",\"geometry\":\"50 36 1170 36\",\"family\":\"DejaVu Sans\",\"size\":\"21\",\"weight\":\"600\",\"fgcolour\":\"#fff0e8d8\",\"bgcolour\":\"#00000000\",\"olcolour\":\"#aa000000\",\"outline\":\"1\",\"pad\":\"0\",\"halign\":\"left\",\"valign\":\"top\",\"mlt_service\":\"dynamictext\",\"kdenlive:id\":\"dynamictext\",\"kdenlive:ix\":\"1\"}},{\"id\":\"effect_13\",\"properties\":{\"argument\":\"Input 25 mm  \u00b7  Coupler 80 mm  \u00b7  Rocker 50 mm\",\"geometry\":\"50 750 1180 30\",\"family\":\"DejaVu Sans\",\"size\":\"17\",\"weight\":\"400\",\"fgcolour\":\"#ffd6dedb\",\"bgcolour\":\"#00000000\",\"olcolour\":\"#aa000000\",\"outline\":\"1\",\"pad\":\"0\",\"halign\":\"left\",\"valign\":\"top\",\"mlt_service\":\"dynamictext\",\"kdenlive:id\":\"dynamictext\",\"kdenlive:ix\":\"2\"}}]},{\"id\":\"clip_5\",\"type\":\"producer\",\"properties\":{\"mlt_service\":\"avformat\",\"resource\":\"CASE_ROOT/brass-relay/delivery-media/frame-0005.png\",\"length\":\"1\",\"eof\":\"pause\",\"kdenlive:id\":\"6\",\"kdenlive:clipname\":\"Native motion frame 005 / pass 1\"},\"effects\":[{\"id\":\"effect_10\",\"properties\":{\"argument\":\"01  /  CONTINUOUS INPUT\",\"geometry\":\"50 36 1170 36\",\"family\":\"DejaVu Sans\",\"size\":\"21\",\"weight\":\"600\",\"fgcolour\":\"#fff0e8d8\",\"bgcolour\":\"#00000000\",\"olcolour\":\"#aa000000\",\"outline\":\"1\",\"pad\":\"0\",\"halign\":\"left\",\"valign\":\"top\",\"mlt_service\":\"dynamictext\",\"kdenlive:id\":\"dynamictext\",\"kdenlive:ix\":\"1\"}},{\"id\":\"effect_11\",\"properties\":{\"argument\":\"Input 25 mm  \u00b7  Coupler 80 mm  \u00b7  Rocker 50 mm\",\"geometry\":\"50 750 1180 30\",\"family\":\"DejaVu Sans\",\"size\":\"17\",\"weight\":\"400\",\"fgcolour\":\"#ffd6dedb\",\"bgcolour\":\"#00000000\",\"olcolour\":\"#aa000000\",\"outline\":\"1\",\"pad\":\"0\",\"halign\":\"left\",\"valign\":\"top\",\"mlt_service\":\"dynamictext\",\"kdenlive:id\":\"dynamictext\",\"kdenlive:ix\":\"2\"}}]},{\"id\":\"clip_4\",\"type\":\"producer\",\"properties\":{\"mlt_service\":\"avformat\",\"resource\":\"CASE_ROOT/brass-relay/delivery-media/frame-0004.png\",\"length\":\"1\",\"eof\":\"pause\",\"kdenlive:id\":\"5\",\"kdenlive:clipname\":\"Native motion frame 004 / pass 1\"},\"effects\":[{\"id\":\"effect_8\",\"properties\":{\"argument\":\"01  /  CONTINUOUS INPUT\",\"geometry\":\"50 36 1170 36\",\"family\":\"DejaVu Sans\",\"size\":\"21\",\"weight\":\"600\",\"fgcolour\":\"#fff0e8d8\",\"bgcolour\":\"#00000000\",\"olcolour\":\"#aa000000\",\"outline\":\"1\",\"pad\":\"0\",\"halign\":\"left\",\"valign\":\"top\",\"mlt_service\":\"dynamictext\",\"kdenlive:id\":\"dynamictext\",\"kdenlive:ix\":\"1\"}},{\"id\":\"effect_9\",\"properties\":{\"argument\":\"Input 25 mm  \u00b7  Coupler 80 mm  \u00b7  Rocker 50 mm\",\"geometry\":\"50 750 1180 30\",\"family\":\"DejaVu Sans\",\"size\":\"17\",\"weight\":\"400\",\"fgcolour\":\"#ffd6dedb\",\"bgcolour\":\"#00000000\",\"olcolour\":\"#aa000000\",\"outline\":\"1\",\"pad\":\"0\",\"halign\":\"left\",\"valign\":\"top\",\"mlt_service\":\"dynamictext\",\"kdenlive:id\":\"dynamictext\",\"kdenlive:ix\":\"2\"}}]},{\"id\":\"clip_3\",\"type\":\"producer\",\"properties\":{\"mlt_service\":\"avformat\",\"resource\":\"CASE_ROOT/brass-relay/delivery-media/frame-0003.png\",\"length\":\"1\",\"eof\":\"pause\",\"kdenlive:id\":\"4\",\"kdenlive:clipname\":\"Native motion frame 003 / pass 1\"},\"effects\":[{\"id\":\"effect_6\",\"properties\":{\"argument\":\"01  /  CONTINUOUS INPUT\",\"geometry\":\"50 36 1170 36\",\"family\":\"DejaVu Sans\",\"size\":\"21\",\"weight\":\"600\",\"fgcolour\":\"#fff0e8d8\",\"bgcolour\":\"#00000000\",\"olcolour\":\"#aa000000\",\"outline\":\"1\",\"pad\":\"0\",\"halign\":\"left\",\"valign\":\"top\",\"mlt_service\":\"dynamictext\",\"kdenlive:id\":\"dynamictext\",\"kdenlive:ix\":\"1\"}},{\"id\":\"effect_7\",\"properties\":{\"argument\":\"Input 25 mm  \u00b7  Coupler 80 mm  \u00b7  Rocker 50 mm\",\"geometry\":\"50 750 1180 30\",\"family\":\"DejaVu Sans\",\"size\":\"17\",\"weight\":\"400\",\"fgcolour\":\"#ffd6dedb\",\"bgcolour\":\"#00000000\",\"olcolour\":\"#aa000000\",\"outline\":\"1\",\"pad\":\"0\",\"halign\":\"left\",\"valign\":\"top\",\"mlt_service\":\"dynamictext\",\"kdenlive:id\":\"dynamictext\",\"kdenlive:ix\":\"2\"}}]},{\"id\":\"clip_2\",\"type\":\"producer\",\"properties\":{\"mlt_service\":\"avformat\",\"resource\":\"CASE_ROOT/brass-relay/delivery-media/frame-0002.png\",\"length\":\"1\",\"eof\":\"pause\",\"kdenlive:id\":\"3\",\"kdenlive:clipname\":\"Native motion frame 002 / pass 1\"},\"effects\":[{\"id\":\"effect_4\",\"properties\":{\"argument\":\"01  /  CONTINUOUS INPUT\",\"geometry\":\"50 36 1170 36\",\"family\":\"DejaVu Sans\",\"size\":\"21\",\"weight\":\"600\",\"fgcolour\":\"#fff0e8d8\",\"bgcolour\":\"#00000000\",\"olcolour\":\"#aa000000\",\"outline\":\"1\",\"pad\":\"0\",\"halign\":\"left\",\"valign\":\"top\",\"mlt_service\":\"dynamictext\",\"kdenlive:id\":\"dynamictext\",\"kdenlive:ix\":\"1\"}},{\"id\":\"effect_5\",\"properties\":{\"argument\":\"Input 25 mm  \u00b7  Coupler 80 mm  \u00b7  Rocker 50 mm\",\"geometry\":\"50 750 1180 30\",\"family\":\"DejaVu Sans\",\"size\":\"17\",\"weight\":\"400\",\"fgcolour\":\"#ffd6dedb\",\"bgcolour\":\"#00000000\",\"olcolour\":\"#aa000000\",\"outline\":\"1\",\"pad\":\"0\",\"halign\":\"left\",\"valign\":\"top\",\"mlt_service\":\"dynamictext\",\"kdenlive:id\":\"dynamictext\",\"kdenlive:ix\":\"2\"}}]},{\"id\":\"clip_1\",\"type\":\"producer\",\"properties\":{\"mlt_service\":\"avformat\",\"resource\":\"CASE_ROOT/brass-relay/delivery-media/frame-0001.png\",\"length\":\"1\",\"eof\":\"pause\",\"kdenlive:id\":\"2\",\"kdenlive:clipname\":\"Native motion frame 001 / pass 1\"},\"effects\":[{\"id\":\"effect_2\",\"properties\":{\"argument\":\"01  /  CONTINUOUS INPUT\",\"geometry\":\"50 36 1170 36\",\"family\":\"DejaVu Sans\",\"size\":\"21\",\"weight\":\"600\",\"fgcolour\":\"#fff0e8d8\",\"bgcolour\":\"#00000000\",\"olcolour\":\"#aa000000\",\"outline\":\"1\",\"pad\":\"0\",\"halign\":\"left\",\"valign\":\"top\",\"mlt_service\":\"dynamictext\",\"kdenlive:id\":\"dynamictext\",\"kdenlive:ix\":\"1\"}},{\"id\":\"effect_3\",\"properties\":{\"argument\":\"Input 25 mm  \u00b7  Coupler 80 mm  \u00b7  Rocker 50 mm\",\"geometry\":\"50 750 1180 30\",\"family\":\"DejaVu Sans\",\"size\":\"17\",\"weight\":\"400\",\"fgcolour\":\"#ffd6dedb\",\"bgcolour\":\"#00000000\",\"olcolour\":\"#aa000000\",\"outline\":\"1\",\"pad\":\"0\",\"halign\":\"left\",\"valign\":\"top\",\"mlt_service\":\"dynamictext\",\"kdenlive:id\":\"dynamictext\",\"kdenlive:ix\":\"2\"}}]},{\"id\":\"clip_0\",\"type\":\"producer\",\"properties\":{\"mlt_service\":\"avformat\",\"resource\":\"CASE_ROOT/brass-relay/delivery-media/hero.png\",\"length\":\"72\",\"eof\":\"pause\",\"kdenlive:id\":\"1\",\"kdenlive:clipname\":\"Brass Relay / Native hero\"},\"effects\":[{\"id\":\"effect_0\",\"properties\":{\"argument\":\"BRASS RELAY  /  A FOUR-BAR STUDY\",\"geometry\":\"50 36 1170 36\",\"family\":\"DejaVu Sans\",\"size\":\"21\",\"weight\":\"600\",\"fgcolour\":\"#fff0e8d8\",\"bgcolour\":\"#00000000\",\"olcolour\":\"#aa000000\",\"outline\":\"1\",\"pad\":\"0\",\"halign\":\"left\",\"valign\":\"top\",\"mlt_service\":\"dynamictext\",\"kdenlive:id\":\"dynamictext\",\"kdenlive:ix\":\"1\"}},{\"id\":\"effect_1\",\"properties\":{\"argument\":\"13 parametric CAD parts  \u00b7  70 mm between fixed pivots\",\"geometry\":\"50 750 1180 30\",\"family\":\"DejaVu Sans\",\"size\":\"17\",\"weight\":\"400\",\"fgcolour\":\"#ffd6dedb\",\"bgcolour\":\"#00000000\",\"olcolour\":\"#aa000000\",\"outline\":\"1\",\"pad\":\"0\",\"halign\":\"left\",\"valign\":\"top\",\"mlt_service\":\"dynamictext\",\"kdenlive:id\":\"dynamictext\",\"kdenlive:ix\":\"2\"}}]},{\"id\":\"main_bin\",\"type\":\"playlist\",\"properties\":{\"kdenlive:docproperties.version\":\"1.04\",\"kdenlive:docproperties.documentid\":\"55294731191478\",\"kdenlive:docproperties.audioChannels\":\"2\",\"kdenlive:docproperties.zonein\":\"0\",\"kdenlive:docproperties.zoneout\":\"0\",\"kdenlive:docproperties.groups\":\"[]\",\"xml_retain\":\"1\",\"dcc-mcp:authored\":\"1\",\"kdenlive:docproperties.guides\":\"[{\\\"pos\\\": 0, \\\"comment\\\": \\\"Native capability preview / hero\\\", \\\"type\\\": 0}, {\\\"pos\\\": 72, \\\"comment\\\": \\\"Twelve actual motion frames / incomplete cycle\\\", \\\"type\\\": 0}, {\\\"pos\\\": 84, \\\"comment\\\": \\\"Native plan view\\\", \\\"type\\\": 0}]\"},\"items\":[{\"index\":0,\"position\":0,\"duration\":72,\"type\":\"entry\",\"producer\":\"clip_0\",\"in\":\"0\",\"out\":\"71\"},{\"index\":1,\"position\":72,\"duration\":1,\"type\":\"entry\",\"producer\":\"clip_1\",\"in\":\"0\",\"out\":\"0\"},{\"index\":2,\"position\":73,\"duration\":1,\"type\":\"entry\",\"producer\":\"clip_2\",\"in\":\"0\",\"out\":\"0\"},{\"index\":3,\"position\":74,\"duration\":1,\"type\":\"entry\",\"producer\":\"clip_3\",\"in\":\"0\",\"out\":\"0\"},{\"index\":4,\"position\":75,\"duration\":1,\"type\":\"entry\",\"producer\":\"clip_4\",\"in\":\"0\",\"out\":\"0\"},{\"index\":5,\"position\":76,\"duration\":1,\"type\":\"entry\",\"producer\":\"clip_5\",\"in\":\"0\",\"out\":\"0\"},{\"index\":6,\"position\":77,\"duration\":1,\"type\":\"entry\",\"producer\":\"clip_6\",\"in\":\"0\",\"out\":\"0\"},{\"index\":7,\"position\":78,\"duration\":1,\"type\":\"entry\",\"producer\":\"clip_7\",\"in\":\"0\",\"out\":\"0\"},{\"index\":8,\"position\":79,\"duration\":1,\"type\":\"entry\",\"producer\":\"clip_8\",\"in\":\"0\",\"out\":\"0\"},{\"index\":9,\"position\":80,\"duration\":1,\"type\":\"entry\",\"producer\":\"clip_9\",\"in\":\"0\",\"out\":\"0\"},{\"index\":10,\"position\":81,\"duration\":1,\"type\":\"entry\",\"producer\":\"clip_10\",\"in\":\"0\",\"out\":\"0\"},{\"index\":11,\"position\":82,\"duration\":1,\"type\":\"entry\",\"producer\":\"clip_11\",\"in\":\"0\",\"out\":\"0\"},{\"index\":12,\"position\":83,\"duration\":1,\"type\":\"entry\",\"producer\":\"clip_12\",\"in\":\"0\",\"out\":\"0\"},{\"index\":13,\"position\":84,\"duration\":96,\"type\":\"entry\",\"producer\":\"clip_13\",\"in\":\"0\",\"out\":\"95\"}],\"effects\":[]},{\"id\":\"black_track\",\"type\":\"producer\",\"properties\":{\"mlt_service\":\"color\",\"resource\":\"black\",\"length\":\"2147483647\",\"eof\":\"continue\"},\"effects\":[]},{\"id\":\"track_0_0\",\"type\":\"playlist\",\"properties\":{},\"items\":[{\"index\":0,\"position\":0,\"duration\":72,\"type\":\"entry\",\"producer\":\"clip_0\",\"in\":\"0\",\"out\":\"71\"},{\"index\":1,\"position\":72,\"duration\":1,\"type\":\"entry\",\"producer\":\"clip_1\",\"in\":\"0\",\"out\":\"0\"},{\"index\":2,\"position\":73,\"duration\":1,\"type\":\"entry\",\"producer\":\"clip_2\",\"in\":\"0\",\"out\":\"0\"},{\"index\":3,\"position\":74,\"duration\":1,\"type\":\"entry\",\"producer\":\"clip_3\",\"in\":\"0\",\"out\":\"0\"},{\"index\":4,\"position\":75,\"duration\":1,\"type\":\"entry\",\"producer\":\"clip_4\",\"in\":\"0\",\"out\":\"0\"},{\"index\":5,\"position\":76,\"duration\":1,\"type\":\"entry\",\"producer\":\"clip_5\",\"in\":\"0\",\"out\":\"0\"},{\"index\":6,\"position\":77,\"duration\":1,\"type\":\"entry\",\"producer\":\"clip_6\",\"in\":\"0\",\"out\":\"0\"},{\"index\":7,\"position\":78,\"duration\":1,\"type\":\"entry\",\"producer\":\"clip_7\",\"in\":\"0\",\"out\":\"0\"},{\"index\":8,\"position\":79,\"duration\":1,\"type\":\"entry\",\"producer\":\"clip_8\",\"in\":\"0\",\"out\":\"0\"},{\"index\":9,\"position\":80,\"duration\":1,\"type\":\"entry\",\"producer\":\"clip_9\",\"in\":\"0\",\"out\":\"0\"},{\"index\":10,\"position\":81,\"duration\":1,\"type\":\"entry\",\"producer\":\"clip_10\",\"in\":\"0\",\"out\":\"0\"},{\"index\":11,\"position\":82,\"duration\":1,\"type\":\"entry\",\"producer\":\"clip_11\",\"in\":\"0\",\"out\":\"0\"},{\"index\":12,\"position\":83,\"duration\":1,\"type\":\"entry\",\"producer\":\"clip_12\",\"in\":\"0\",\"out\":\"0\"},{\"index\":13,\"position\":84,\"duration\":96,\"type\":\"entry\",\"producer\":\"clip_13\",\"in\":\"0\",\"out\":\"95\"}],\"effects\":[]},{\"id\":\"track_0_1\",\"type\":\"playlist\",\"properties\":{},\"items\":[],\"effects\":[]},{\"id\":\"track_0\",\"type\":\"tractor\",\"properties\":{\"kdenlive:track_name\":\"V1\",\"kdenlive:timeline_active\":\"1\"},\"tracks\":[{\"producer\":\"track_0_0\",\"hide\":\"audio\"},{\"producer\":\"track_0_1\",\"hide\":\"audio\"}],\"effects\":[]},{\"id\":\"track_1_0\",\"type\":\"playlist\",\"properties\":{},\"items\":[],\"effects\":[]},{\"id\":\"track_1_1\",\"type\":\"playlist\",\"properties\":{},\"items\":[],\"effects\":[]},{\"id\":\"track_1\",\"type\":\"tractor\",\"properties\":{\"kdenlive:track_name\":\"V2\",\"kdenlive:timeline_active\":\"1\"},\"tracks\":[{\"producer\":\"track_1_0\",\"hide\":\"audio\"},{\"producer\":\"track_1_1\",\"hide\":\"audio\"}],\"effects\":[]},{\"id\":\"sequence\",\"type\":\"tractor\",\"properties\":{},\"tracks\":[{\"producer\":\"black_track\"},{\"producer\":\"track_0\"},{\"producer\":\"track_1\"}],\"effects\":[]}],\"editor_state\":\"file_only\"}",
+            "annotations": null,
+            "meta": null
+          }
+        ],
+        "structured_content": {
+          "path": "CASE_ROOT/brass-relay/film-core2041-proof-01/native-versions/edit-0058.kdenlive",
+          "sha256": "beac0c151769b5d557de94955a8a678c7cad946d3f9641a9f6494dbaa7e0db72",
+          "profile": {
+            "width": "1280",
+            "height": "800",
+            "frame_rate_num": "24",
+            "frame_rate_den": "1",
+            "progressive": "1",
+            "sample_aspect_num": "1",
+            "sample_aspect_den": "1",
+            "display_aspect_num": "8",
+            "display_aspect_den": "5",
+            "colorspace": "709",
+            "description": "DCC-MCP project"
+          },
+          "elements": [
+            {
+              "id": "clip_13",
+              "type": "producer",
+              "properties": {
+                "mlt_service": "avformat",
+                "resource": "CASE_ROOT/brass-relay/delivery-media/plan.png",
+                "length": "96",
+                "eof": "pause",
+                "kdenlive:id": "14",
+                "kdenlive:clipname": "Orthogonal native view / input ninety degrees"
+              },
+              "effects": [
+                {
+                  "id": "effect_26",
+                  "properties": {
+                    "argument": "03  /  THE GEOMETRY BEHIND THE MOTION",
+                    "geometry": "50 36 1170 36",
+                    "family": "DejaVu Sans",
+                    "size": "21",
+                    "weight": "600",
+                    "fgcolour": "#fff0e8d8",
+                    "bgcolour": "#00000000",
+                    "olcolour": "#aa000000",
+                    "outline": "1",
+                    "pad": "0",
+                    "halign": "left",
+                    "valign": "top",
+                    "mlt_service": "dynamictext",
+                    "kdenlive:id": "dynamictext",
+                    "kdenlive:ix": "1"
+                  }
+                },
+                {
+                  "id": "effect_27",
+                  "properties": {
+                    "argument": "Top view at 90\u00b0 input  \u00b7  Parametric FCStd \u2192 native Blender assembly",
+                    "geometry": "50 750 1180 30",
+                    "family": "DejaVu Sans",
+                    "size": "17",
+                    "weight": "400",
+                    "fgcolour": "#ffd6dedb",
+                    "bgcolour": "#00000000",
+                    "olcolour": "#aa000000",
+                    "outline": "1",
+                    "pad": "0",
+                    "halign": "left",
+                    "valign": "top",
+                    "mlt_service": "dynamictext",
+                    "kdenlive:id": "dynamictext",
+                    "kdenlive:ix": "2"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "clip_12",
+              "type": "producer",
+              "properties": {
+                "mlt_service": "avformat",
+                "resource": "CASE_ROOT/brass-relay/delivery-media/frame-0012.png",
+                "length": "1",
+                "eof": "pause",
+                "kdenlive:id": "13",
+                "kdenlive:clipname": "Native motion frame 012 / pass 1"
+              },
+              "effects": [
+                {
+                  "id": "effect_24",
+                  "properties": {
+                    "argument": "01  /  CONTINUOUS INPUT",
+                    "geometry": "50 36 1170 36",
+                    "family": "DejaVu Sans",
+                    "size": "21",
+                    "weight": "600",
+                    "fgcolour": "#fff0e8d8",
+                    "bgcolour": "#00000000",
+                    "olcolour": "#aa000000",
+                    "outline": "1",
+                    "pad": "0",
+                    "halign": "left",
+                    "valign": "top",
+                    "mlt_service": "dynamictext",
+                    "kdenlive:id": "dynamictext",
+                    "kdenlive:ix": "1"
+                  }
+                },
+                {
+                  "id": "effect_25",
+                  "properties": {
+                    "argument": "Input 25 mm  \u00b7  Coupler 80 mm  \u00b7  Rocker 50 mm",
+                    "geometry": "50 750 1180 30",
+                    "family": "DejaVu Sans",
+                    "size": "17",
+                    "weight": "400",
+                    "fgcolour": "#ffd6dedb",
+                    "bgcolour": "#00000000",
+                    "olcolour": "#aa000000",
+                    "outline": "1",
+                    "pad": "0",
+                    "halign": "left",
+                    "valign": "top",
+                    "mlt_service": "dynamictext",
+                    "kdenlive:id": "dynamictext",
+                    "kdenlive:ix": "2"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "clip_11",
+              "type": "producer",
+              "properties": {
+                "mlt_service": "avformat",
+                "resource": "CASE_ROOT/brass-relay/delivery-media/frame-0011.png",
+                "length": "1",
+                "eof": "pause",
+                "kdenlive:id": "12",
+                "kdenlive:clipname": "Native motion frame 011 / pass 1"
+              },
+              "effects": [
+                {
+                  "id": "effect_22",
+                  "properties": {
+                    "argument": "01  /  CONTINUOUS INPUT",
+                    "geometry": "50 36 1170 36",
+                    "family": "DejaVu Sans",
+                    "size": "21",
+                    "weight": "600",
+                    "fgcolour": "#fff0e8d8",
+                    "bgcolour": "#00000000",
+                    "olcolour": "#aa000000",
+                    "outline": "1",
+                    "pad": "0",
+                    "halign": "left",
+                    "valign": "top",
+                    "mlt_service": "dynamictext",
+                    "kdenlive:id": "dynamictext",
+                    "kdenlive:ix": "1"
+                  }
+                },
+                {
+                  "id": "effect_23",
+                  "properties": {
+                    "argument": "Input 25 mm  \u00b7  Coupler 80 mm  \u00b7  Rocker 50 mm",
+                    "geometry": "50 750 1180 30",
+                    "family": "DejaVu Sans",
+                    "size": "17",
+                    "weight": "400",
+                    "fgcolour": "#ffd6dedb",
+                    "bgcolour": "#00000000",
+                    "olcolour": "#aa000000",
+                    "outline": "1",
+                    "pad": "0",
+                    "halign": "left",
+                    "valign": "top",
+                    "mlt_service": "dynamictext",
+                    "kdenlive:id": "dynamictext",
+                    "kdenlive:ix": "2"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "clip_10",
+              "type": "producer",
+              "properties": {
+                "mlt_service": "avformat",
+                "resource": "CASE_ROOT/brass-relay/delivery-media/frame-0010.png",
+                "length": "1",
+                "eof": "pause",
+                "kdenlive:id": "11",
+                "kdenlive:clipname": "Native motion frame 010 / pass 1"
+              },
+              "effects": [
+                {
+                  "id": "effect_20",
+                  "properties": {
+                    "argument": "01  /  CONTINUOUS INPUT",
+                    "geometry": "50 36 1170 36",
+                    "family": "DejaVu Sans",
+                    "size": "21",
+                    "weight": "600",
+                    "fgcolour": "#fff0e8d8",
+                    "bgcolour": "#00000000",
+                    "olcolour": "#aa000000",
+                    "outline": "1",
+                    "pad": "0",
+                    "halign": "left",
+                    "valign": "top",
+                    "mlt_service": "dynamictext",
+                    "kdenlive:id": "dynamictext",
+                    "kdenlive:ix": "1"
+                  }
+                },
+                {
+                  "id": "effect_21",
+                  "properties": {
+                    "argument": "Input 25 mm  \u00b7  Coupler 80 mm  \u00b7  Rocker 50 mm",
+                    "geometry": "50 750 1180 30",
+                    "family": "DejaVu Sans",
+                    "size": "17",
+                    "weight": "400",
+                    "fgcolour": "#ffd6dedb",
+                    "bgcolour": "#00000000",
+                    "olcolour": "#aa000000",
+                    "outline": "1",
+                    "pad": "0",
+                    "halign": "left",
+                    "valign": "top",
+                    "mlt_service": "dynamictext",
+                    "kdenlive:id": "dynamictext",
+                    "kdenlive:ix": "2"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "clip_9",
+              "type": "producer",
+              "properties": {
+                "mlt_service": "avformat",
+                "resource": "CASE_ROOT/brass-relay/delivery-media/frame-0009.png",
+                "length": "1",
+                "eof": "pause",
+                "kdenlive:id": "10",
+                "kdenlive:clipname": "Native motion frame 009 / pass 1"
+              },
+              "effects": [
+                {
+                  "id": "effect_18",
+                  "properties": {
+                    "argument": "01  /  CONTINUOUS INPUT",
+                    "geometry": "50 36 1170 36",
+                    "family": "DejaVu Sans",
+                    "size": "21",
+                    "weight": "600",
+                    "fgcolour": "#fff0e8d8",
+                    "bgcolour": "#00000000",
+                    "olcolour": "#aa000000",
+                    "outline": "1",
+                    "pad": "0",
+                    "halign": "left",
+                    "valign": "top",
+                    "mlt_service": "dynamictext",
+                    "kdenlive:id": "dynamictext",
+                    "kdenlive:ix": "1"
+                  }
+                },
+                {
+                  "id": "effect_19",
+                  "properties": {
+                    "argument": "Input 25 mm  \u00b7  Coupler 80 mm  \u00b7  Rocker 50 mm",
+                    "geometry": "50 750 1180 30",
+                    "family": "DejaVu Sans",
+                    "size": "17",
+                    "weight": "400",
+                    "fgcolour": "#ffd6dedb",
+                    "bgcolour": "#00000000",
+                    "olcolour": "#aa000000",
+                    "outline": "1",
+                    "pad": "0",
+                    "halign": "left",
+                    "valign": "top",
+                    "mlt_service": "dynamictext",
+                    "kdenlive:id": "dynamictext",
+                    "kdenlive:ix": "2"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "clip_8",
+              "type": "producer",
+              "properties": {
+                "mlt_service": "avformat",
+                "resource": "CASE_ROOT/brass-relay/delivery-media/frame-0008.png",
+                "length": "1",
+                "eof": "pause",
+                "kdenlive:id": "9",
+                "kdenlive:clipname": "Native motion frame 008 / pass 1"
+              },
+              "effects": [
+                {
+                  "id": "effect_16",
+                  "properties": {
+                    "argument": "01  /  CONTINUOUS INPUT",
+                    "geometry": "50 36 1170 36",
+                    "family": "DejaVu Sans",
+                    "size": "21",
+                    "weight": "600",
+                    "fgcolour": "#fff0e8d8",
+                    "bgcolour": "#00000000",
+                    "olcolour": "#aa000000",
+                    "outline": "1",
+                    "pad": "0",
+                    "halign": "left",
+                    "valign": "top",
+                    "mlt_service": "dynamictext",
+                    "kdenlive:id": "dynamictext",
+                    "kdenlive:ix": "1"
+                  }
+                },
+                {
+                  "id": "effect_17",
+                  "properties": {
+                    "argument": "Input 25 mm  \u00b7  Coupler 80 mm  \u00b7  Rocker 50 mm",
+                    "geometry": "50 750 1180 30",
+                    "family": "DejaVu Sans",
+                    "size": "17",
+                    "weight": "400",
+                    "fgcolour": "#ffd6dedb",
+                    "bgcolour": "#00000000",
+                    "olcolour": "#aa000000",
+                    "outline": "1",
+                    "pad": "0",
+                    "halign": "left",
+                    "valign": "top",
+                    "mlt_service": "dynamictext",
+                    "kdenlive:id": "dynamictext",
+                    "kdenlive:ix": "2"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "clip_7",
+              "type": "producer",
+              "properties": {
+                "mlt_service": "avformat",
+                "resource": "CASE_ROOT/brass-relay/delivery-media/frame-0007.png",
+                "length": "1",
+                "eof": "pause",
+                "kdenlive:id": "8",
+                "kdenlive:clipname": "Native motion frame 007 / pass 1"
+              },
+              "effects": [
+                {
+                  "id": "effect_14",
+                  "properties": {
+                    "argument": "01  /  CONTINUOUS INPUT",
+                    "geometry": "50 36 1170 36",
+                    "family": "DejaVu Sans",
+                    "size": "21",
+                    "weight": "600",
+                    "fgcolour": "#fff0e8d8",
+                    "bgcolour": "#00000000",
+                    "olcolour": "#aa000000",
+                    "outline": "1",
+                    "pad": "0",
+                    "halign": "left",
+                    "valign": "top",
+                    "mlt_service": "dynamictext",
+                    "kdenlive:id": "dynamictext",
+                    "kdenlive:ix": "1"
+                  }
+                },
+                {
+                  "id": "effect_15",
+                  "properties": {
+                    "argument": "Input 25 mm  \u00b7  Coupler 80 mm  \u00b7  Rocker 50 mm",
+                    "geometry": "50 750 1180 30",
+                    "family": "DejaVu Sans",
+                    "size": "17",
+                    "weight": "400",
+                    "fgcolour": "#ffd6dedb",
+                    "bgcolour": "#00000000",
+                    "olcolour": "#aa000000",
+                    "outline": "1",
+                    "pad": "0",
+                    "halign": "left",
+                    "valign": "top",
+                    "mlt_service": "dynamictext",
+                    "kdenlive:id": "dynamictext",
+                    "kdenlive:ix": "2"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "clip_6",
+              "type": "producer",
+              "properties": {
+                "mlt_service": "avformat",
+                "resource": "CASE_ROOT/brass-relay/delivery-media/frame-0006.png",
+                "length": "1",
+                "eof": "pause",
+                "kdenlive:id": "7",
+                "kdenlive:clipname": "Native motion frame 006 / pass 1"
+              },
+              "effects": [
+                {
+                  "id": "effect_12",
+                  "properties": {
+                    "argument": "01  /  CONTINUOUS INPUT",
+                    "geometry": "50 36 1170 36",
+                    "family": "DejaVu Sans",
+                    "size": "21",
+                    "weight": "600",
+                    "fgcolour": "#fff0e8d8",
+                    "bgcolour": "#00000000",
+                    "olcolour": "#aa000000",
+                    "outline": "1",
+                    "pad": "0",
+                    "halign": "left",
+                    "valign": "top",
+                    "mlt_service": "dynamictext",
+                    "kdenlive:id": "dynamictext",
+                    "kdenlive:ix": "1"
+                  }
+                },
+                {
+                  "id": "effect_13",
+                  "properties": {
+                    "argument": "Input 25 mm  \u00b7  Coupler 80 mm  \u00b7  Rocker 50 mm",
+                    "geometry": "50 750 1180 30",
+                    "family": "DejaVu Sans",
+                    "size": "17",
+                    "weight": "400",
+                    "fgcolour": "#ffd6dedb",
+                    "bgcolour": "#00000000",
+                    "olcolour": "#aa000000",
+                    "outline": "1",
+                    "pad": "0",
+                    "halign": "left",
+                    "valign": "top",
+                    "mlt_service": "dynamictext",
+                    "kdenlive:id": "dynamictext",
+                    "kdenlive:ix": "2"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "clip_5",
+              "type": "producer",
+              "properties": {
+                "mlt_service": "avformat",
+                "resource": "CASE_ROOT/brass-relay/delivery-media/frame-0005.png",
+                "length": "1",
+                "eof": "pause",
+                "kdenlive:id": "6",
+                "kdenlive:clipname": "Native motion frame 005 / pass 1"
+              },
+              "effects": [
+                {
+                  "id": "effect_10",
+                  "properties": {
+                    "argument": "01  /  CONTINUOUS INPUT",
+                    "geometry": "50 36 1170 36",
+                    "family": "DejaVu Sans",
+                    "size": "21",
+                    "weight": "600",
+                    "fgcolour": "#fff0e8d8",
+                    "bgcolour": "#00000000",
+                    "olcolour": "#aa000000",
+                    "outline": "1",
+                    "pad": "0",
+                    "halign": "left",
+                    "valign": "top",
+                    "mlt_service": "dynamictext",
+                    "kdenlive:id": "dynamictext",
+                    "kdenlive:ix": "1"
+                  }
+                },
+                {
+                  "id": "effect_11",
+                  "properties": {
+                    "argument": "Input 25 mm  \u00b7  Coupler 80 mm  \u00b7  Rocker 50 mm",
+                    "geometry": "50 750 1180 30",
+                    "family": "DejaVu Sans",
+                    "size": "17",
+                    "weight": "400",
+                    "fgcolour": "#ffd6dedb",
+                    "bgcolour": "#00000000",
+                    "olcolour": "#aa000000",
+                    "outline": "1",
+                    "pad": "0",
+                    "halign": "left",
+                    "valign": "top",
+                    "mlt_service": "dynamictext",
+                    "kdenlive:id": "dynamictext",
+                    "kdenlive:ix": "2"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "clip_4",
+              "type": "producer",
+              "properties": {
+                "mlt_service": "avformat",
+                "resource": "CASE_ROOT/brass-relay/delivery-media/frame-0004.png",
+                "length": "1",
+                "eof": "pause",
+                "kdenlive:id": "5",
+                "kdenlive:clipname": "Native motion frame 004 / pass 1"
+              },
+              "effects": [
+                {
+                  "id": "effect_8",
+                  "properties": {
+                    "argument": "01  /  CONTINUOUS INPUT",
+                    "geometry": "50 36 1170 36",
+                    "family": "DejaVu Sans",
+                    "size": "21",
+                    "weight": "600",
+                    "fgcolour": "#fff0e8d8",
+                    "bgcolour": "#00000000",
+                    "olcolour": "#aa000000",
+                    "outline": "1",
+                    "pad": "0",
+                    "halign": "left",
+                    "valign": "top",
+                    "mlt_service": "dynamictext",
+                    "kdenlive:id": "dynamictext",
+                    "kdenlive:ix": "1"
+                  }
+                },
+                {
+                  "id": "effect_9",
+                  "properties": {
+                    "argument": "Input 25 mm  \u00b7  Coupler 80 mm  \u00b7  Rocker 50 mm",
+                    "geometry": "50 750 1180 30",
+                    "family": "DejaVu Sans",
+                    "size": "17",
+                    "weight": "400",
+                    "fgcolour": "#ffd6dedb",
+                    "bgcolour": "#00000000",
+                    "olcolour": "#aa000000",
+                    "outline": "1",
+                    "pad": "0",
+                    "halign": "left",
+                    "valign": "top",
+                    "mlt_service": "dynamictext",
+                    "kdenlive:id": "dynamictext",
+                    "kdenlive:ix": "2"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "clip_3",
+              "type": "producer",
+              "properties": {
+                "mlt_service": "avformat",
+                "resource": "CASE_ROOT/brass-relay/delivery-media/frame-0003.png",
+                "length": "1",
+                "eof": "pause",
+                "kdenlive:id": "4",
+                "kdenlive:clipname": "Native motion frame 003 / pass 1"
+              },
+              "effects": [
+                {
+                  "id": "effect_6",
+                  "properties": {
+                    "argument": "01  /  CONTINUOUS INPUT",
+                    "geometry": "50 36 1170 36",
+                    "family": "DejaVu Sans",
+                    "size": "21",
+                    "weight": "600",
+                    "fgcolour": "#fff0e8d8",
+                    "bgcolour": "#00000000",
+                    "olcolour": "#aa000000",
+                    "outline": "1",
+                    "pad": "0",
+                    "halign": "left",
+                    "valign": "top",
+                    "mlt_service": "dynamictext",
+                    "kdenlive:id": "dynamictext",
+                    "kdenlive:ix": "1"
+                  }
+                },
+                {
+                  "id": "effect_7",
+                  "properties": {
+                    "argument": "Input 25 mm  \u00b7  Coupler 80 mm  \u00b7  Rocker 50 mm",
+                    "geometry": "50 750 1180 30",
+                    "family": "DejaVu Sans",
+                    "size": "17",
+                    "weight": "400",
+                    "fgcolour": "#ffd6dedb",
+                    "bgcolour": "#00000000",
+                    "olcolour": "#aa000000",
+                    "outline": "1",
+                    "pad": "0",
+                    "halign": "left",
+                    "valign": "top",
+                    "mlt_service": "dynamictext",
+                    "kdenlive:id": "dynamictext",
+                    "kdenlive:ix": "2"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "clip_2",
+              "type": "producer",
+              "properties": {
+                "mlt_service": "avformat",
+                "resource": "CASE_ROOT/brass-relay/delivery-media/frame-0002.png",
+                "length": "1",
+                "eof": "pause",
+                "kdenlive:id": "3",
+                "kdenlive:clipname": "Native motion frame 002 / pass 1"
+              },
+              "effects": [
+                {
+                  "id": "effect_4",
+                  "properties": {
+                    "argument": "01  /  CONTINUOUS INPUT",
+                    "geometry": "50 36 1170 36",
+                    "family": "DejaVu Sans",
+                    "size": "21",
+                    "weight": "600",
+                    "fgcolour": "#fff0e8d8",
+                    "bgcolour": "#00000000",
+                    "olcolour": "#aa000000",
+                    "outline": "1",
+                    "pad": "0",
+                    "halign": "left",
+                    "valign": "top",
+                    "mlt_service": "dynamictext",
+                    "kdenlive:id": "dynamictext",
+                    "kdenlive:ix": "1"
+                  }
+                },
+                {
+                  "id": "effect_5",
+                  "properties": {
+                    "argument": "Input 25 mm  \u00b7  Coupler 80 mm  \u00b7  Rocker 50 mm",
+                    "geometry": "50 750 1180 30",
+                    "family": "DejaVu Sans",
+                    "size": "17",
+                    "weight": "400",
+                    "fgcolour": "#ffd6dedb",
+                    "bgcolour": "#00000000",
+                    "olcolour": "#aa000000",
+                    "outline": "1",
+                    "pad": "0",
+                    "halign": "left",
+                    "valign": "top",
+                    "mlt_service": "dynamictext",
+                    "kdenlive:id": "dynamictext",
+                    "kdenlive:ix": "2"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "clip_1",
+              "type": "producer",
+              "properties": {
+                "mlt_service": "avformat",
+                "resource": "CASE_ROOT/brass-relay/delivery-media/frame-0001.png",
+                "length": "1",
+                "eof": "pause",
+                "kdenlive:id": "2",
+                "kdenlive:clipname": "Native motion frame 001 / pass 1"
+              },
+              "effects": [
+                {
+                  "id": "effect_2",
+                  "properties": {
+                    "argument": "01  /  CONTINUOUS INPUT",
+                    "geometry": "50 36 1170 36",
+                    "family": "DejaVu Sans",
+                    "size": "21",
+                    "weight": "600",
+                    "fgcolour": "#fff0e8d8",
+                    "bgcolour": "#00000000",
+                    "olcolour": "#aa000000",
+                    "outline": "1",
+                    "pad": "0",
+                    "halign": "left",
+                    "valign": "top",
+                    "mlt_service": "dynamictext",
+                    "kdenlive:id": "dynamictext",
+                    "kdenlive:ix": "1"
+                  }
+                },
+                {
+                  "id": "effect_3",
+                  "properties": {
+                    "argument": "Input 25 mm  \u00b7  Coupler 80 mm  \u00b7  Rocker 50 mm",
+                    "geometry": "50 750 1180 30",
+                    "family": "DejaVu Sans",
+                    "size": "17",
+                    "weight": "400",
+                    "fgcolour": "#ffd6dedb",
+                    "bgcolour": "#00000000",
+                    "olcolour": "#aa000000",
+                    "outline": "1",
+                    "pad": "0",
+                    "halign": "left",
+                    "valign": "top",
+                    "mlt_service": "dynamictext",
+                    "kdenlive:id": "dynamictext",
+                    "kdenlive:ix": "2"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "clip_0",
+              "type": "producer",
+              "properties": {
+                "mlt_service": "avformat",
+                "resource": "CASE_ROOT/brass-relay/delivery-media/hero.png",
+                "length": "72",
+                "eof": "pause",
+                "kdenlive:id": "1",
+                "kdenlive:clipname": "Brass Relay / Native hero"
+              },
+              "effects": [
+                {
+                  "id": "effect_0",
+                  "properties": {
+                    "argument": "BRASS RELAY  /  A FOUR-BAR STUDY",
+                    "geometry": "50 36 1170 36",
+                    "family": "DejaVu Sans",
+                    "size": "21",
+                    "weight": "600",
+                    "fgcolour": "#fff0e8d8",
+                    "bgcolour": "#00000000",
+                    "olcolour": "#aa000000",
+                    "outline": "1",
+                    "pad": "0",
+                    "halign": "left",
+                    "valign": "top",
+                    "mlt_service": "dynamictext",
+                    "kdenlive:id": "dynamictext",
+                    "kdenlive:ix": "1"
+                  }
+                },
+                {
+                  "id": "effect_1",
+                  "properties": {
+                    "argument": "13 parametric CAD parts  \u00b7  70 mm between fixed pivots",
+                    "geometry": "50 750 1180 30",
+                    "family": "DejaVu Sans",
+                    "size": "17",
+                    "weight": "400",
+                    "fgcolour": "#ffd6dedb",
+                    "bgcolour": "#00000000",
+                    "olcolour": "#aa000000",
+                    "outline": "1",
+                    "pad": "0",
+                    "halign": "left",
+                    "valign": "top",
+                    "mlt_service": "dynamictext",
+                    "kdenlive:id": "dynamictext",
+                    "kdenlive:ix": "2"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "main_bin",
+              "type": "playlist",
+              "properties": {
+                "kdenlive:docproperties.version": "1.04",
+                "kdenlive:docproperties.documentid": "55294731191478",
+                "kdenlive:docproperties.audioChannels": "2",
+                "kdenlive:docproperties.zonein": "0",
+                "kdenlive:docproperties.zoneout": "0",
+                "kdenlive:docproperties.groups": "[]",
+                "xml_retain": "1",
+                "dcc-mcp:authored": "1",
+                "kdenlive:docproperties.guides": "[{\"pos\": 0, \"comment\": \"Native capability preview / hero\", \"type\": 0}, {\"pos\": 72, \"comment\": \"Twelve actual motion frames / incomplete cycle\", \"type\": 0}, {\"pos\": 84, \"comment\": \"Native plan view\", \"type\": 0}]"
+              },
+              "items": [
+                {
+                  "index": 0,
+                  "position": 0,
+                  "duration": 72,
+                  "type": "entry",
+                  "producer": "clip_0",
+                  "in": "0",
+                  "out": "71"
+                },
+                {
+                  "index": 1,
+                  "position": 72,
+                  "duration": 1,
+                  "type": "entry",
+                  "producer": "clip_1",
+                  "in": "0",
+                  "out": "0"
+                },
+                {
+                  "index": 2,
+                  "position": 73,
+                  "duration": 1,
+                  "type": "entry",
+                  "producer": "clip_2",
+                  "in": "0",
+                  "out": "0"
+                },
+                {
+                  "index": 3,
+                  "position": 74,
+                  "duration": 1,
+                  "type": "entry",
+                  "producer": "clip_3",
+                  "in": "0",
+                  "out": "0"
+                },
+                {
+                  "index": 4,
+                  "position": 75,
+                  "duration": 1,
+                  "type": "entry",
+                  "producer": "clip_4",
+                  "in": "0",
+                  "out": "0"
+                },
+                {
+                  "index": 5,
+                  "position": 76,
+                  "duration": 1,
+                  "type": "entry",
+                  "producer": "clip_5",
+                  "in": "0",
+                  "out": "0"
+                },
+                {
+                  "index": 6,
+                  "position": 77,
+                  "duration": 1,
+                  "type": "entry",
+                  "producer": "clip_6",
+                  "in": "0",
+                  "out": "0"
+                },
+                {
+                  "index": 7,
+                  "position": 78,
+                  "duration": 1,
+                  "type": "entry",
+                  "producer": "clip_7",
+                  "in": "0",
+                  "out": "0"
+                },
+                {
+                  "index": 8,
+                  "position": 79,
+                  "duration": 1,
+                  "type": "entry",
+                  "producer": "clip_8",
+                  "in": "0",
+                  "out": "0"
+                },
+                {
+                  "index": 9,
+                  "position": 80,
+                  "duration": 1,
+                  "type": "entry",
+                  "producer": "clip_9",
+                  "in": "0",
+                  "out": "0"
+                },
+                {
+                  "index": 10,
+                  "position": 81,
+                  "duration": 1,
+                  "type": "entry",
+                  "producer": "clip_10",
+                  "in": "0",
+                  "out": "0"
+                },
+                {
+                  "index": 11,
+                  "position": 82,
+                  "duration": 1,
+                  "type": "entry",
+                  "producer": "clip_11",
+                  "in": "0",
+                  "out": "0"
+                },
+                {
+                  "index": 12,
+                  "position": 83,
+                  "duration": 1,
+                  "type": "entry",
+                  "producer": "clip_12",
+                  "in": "0",
+                  "out": "0"
+                },
+                {
+                  "index": 13,
+                  "position": 84,
+                  "duration": 96,
+                  "type": "entry",
+                  "producer": "clip_13",
+                  "in": "0",
+                  "out": "95"
+                }
+              ],
+              "effects": []
+            },
+            {
+              "id": "black_track",
+              "type": "producer",
+              "properties": {
+                "mlt_service": "color",
+                "resource": "black",
+                "length": "2147483647",
+                "eof": "continue"
+              },
+              "effects": []
+            },
+            {
+              "id": "track_0_0",
+              "type": "playlist",
+              "properties": {},
+              "items": [
+                {
+                  "index": 0,
+                  "position": 0,
+                  "duration": 72,
+                  "type": "entry",
+                  "producer": "clip_0",
+                  "in": "0",
+                  "out": "71"
+                },
+                {
+                  "index": 1,
+                  "position": 72,
+                  "duration": 1,
+                  "type": "entry",
+                  "producer": "clip_1",
+                  "in": "0",
+                  "out": "0"
+                },
+                {
+                  "index": 2,
+                  "position": 73,
+                  "duration": 1,
+                  "type": "entry",
+                  "producer": "clip_2",
+                  "in": "0",
+                  "out": "0"
+                },
+                {
+                  "index": 3,
+                  "position": 74,
+                  "duration": 1,
+                  "type": "entry",
+                  "producer": "clip_3",
+                  "in": "0",
+                  "out": "0"
+                },
+                {
+                  "index": 4,
+                  "position": 75,
+                  "duration": 1,
+                  "type": "entry",
+                  "producer": "clip_4",
+                  "in": "0",
+                  "out": "0"
+                },
+                {
+                  "index": 5,
+                  "position": 76,
+                  "duration": 1,
+                  "type": "entry",
+                  "producer": "clip_5",
+                  "in": "0",
+                  "out": "0"
+                },
+                {
+                  "index": 6,
+                  "position": 77,
+                  "duration": 1,
+                  "type": "entry",
+                  "producer": "clip_6",
+                  "in": "0",
+                  "out": "0"
+                },
+                {
+                  "index": 7,
+                  "position": 78,
+                  "duration": 1,
+                  "type": "entry",
+                  "producer": "clip_7",
+                  "in": "0",
+                  "out": "0"
+                },
+                {
+                  "index": 8,
+                  "position": 79,
+                  "duration": 1,
+                  "type": "entry",
+                  "producer": "clip_8",
+                  "in": "0",
+                  "out": "0"
+                },
+                {
+                  "index": 9,
+                  "position": 80,
+                  "duration": 1,
+                  "type": "entry",
+                  "producer": "clip_9",
+                  "in": "0",
+                  "out": "0"
+                },
+                {
+                  "index": 10,
+                  "position": 81,
+                  "duration": 1,
+                  "type": "entry",
+                  "producer": "clip_10",
+                  "in": "0",
+                  "out": "0"
+                },
+                {
+                  "index": 11,
+                  "position": 82,
+                  "duration": 1,
+                  "type": "entry",
+                  "producer": "clip_11",
+                  "in": "0",
+                  "out": "0"
+                },
+                {
+                  "index": 12,
+                  "position": 83,
+                  "duration": 1,
+                  "type": "entry",
+                  "producer": "clip_12",
+                  "in": "0",
+                  "out": "0"
+                },
+                {
+                  "index": 13,
+                  "position": 84,
+                  "duration": 96,
+                  "type": "entry",
+                  "producer": "clip_13",
+                  "in": "0",
+                  "out": "95"
+                }
+              ],
+              "effects": []
+            },
+            {
+              "id": "track_0_1",
+              "type": "playlist",
+              "properties": {},
+              "items": [],
+              "effects": []
+            },
+            {
+              "id": "track_0",
+              "type": "tractor",
+              "properties": {
+                "kdenlive:track_name": "V1",
+                "kdenlive:timeline_active": "1"
+              },
+              "tracks": [
+                {
+                  "producer": "track_0_0",
+                  "hide": "audio"
+                },
+                {
+                  "producer": "track_0_1",
+                  "hide": "audio"
+                }
+              ],
+              "effects": []
+            },
+            {
+              "id": "track_1_0",
+              "type": "playlist",
+              "properties": {},
+              "items": [],
+              "effects": []
+            },
+            {
+              "id": "track_1_1",
+              "type": "playlist",
+              "properties": {},
+              "items": [],
+              "effects": []
+            },
+            {
+              "id": "track_1",
+              "type": "tractor",
+              "properties": {
+                "kdenlive:track_name": "V2",
+                "kdenlive:timeline_active": "1"
+              },
+              "tracks": [
+                {
+                  "producer": "track_1_0",
+                  "hide": "audio"
+                },
+                {
+                  "producer": "track_1_1",
+                  "hide": "audio"
+                }
+              ],
+              "effects": []
+            },
+            {
+              "id": "sequence",
+              "type": "tractor",
+              "properties": {},
+              "tracks": [
+                {
+                  "producer": "black_track"
+                },
+                {
+                  "producer": "track_0"
+                },
+                {
+                  "producer": "track_1"
+                }
+              ],
+              "effects": []
+            }
+          ],
+          "editor_state": "file_only"
+        },
+        "is_error": false,
+        "result_type": "complete"
+      }
+    },
+    {
+      "event": "tools/call",
+      "tool": "package_project",
+      "arguments": {
+        "path": "CASE_ROOT/brass-relay/film-core2041-proof-01/native-versions/edit-0058.kdenlive",
+        "output_directory": "CASE_ROOT/brass-relay/film-core2041-proof-package-02/portable-project",
+        "allowed_media_roots": [
+          "CASE_ROOT/brass-relay/delivery-media"
+        ],
+        "max_total_bytes": 536870912
+      },
+      "response": {
+        "meta": null,
+        "content": [
+          {
+            "type": "text",
+            "text": "Core job e0bba3a5-9535-461a-9f9f-772eb3ef8ad4 queued; poll jobs_get_status with core_job_id=e0bba3a5-9535-461a-9f9f-772eb3ef8ad4",
+            "annotations": null,
+            "meta": null
+          }
+        ],
+        "structured_content": {
+          "job_id": "e0bba3a5-9535-461a-9f9f-772eb3ef8ad4",
+          "core_job_id": "e0bba3a5-9535-461a-9f9f-772eb3ef8ad4",
+          "job_id_owner": "core",
+          "status": "pending",
+          "parent_job_id": null,
+          "core_poll": {
+            "owner": "core",
+            "tool": "jobs_get_status",
+            "arguments": {
+              "job_id": "e0bba3a5-9535-461a-9f9f-772eb3ef8ad4",
+              "include_result": true
+            }
+          },
+          "_meta": {
+            "status": "pending",
+            "dcc": {
+              "jobId": "e0bba3a5-9535-461a-9f9f-772eb3ef8ad4",
+              "coreJobId": "e0bba3a5-9535-461a-9f9f-772eb3ef8ad4",
+              "jobOwner": "core",
+              "pollTool": "jobs_get_status",
+              "parentJobId": null
+            }
+          }
+        },
+        "is_error": false,
+        "result_type": "complete"
+      }
+    },
+    {
+      "event": "tools/call",
+      "tool": "inspect_project",
+      "arguments": {
+        "path": "CASE_ROOT/brass-relay/film-core2041-proof-package-02/relocated-project/project.kdenlive"
+      },
+      "response": {
+        "meta": null,
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"path\":\"CASE_ROOT/brass-relay/film-core2041-proof-package-02/relocated-project/project.kdenlive\",\"sha256\":\"d3cd13945a532dab7d3c0dbf52fc63d5ad146f3d1c7e4d6cd18b1a16dd999c4f\",\"profile\":{\"width\":\"1280\",\"height\":\"800\",\"frame_rate_num\":\"24\",\"frame_rate_den\":\"1\",\"progressive\":\"1\",\"sample_aspect_num\":\"1\",\"sample_aspect_den\":\"1\",\"display_aspect_num\":\"8\",\"display_aspect_den\":\"5\",\"colorspace\":\"709\",\"description\":\"DCC-MCP project\"},\"elements\":[{\"id\":\"clip_13\",\"type\":\"producer\",\"properties\":{\"mlt_service\":\"avformat\",\"resource\":\"media/419a90b98b6b2583ca82b9bdb29aac54b2b3dd3584077dba98ad029946ca0cb9.png\",\"length\":\"96\",\"eof\":\"pause\",\"kdenlive:id\":\"14\",\"kdenlive:clipname\":\"Orthogonal native view / input ninety degrees\"},\"effects\":[{\"id\":\"effect_26\",\"properties\":{\"argument\":\"03  /  THE GEOMETRY BEHIND THE MOTION\",\"geometry\":\"50 36 1170 36\",\"family\":\"DejaVu Sans\",\"size\":\"21\",\"weight\":\"600\",\"fgcolour\":\"#fff0e8d8\",\"bgcolour\":\"#00000000\",\"olcolour\":\"#aa000000\",\"outline\":\"1\",\"pad\":\"0\",\"halign\":\"left\",\"valign\":\"top\",\"mlt_service\":\"dynamictext\",\"kdenlive:id\":\"dynamictext\",\"kdenlive:ix\":\"1\"}},{\"id\":\"effect_27\",\"properties\":{\"argument\":\"Top view at 90\u00b0 input  \u00b7  Parametric FCStd \u2192 native Blender assembly\",\"geometry\":\"50 750 1180 30\",\"family\":\"DejaVu Sans\",\"size\":\"17\",\"weight\":\"400\",\"fgcolour\":\"#ffd6dedb\",\"bgcolour\":\"#00000000\",\"olcolour\":\"#aa000000\",\"outline\":\"1\",\"pad\":\"0\",\"halign\":\"left\",\"valign\":\"top\",\"mlt_service\":\"dynamictext\",\"kdenlive:id\":\"dynamictext\",\"kdenlive:ix\":\"2\"}}]},{\"id\":\"clip_12\",\"type\":\"producer\",\"properties\":{\"mlt_service\":\"avformat\",\"resource\":\"media/40902830303c9fd46ddb7243d792d30ca427ff5698b599f09fbe233106aefe5c.png\",\"length\":\"1\",\"eof\":\"pause\",\"kdenlive:id\":\"13\",\"kdenlive:clipname\":\"Native motion frame 012 / pass 1\"},\"effects\":[{\"id\":\"effect_24\",\"properties\":{\"argument\":\"01  /  CONTINUOUS INPUT\",\"geometry\":\"50 36 1170 36\",\"family\":\"DejaVu Sans\",\"size\":\"21\",\"weight\":\"600\",\"fgcolour\":\"#fff0e8d8\",\"bgcolour\":\"#00000000\",\"olcolour\":\"#aa000000\",\"outline\":\"1\",\"pad\":\"0\",\"halign\":\"left\",\"valign\":\"top\",\"mlt_service\":\"dynamictext\",\"kdenlive:id\":\"dynamictext\",\"kdenlive:ix\":\"1\"}},{\"id\":\"effect_25\",\"properties\":{\"argument\":\"Input 25 mm  \u00b7  Coupler 80 mm  \u00b7  Rocker 50 mm\",\"geometry\":\"50 750 1180 30\",\"family\":\"DejaVu Sans\",\"size\":\"17\",\"weight\":\"400\",\"fgcolour\":\"#ffd6dedb\",\"bgcolour\":\"#00000000\",\"olcolour\":\"#aa000000\",\"outline\":\"1\",\"pad\":\"0\",\"halign\":\"left\",\"valign\":\"top\",\"mlt_service\":\"dynamictext\",\"kdenlive:id\":\"dynamictext\",\"kdenlive:ix\":\"2\"}}]},{\"id\":\"clip_11\",\"type\":\"producer\",\"properties\":{\"mlt_service\":\"avformat\",\"resource\":\"media/fa6449b01bf3c40cd0b95a5426da9bf8bed36a6bf1c17f7d2552bc66f9c63e7c.png\",\"length\":\"1\",\"eof\":\"pause\",\"kdenlive:id\":\"12\",\"kdenlive:clipname\":\"Native motion frame 011 / pass 1\"},\"effects\":[{\"id\":\"effect_22\",\"properties\":{\"argument\":\"01  /  CONTINUOUS INPUT\",\"geometry\":\"50 36 1170 36\",\"family\":\"DejaVu Sans\",\"size\":\"21\",\"weight\":\"600\",\"fgcolour\":\"#fff0e8d8\",\"bgcolour\":\"#00000000\",\"olcolour\":\"#aa000000\",\"outline\":\"1\",\"pad\":\"0\",\"halign\":\"left\",\"valign\":\"top\",\"mlt_service\":\"dynamictext\",\"kdenlive:id\":\"dynamictext\",\"kdenlive:ix\":\"1\"}},{\"id\":\"effect_23\",\"properties\":{\"argument\":\"Input 25 mm  \u00b7  Coupler 80 mm  \u00b7  Rocker 50 mm\",\"geometry\":\"50 750 1180 30\",\"family\":\"DejaVu Sans\",\"size\":\"17\",\"weight\":\"400\",\"fgcolour\":\"#ffd6dedb\",\"bgcolour\":\"#00000000\",\"olcolour\":\"#aa000000\",\"outline\":\"1\",\"pad\":\"0\",\"halign\":\"left\",\"valign\":\"top\",\"mlt_service\":\"dynamictext\",\"kdenlive:id\":\"dynamictext\",\"kdenlive:ix\":\"2\"}}]},{\"id\":\"clip_10\",\"type\":\"producer\",\"properties\":{\"mlt_service\":\"avformat\",\"resource\":\"media/fdb6ff5733698b8f2371e43bbb09875352b009f59b184db1b6664becb383a984.png\",\"length\":\"1\",\"eof\":\"pause\",\"kdenlive:id\":\"11\",\"kdenlive:clipname\":\"Native motion frame 010 / pass 1\"},\"effects\":[{\"id\":\"effect_20\",\"properties\":{\"argument\":\"01  /  CONTINUOUS INPUT\",\"geometry\":\"50 36 1170 36\",\"family\":\"DejaVu Sans\",\"size\":\"21\",\"weight\":\"600\",\"fgcolour\":\"#fff0e8d8\",\"bgcolour\":\"#00000000\",\"olcolour\":\"#aa000000\",\"outline\":\"1\",\"pad\":\"0\",\"halign\":\"left\",\"valign\":\"top\",\"mlt_service\":\"dynamictext\",\"kdenlive:id\":\"dynamictext\",\"kdenlive:ix\":\"1\"}},{\"id\":\"effect_21\",\"properties\":{\"argument\":\"Input 25 mm  \u00b7  Coupler 80 mm  \u00b7  Rocker 50 mm\",\"geometry\":\"50 750 1180 30\",\"family\":\"DejaVu Sans\",\"size\":\"17\",\"weight\":\"400\",\"fgcolour\":\"#ffd6dedb\",\"bgcolour\":\"#00000000\",\"olcolour\":\"#aa000000\",\"outline\":\"1\",\"pad\":\"0\",\"halign\":\"left\",\"valign\":\"top\",\"mlt_service\":\"dynamictext\",\"kdenlive:id\":\"dynamictext\",\"kdenlive:ix\":\"2\"}}]},{\"id\":\"clip_9\",\"type\":\"producer\",\"properties\":{\"mlt_service\":\"avformat\",\"resource\":\"media/965212d1d462437d12c67412c9748739cda60e552f4e8e1c596c57df31d581e6.png\",\"length\":\"1\",\"eof\":\"pause\",\"kdenlive:id\":\"10\",\"kdenlive:clipname\":\"Native motion frame 009 / pass 1\"},\"effects\":[{\"id\":\"effect_18\",\"properties\":{\"argument\":\"01  /  CONTINUOUS INPUT\",\"geometry\":\"50 36 1170 36\",\"family\":\"DejaVu Sans\",\"size\":\"21\",\"weight\":\"600\",\"fgcolour\":\"#fff0e8d8\",\"bgcolour\":\"#00000000\",\"olcolour\":\"#aa000000\",\"outline\":\"1\",\"pad\":\"0\",\"halign\":\"left\",\"valign\":\"top\",\"mlt_service\":\"dynamictext\",\"kdenlive:id\":\"dynamictext\",\"kdenlive:ix\":\"1\"}},{\"id\":\"effect_19\",\"properties\":{\"argument\":\"Input 25 mm  \u00b7  Coupler 80 mm  \u00b7  Rocker 50 mm\",\"geometry\":\"50 750 1180 30\",\"family\":\"DejaVu Sans\",\"size\":\"17\",\"weight\":\"400\",\"fgcolour\":\"#ffd6dedb\",\"bgcolour\":\"#00000000\",\"olcolour\":\"#aa000000\",\"outline\":\"1\",\"pad\":\"0\",\"halign\":\"left\",\"valign\":\"top\",\"mlt_service\":\"dynamictext\",\"kdenlive:id\":\"dynamictext\",\"kdenlive:ix\":\"2\"}}]},{\"id\":\"clip_8\",\"type\":\"producer\",\"properties\":{\"mlt_service\":\"avformat\",\"resource\":\"media/6eafdd98e22e0db0a62693b353a0248dc200850f5b27c43cf06f515b2aaaee6f.png\",\"length\":\"1\",\"eof\":\"pause\",\"kdenlive:id\":\"9\",\"kdenlive:clipname\":\"Native motion frame 008 / pass 1\"},\"effects\":[{\"id\":\"effect_16\",\"properties\":{\"argument\":\"01  /  CONTINUOUS INPUT\",\"geometry\":\"50 36 1170 36\",\"family\":\"DejaVu Sans\",\"size\":\"21\",\"weight\":\"600\",\"fgcolour\":\"#fff0e8d8\",\"bgcolour\":\"#00000000\",\"olcolour\":\"#aa000000\",\"outline\":\"1\",\"pad\":\"0\",\"halign\":\"left\",\"valign\":\"top\",\"mlt_service\":\"dynamictext\",\"kdenlive:id\":\"dynamictext\",\"kdenlive:ix\":\"1\"}},{\"id\":\"effect_17\",\"properties\":{\"argument\":\"Input 25 mm  \u00b7  Coupler 80 mm  \u00b7  Rocker 50 mm\",\"geometry\":\"50 750 1180 30\",\"family\":\"DejaVu Sans\",\"size\":\"17\",\"weight\":\"400\",\"fgcolour\":\"#ffd6dedb\",\"bgcolour\":\"#00000000\",\"olcolour\":\"#aa000000\",\"outline\":\"1\",\"pad\":\"0\",\"halign\":\"left\",\"valign\":\"top\",\"mlt_service\":\"dynamictext\",\"kdenlive:id\":\"dynamictext\",\"kdenlive:ix\":\"2\"}}]},{\"id\":\"clip_7\",\"type\":\"producer\",\"properties\":{\"mlt_service\":\"avformat\",\"resource\":\"media/28b01fdf9612fc805855011ec6d005838817448ab51d868d08ec2bb1f37a422d.png\",\"length\":\"1\",\"eof\":\"pause\",\"kdenlive:id\":\"8\",\"kdenlive:clipname\":\"Native motion frame 007 / pass 1\"},\"effects\":[{\"id\":\"effect_14\",\"properties\":{\"argument\":\"01  /  CONTINUOUS INPUT\",\"geometry\":\"50 36 1170 36\",\"family\":\"DejaVu Sans\",\"size\":\"21\",\"weight\":\"600\",\"fgcolour\":\"#fff0e8d8\",\"bgcolour\":\"#00000000\",\"olcolour\":\"#aa000000\",\"outline\":\"1\",\"pad\":\"0\",\"halign\":\"left\",\"valign\":\"top\",\"mlt_service\":\"dynamictext\",\"kdenlive:id\":\"dynamictext\",\"kdenlive:ix\":\"1\"}},{\"id\":\"effect_15\",\"properties\":{\"argument\":\"Input 25 mm  \u00b7  Coupler 80 mm  \u00b7  Rocker 50 mm\",\"geometry\":\"50 750 1180 30\",\"family\":\"DejaVu Sans\",\"size\":\"17\",\"weight\":\"400\",\"fgcolour\":\"#ffd6dedb\",\"bgcolour\":\"#00000000\",\"olcolour\":\"#aa000000\",\"outline\":\"1\",\"pad\":\"0\",\"halign\":\"left\",\"valign\":\"top\",\"mlt_service\":\"dynamictext\",\"kdenlive:id\":\"dynamictext\",\"kdenlive:ix\":\"2\"}}]},{\"id\":\"clip_6\",\"type\":\"producer\",\"properties\":{\"mlt_service\":\"avformat\",\"resource\":\"media/671fa2cdacfe0e06eecee56a8103442febe65b80066190f5fc8cb8c103ba0271.png\",\"length\":\"1\",\"eof\":\"pause\",\"kdenlive:id\":\"7\",\"kdenlive:clipname\":\"Native motion frame 006 / pass 1\"},\"effects\":[{\"id\":\"effect_12\",\"properties\":{\"argument\":\"01  /  CONTINUOUS INPUT\",\"geometry\":\"50 36 1170 36\",\"family\":\"DejaVu Sans\",\"size\":\"21\",\"weight\":\"600\",\"fgcolour\":\"#fff0e8d8\",\"bgcolour\":\"#00000000\",\"olcolour\":\"#aa000000\",\"outline\":\"1\",\"pad\":\"0\",\"halign\":\"left\",\"valign\":\"top\",\"mlt_service\":\"dynamictext\",\"kdenlive:id\":\"dynamictext\",\"kdenlive:ix\":\"1\"}},{\"id\":\"effect_13\",\"properties\":{\"argument\":\"Input 25 mm  \u00b7  Coupler 80 mm  \u00b7  Rocker 50 mm\",\"geometry\":\"50 750 1180 30\",\"family\":\"DejaVu Sans\",\"size\":\"17\",\"weight\":\"400\",\"fgcolour\":\"#ffd6dedb\",\"bgcolour\":\"#00000000\",\"olcolour\":\"#aa000000\",\"outline\":\"1\",\"pad\":\"0\",\"halign\":\"left\",\"valign\":\"top\",\"mlt_service\":\"dynamictext\",\"kdenlive:id\":\"dynamictext\",\"kdenlive:ix\":\"2\"}}]},{\"id\":\"clip_5\",\"type\":\"producer\",\"properties\":{\"mlt_service\":\"avformat\",\"resource\":\"media/740c3da5ceb46e5cf6f2c96e1498436d30a89cdfb6fc53e4459323f1b72b1e93.png\",\"length\":\"1\",\"eof\":\"pause\",\"kdenlive:id\":\"6\",\"kdenlive:clipname\":\"Native motion frame 005 / pass 1\"},\"effects\":[{\"id\":\"effect_10\",\"properties\":{\"argument\":\"01  /  CONTINUOUS INPUT\",\"geometry\":\"50 36 1170 36\",\"family\":\"DejaVu Sans\",\"size\":\"21\",\"weight\":\"600\",\"fgcolour\":\"#fff0e8d8\",\"bgcolour\":\"#00000000\",\"olcolour\":\"#aa000000\",\"outline\":\"1\",\"pad\":\"0\",\"halign\":\"left\",\"valign\":\"top\",\"mlt_service\":\"dynamictext\",\"kdenlive:id\":\"dynamictext\",\"kdenlive:ix\":\"1\"}},{\"id\":\"effect_11\",\"properties\":{\"argument\":\"Input 25 mm  \u00b7  Coupler 80 mm  \u00b7  Rocker 50 mm\",\"geometry\":\"50 750 1180 30\",\"family\":\"DejaVu Sans\",\"size\":\"17\",\"weight\":\"400\",\"fgcolour\":\"#ffd6dedb\",\"bgcolour\":\"#00000000\",\"olcolour\":\"#aa000000\",\"outline\":\"1\",\"pad\":\"0\",\"halign\":\"left\",\"valign\":\"top\",\"mlt_service\":\"dynamictext\",\"kdenlive:id\":\"dynamictext\",\"kdenlive:ix\":\"2\"}}]},{\"id\":\"clip_4\",\"type\":\"producer\",\"properties\":{\"mlt_service\":\"avformat\",\"resource\":\"media/b8c01187651733b6fca195e7a2a2fc5db2cd490f2e2f4b17f7c061648c78cec0.png\",\"length\":\"1\",\"eof\":\"pause\",\"kdenlive:id\":\"5\",\"kdenlive:clipname\":\"Native motion frame 004 / pass 1\"},\"effects\":[{\"id\":\"effect_8\",\"properties\":{\"argument\":\"01  /  CONTINUOUS INPUT\",\"geometry\":\"50 36 1170 36\",\"family\":\"DejaVu Sans\",\"size\":\"21\",\"weight\":\"600\",\"fgcolour\":\"#fff0e8d8\",\"bgcolour\":\"#00000000\",\"olcolour\":\"#aa000000\",\"outline\":\"1\",\"pad\":\"0\",\"halign\":\"left\",\"valign\":\"top\",\"mlt_service\":\"dynamictext\",\"kdenlive:id\":\"dynamictext\",\"kdenlive:ix\":\"1\"}},{\"id\":\"effect_9\",\"properties\":{\"argument\":\"Input 25 mm  \u00b7  Coupler 80 mm  \u00b7  Rocker 50 mm\",\"geometry\":\"50 750 1180 30\",\"family\":\"DejaVu Sans\",\"size\":\"17\",\"weight\":\"400\",\"fgcolour\":\"#ffd6dedb\",\"bgcolour\":\"#00000000\",\"olcolour\":\"#aa000000\",\"outline\":\"1\",\"pad\":\"0\",\"halign\":\"left\",\"valign\":\"top\",\"mlt_service\":\"dynamictext\",\"kdenlive:id\":\"dynamictext\",\"kdenlive:ix\":\"2\"}}]},{\"id\":\"clip_3\",\"type\":\"producer\",\"properties\":{\"mlt_service\":\"avformat\",\"resource\":\"media/c5f63aea9b9791c60ac0f49edd0800b77ddaa29d41b2f97eddec5538f0bb109b.png\",\"length\":\"1\",\"eof\":\"pause\",\"kdenlive:id\":\"4\",\"kdenlive:clipname\":\"Native motion frame 003 / pass 1\"},\"effects\":[{\"id\":\"effect_6\",\"properties\":{\"argument\":\"01  /  CONTINUOUS INPUT\",\"geometry\":\"50 36 1170 36\",\"family\":\"DejaVu Sans\",\"size\":\"21\",\"weight\":\"600\",\"fgcolour\":\"#fff0e8d8\",\"bgcolour\":\"#00000000\",\"olcolour\":\"#aa000000\",\"outline\":\"1\",\"pad\":\"0\",\"halign\":\"left\",\"valign\":\"top\",\"mlt_service\":\"dynamictext\",\"kdenlive:id\":\"dynamictext\",\"kdenlive:ix\":\"1\"}},{\"id\":\"effect_7\",\"properties\":{\"argument\":\"Input 25 mm  \u00b7  Coupler 80 mm  \u00b7  Rocker 50 mm\",\"geometry\":\"50 750 1180 30\",\"family\":\"DejaVu Sans\",\"size\":\"17\",\"weight\":\"400\",\"fgcolour\":\"#ffd6dedb\",\"bgcolour\":\"#00000000\",\"olcolour\":\"#aa000000\",\"outline\":\"1\",\"pad\":\"0\",\"halign\":\"left\",\"valign\":\"top\",\"mlt_service\":\"dynamictext\",\"kdenlive:id\":\"dynamictext\",\"kdenlive:ix\":\"2\"}}]},{\"id\":\"clip_2\",\"type\":\"producer\",\"properties\":{\"mlt_service\":\"avformat\",\"resource\":\"media/f80bc51e44e7160883bc4c203e54de12840dbe022cba90aa95d3f4c7862afae7.png\",\"length\":\"1\",\"eof\":\"pause\",\"kdenlive:id\":\"3\",\"kdenlive:clipname\":\"Native motion frame 002 / pass 1\"},\"effects\":[{\"id\":\"effect_4\",\"properties\":{\"argument\":\"01  /  CONTINUOUS INPUT\",\"geometry\":\"50 36 1170 36\",\"family\":\"DejaVu Sans\",\"size\":\"21\",\"weight\":\"600\",\"fgcolour\":\"#fff0e8d8\",\"bgcolour\":\"#00000000\",\"olcolour\":\"#aa000000\",\"outline\":\"1\",\"pad\":\"0\",\"halign\":\"left\",\"valign\":\"top\",\"mlt_service\":\"dynamictext\",\"kdenlive:id\":\"dynamictext\",\"kdenlive:ix\":\"1\"}},{\"id\":\"effect_5\",\"properties\":{\"argument\":\"Input 25 mm  \u00b7  Coupler 80 mm  \u00b7  Rocker 50 mm\",\"geometry\":\"50 750 1180 30\",\"family\":\"DejaVu Sans\",\"size\":\"17\",\"weight\":\"400\",\"fgcolour\":\"#ffd6dedb\",\"bgcolour\":\"#00000000\",\"olcolour\":\"#aa000000\",\"outline\":\"1\",\"pad\":\"0\",\"halign\":\"left\",\"valign\":\"top\",\"mlt_service\":\"dynamictext\",\"kdenlive:id\":\"dynamictext\",\"kdenlive:ix\":\"2\"}}]},{\"id\":\"clip_1\",\"type\":\"producer\",\"properties\":{\"mlt_service\":\"avformat\",\"resource\":\"media/fe6a6122b7d364ba2365797c311c9329d4e0deeb655ef7241f7b54b04dff3b6f.png\",\"length\":\"1\",\"eof\":\"pause\",\"kdenlive:id\":\"2\",\"kdenlive:clipname\":\"Native motion frame 001 / pass 1\"},\"effects\":[{\"id\":\"effect_2\",\"properties\":{\"argument\":\"01  /  CONTINUOUS INPUT\",\"geometry\":\"50 36 1170 36\",\"family\":\"DejaVu Sans\",\"size\":\"21\",\"weight\":\"600\",\"fgcolour\":\"#fff0e8d8\",\"bgcolour\":\"#00000000\",\"olcolour\":\"#aa000000\",\"outline\":\"1\",\"pad\":\"0\",\"halign\":\"left\",\"valign\":\"top\",\"mlt_service\":\"dynamictext\",\"kdenlive:id\":\"dynamictext\",\"kdenlive:ix\":\"1\"}},{\"id\":\"effect_3\",\"properties\":{\"argument\":\"Input 25 mm  \u00b7  Coupler 80 mm  \u00b7  Rocker 50 mm\",\"geometry\":\"50 750 1180 30\",\"family\":\"DejaVu Sans\",\"size\":\"17\",\"weight\":\"400\",\"fgcolour\":\"#ffd6dedb\",\"bgcolour\":\"#00000000\",\"olcolour\":\"#aa000000\",\"outline\":\"1\",\"pad\":\"0\",\"halign\":\"left\",\"valign\":\"top\",\"mlt_service\":\"dynamictext\",\"kdenlive:id\":\"dynamictext\",\"kdenlive:ix\":\"2\"}}]},{\"id\":\"clip_0\",\"type\":\"producer\",\"properties\":{\"mlt_service\":\"avformat\",\"resource\":\"media/2569cdb351092c71ad306d6668dbedf4706e969875c96618bd19226e72927554.png\",\"length\":\"72\",\"eof\":\"pause\",\"kdenlive:id\":\"1\",\"kdenlive:clipname\":\"Brass Relay / Native hero\"},\"effects\":[{\"id\":\"effect_0\",\"properties\":{\"argument\":\"BRASS RELAY  /  A FOUR-BAR STUDY\",\"geometry\":\"50 36 1170 36\",\"family\":\"DejaVu Sans\",\"size\":\"21\",\"weight\":\"600\",\"fgcolour\":\"#fff0e8d8\",\"bgcolour\":\"#00000000\",\"olcolour\":\"#aa000000\",\"outline\":\"1\",\"pad\":\"0\",\"halign\":\"left\",\"valign\":\"top\",\"mlt_service\":\"dynamictext\",\"kdenlive:id\":\"dynamictext\",\"kdenlive:ix\":\"1\"}},{\"id\":\"effect_1\",\"properties\":{\"argument\":\"13 parametric CAD parts  \u00b7  70 mm between fixed pivots\",\"geometry\":\"50 750 1180 30\",\"family\":\"DejaVu Sans\",\"size\":\"17\",\"weight\":\"400\",\"fgcolour\":\"#ffd6dedb\",\"bgcolour\":\"#00000000\",\"olcolour\":\"#aa000000\",\"outline\":\"1\",\"pad\":\"0\",\"halign\":\"left\",\"valign\":\"top\",\"mlt_service\":\"dynamictext\",\"kdenlive:id\":\"dynamictext\",\"kdenlive:ix\":\"2\"}}]},{\"id\":\"main_bin\",\"type\":\"playlist\",\"properties\":{\"kdenlive:docproperties.version\":\"1.04\",\"kdenlive:docproperties.documentid\":\"55294731191478\",\"kdenlive:docproperties.audioChannels\":\"2\",\"kdenlive:docproperties.zonein\":\"0\",\"kdenlive:docproperties.zoneout\":\"0\",\"kdenlive:docproperties.groups\":\"[]\",\"xml_retain\":\"1\",\"dcc-mcp:authored\":\"1\",\"kdenlive:docproperties.guides\":\"[{\\\"pos\\\": 0, \\\"comment\\\": \\\"Native capability preview / hero\\\", \\\"type\\\": 0}, {\\\"pos\\\": 72, \\\"comment\\\": \\\"Twelve actual motion frames / incomplete cycle\\\", \\\"type\\\": 0}, {\\\"pos\\\": 84, \\\"comment\\\": \\\"Native plan view\\\", \\\"type\\\": 0}]\"},\"items\":[{\"index\":0,\"position\":0,\"duration\":72,\"type\":\"entry\",\"producer\":\"clip_0\",\"in\":\"0\",\"out\":\"71\"},{\"index\":1,\"position\":72,\"duration\":1,\"type\":\"entry\",\"producer\":\"clip_1\",\"in\":\"0\",\"out\":\"0\"},{\"index\":2,\"position\":73,\"duration\":1,\"type\":\"entry\",\"producer\":\"clip_2\",\"in\":\"0\",\"out\":\"0\"},{\"index\":3,\"position\":74,\"duration\":1,\"type\":\"entry\",\"producer\":\"clip_3\",\"in\":\"0\",\"out\":\"0\"},{\"index\":4,\"position\":75,\"duration\":1,\"type\":\"entry\",\"producer\":\"clip_4\",\"in\":\"0\",\"out\":\"0\"},{\"index\":5,\"position\":76,\"duration\":1,\"type\":\"entry\",\"producer\":\"clip_5\",\"in\":\"0\",\"out\":\"0\"},{\"index\":6,\"position\":77,\"duration\":1,\"type\":\"entry\",\"producer\":\"clip_6\",\"in\":\"0\",\"out\":\"0\"},{\"index\":7,\"position\":78,\"duration\":1,\"type\":\"entry\",\"producer\":\"clip_7\",\"in\":\"0\",\"out\":\"0\"},{\"index\":8,\"position\":79,\"duration\":1,\"type\":\"entry\",\"producer\":\"clip_8\",\"in\":\"0\",\"out\":\"0\"},{\"index\":9,\"position\":80,\"duration\":1,\"type\":\"entry\",\"producer\":\"clip_9\",\"in\":\"0\",\"out\":\"0\"},{\"index\":10,\"position\":81,\"duration\":1,\"type\":\"entry\",\"producer\":\"clip_10\",\"in\":\"0\",\"out\":\"0\"},{\"index\":11,\"position\":82,\"duration\":1,\"type\":\"entry\",\"producer\":\"clip_11\",\"in\":\"0\",\"out\":\"0\"},{\"index\":12,\"position\":83,\"duration\":1,\"type\":\"entry\",\"producer\":\"clip_12\",\"in\":\"0\",\"out\":\"0\"},{\"index\":13,\"position\":84,\"duration\":96,\"type\":\"entry\",\"producer\":\"clip_13\",\"in\":\"0\",\"out\":\"95\"}],\"effects\":[]},{\"id\":\"black_track\",\"type\":\"producer\",\"properties\":{\"mlt_service\":\"color\",\"resource\":\"black\",\"length\":\"2147483647\",\"eof\":\"continue\"},\"effects\":[]},{\"id\":\"track_0_0\",\"type\":\"playlist\",\"properties\":{},\"items\":[{\"index\":0,\"position\":0,\"duration\":72,\"type\":\"entry\",\"producer\":\"clip_0\",\"in\":\"0\",\"out\":\"71\"},{\"index\":1,\"position\":72,\"duration\":1,\"type\":\"entry\",\"producer\":\"clip_1\",\"in\":\"0\",\"out\":\"0\"},{\"index\":2,\"position\":73,\"duration\":1,\"type\":\"entry\",\"producer\":\"clip_2\",\"in\":\"0\",\"out\":\"0\"},{\"index\":3,\"position\":74,\"duration\":1,\"type\":\"entry\",\"producer\":\"clip_3\",\"in\":\"0\",\"out\":\"0\"},{\"index\":4,\"position\":75,\"duration\":1,\"type\":\"entry\",\"producer\":\"clip_4\",\"in\":\"0\",\"out\":\"0\"},{\"index\":5,\"position\":76,\"duration\":1,\"type\":\"entry\",\"producer\":\"clip_5\",\"in\":\"0\",\"out\":\"0\"},{\"index\":6,\"position\":77,\"duration\":1,\"type\":\"entry\",\"producer\":\"clip_6\",\"in\":\"0\",\"out\":\"0\"},{\"index\":7,\"position\":78,\"duration\":1,\"type\":\"entry\",\"producer\":\"clip_7\",\"in\":\"0\",\"out\":\"0\"},{\"index\":8,\"position\":79,\"duration\":1,\"type\":\"entry\",\"producer\":\"clip_8\",\"in\":\"0\",\"out\":\"0\"},{\"index\":9,\"position\":80,\"duration\":1,\"type\":\"entry\",\"producer\":\"clip_9\",\"in\":\"0\",\"out\":\"0\"},{\"index\":10,\"position\":81,\"duration\":1,\"type\":\"entry\",\"producer\":\"clip_10\",\"in\":\"0\",\"out\":\"0\"},{\"index\":11,\"position\":82,\"duration\":1,\"type\":\"entry\",\"producer\":\"clip_11\",\"in\":\"0\",\"out\":\"0\"},{\"index\":12,\"position\":83,\"duration\":1,\"type\":\"entry\",\"producer\":\"clip_12\",\"in\":\"0\",\"out\":\"0\"},{\"index\":13,\"position\":84,\"duration\":96,\"type\":\"entry\",\"producer\":\"clip_13\",\"in\":\"0\",\"out\":\"95\"}],\"effects\":[]},{\"id\":\"track_0_1\",\"type\":\"playlist\",\"properties\":{},\"items\":[],\"effects\":[]},{\"id\":\"track_0\",\"type\":\"tractor\",\"properties\":{\"kdenlive:track_name\":\"V1\",\"kdenlive:timeline_active\":\"1\"},\"tracks\":[{\"producer\":\"track_0_0\",\"hide\":\"audio\"},{\"producer\":\"track_0_1\",\"hide\":\"audio\"}],\"effects\":[]},{\"id\":\"track_1_0\",\"type\":\"playlist\",\"properties\":{},\"items\":[],\"effects\":[]},{\"id\":\"track_1_1\",\"type\":\"playlist\",\"properties\":{},\"items\":[],\"effects\":[]},{\"id\":\"track_1\",\"type\":\"tractor\",\"properties\":{\"kdenlive:track_name\":\"V2\",\"kdenlive:timeline_active\":\"1\"},\"tracks\":[{\"producer\":\"track_1_0\",\"hide\":\"audio\"},{\"producer\":\"track_1_1\",\"hide\":\"audio\"}],\"effects\":[]},{\"id\":\"sequence\",\"type\":\"tractor\",\"properties\":{},\"tracks\":[{\"producer\":\"black_track\"},{\"producer\":\"track_0\"},{\"producer\":\"track_1\"}],\"effects\":[]}],\"editor_state\":\"file_only\"}",
+            "annotations": null,
+            "meta": null
+          }
+        ],
+        "structured_content": {
+          "path": "CASE_ROOT/brass-relay/film-core2041-proof-package-02/relocated-project/project.kdenlive",
+          "sha256": "d3cd13945a532dab7d3c0dbf52fc63d5ad146f3d1c7e4d6cd18b1a16dd999c4f",
+          "profile": {
+            "width": "1280",
+            "height": "800",
+            "frame_rate_num": "24",
+            "frame_rate_den": "1",
+            "progressive": "1",
+            "sample_aspect_num": "1",
+            "sample_aspect_den": "1",
+            "display_aspect_num": "8",
+            "display_aspect_den": "5",
+            "colorspace": "709",
+            "description": "DCC-MCP project"
+          },
+          "elements": [
+            {
+              "id": "clip_13",
+              "type": "producer",
+              "properties": {
+                "mlt_service": "avformat",
+                "resource": "media/419a90b98b6b2583ca82b9bdb29aac54b2b3dd3584077dba98ad029946ca0cb9.png",
+                "length": "96",
+                "eof": "pause",
+                "kdenlive:id": "14",
+                "kdenlive:clipname": "Orthogonal native view / input ninety degrees"
+              },
+              "effects": [
+                {
+                  "id": "effect_26",
+                  "properties": {
+                    "argument": "03  /  THE GEOMETRY BEHIND THE MOTION",
+                    "geometry": "50 36 1170 36",
+                    "family": "DejaVu Sans",
+                    "size": "21",
+                    "weight": "600",
+                    "fgcolour": "#fff0e8d8",
+                    "bgcolour": "#00000000",
+                    "olcolour": "#aa000000",
+                    "outline": "1",
+                    "pad": "0",
+                    "halign": "left",
+                    "valign": "top",
+                    "mlt_service": "dynamictext",
+                    "kdenlive:id": "dynamictext",
+                    "kdenlive:ix": "1"
+                  }
+                },
+                {
+                  "id": "effect_27",
+                  "properties": {
+                    "argument": "Top view at 90\u00b0 input  \u00b7  Parametric FCStd \u2192 native Blender assembly",
+                    "geometry": "50 750 1180 30",
+                    "family": "DejaVu Sans",
+                    "size": "17",
+                    "weight": "400",
+                    "fgcolour": "#ffd6dedb",
+                    "bgcolour": "#00000000",
+                    "olcolour": "#aa000000",
+                    "outline": "1",
+                    "pad": "0",
+                    "halign": "left",
+                    "valign": "top",
+                    "mlt_service": "dynamictext",
+                    "kdenlive:id": "dynamictext",
+                    "kdenlive:ix": "2"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "clip_12",
+              "type": "producer",
+              "properties": {
+                "mlt_service": "avformat",
+                "resource": "media/40902830303c9fd46ddb7243d792d30ca427ff5698b599f09fbe233106aefe5c.png",
+                "length": "1",
+                "eof": "pause",
+                "kdenlive:id": "13",
+                "kdenlive:clipname": "Native motion frame 012 / pass 1"
+              },
+              "effects": [
+                {
+                  "id": "effect_24",
+                  "properties": {
+                    "argument": "01  /  CONTINUOUS INPUT",
+                    "geometry": "50 36 1170 36",
+                    "family": "DejaVu Sans",
+                    "size": "21",
+                    "weight": "600",
+                    "fgcolour": "#fff0e8d8",
+                    "bgcolour": "#00000000",
+                    "olcolour": "#aa000000",
+                    "outline": "1",
+                    "pad": "0",
+                    "halign": "left",
+                    "valign": "top",
+                    "mlt_service": "dynamictext",
+                    "kdenlive:id": "dynamictext",
+                    "kdenlive:ix": "1"
+                  }
+                },
+                {
+                  "id": "effect_25",
+                  "properties": {
+                    "argument": "Input 25 mm  \u00b7  Coupler 80 mm  \u00b7  Rocker 50 mm",
+                    "geometry": "50 750 1180 30",
+                    "family": "DejaVu Sans",
+                    "size": "17",
+                    "weight": "400",
+                    "fgcolour": "#ffd6dedb",
+                    "bgcolour": "#00000000",
+                    "olcolour": "#aa000000",
+                    "outline": "1",
+                    "pad": "0",
+                    "halign": "left",
+                    "valign": "top",
+                    "mlt_service": "dynamictext",
+                    "kdenlive:id": "dynamictext",
+                    "kdenlive:ix": "2"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "clip_11",
+              "type": "producer",
+              "properties": {
+                "mlt_service": "avformat",
+                "resource": "media/fa6449b01bf3c40cd0b95a5426da9bf8bed36a6bf1c17f7d2552bc66f9c63e7c.png",
+                "length": "1",
+                "eof": "pause",
+                "kdenlive:id": "12",
+                "kdenlive:clipname": "Native motion frame 011 / pass 1"
+              },
+              "effects": [
+                {
+                  "id": "effect_22",
+                  "properties": {
+                    "argument": "01  /  CONTINUOUS INPUT",
+                    "geometry": "50 36 1170 36",
+                    "family": "DejaVu Sans",
+                    "size": "21",
+                    "weight": "600",
+                    "fgcolour": "#fff0e8d8",
+                    "bgcolour": "#00000000",
+                    "olcolour": "#aa000000",
+                    "outline": "1",
+                    "pad": "0",
+                    "halign": "left",
+                    "valign": "top",
+                    "mlt_service": "dynamictext",
+                    "kdenlive:id": "dynamictext",
+                    "kdenlive:ix": "1"
+                  }
+                },
+                {
+                  "id": "effect_23",
+                  "properties": {
+                    "argument": "Input 25 mm  \u00b7  Coupler 80 mm  \u00b7  Rocker 50 mm",
+                    "geometry": "50 750 1180 30",
+                    "family": "DejaVu Sans",
+                    "size": "17",
+                    "weight": "400",
+                    "fgcolour": "#ffd6dedb",
+                    "bgcolour": "#00000000",
+                    "olcolour": "#aa000000",
+                    "outline": "1",
+                    "pad": "0",
+                    "halign": "left",
+                    "valign": "top",
+                    "mlt_service": "dynamictext",
+                    "kdenlive:id": "dynamictext",
+                    "kdenlive:ix": "2"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "clip_10",
+              "type": "producer",
+              "properties": {
+                "mlt_service": "avformat",
+                "resource": "media/fdb6ff5733698b8f2371e43bbb09875352b009f59b184db1b6664becb383a984.png",
+                "length": "1",
+                "eof": "pause",
+                "kdenlive:id": "11",
+                "kdenlive:clipname": "Native motion frame 010 / pass 1"
+              },
+              "effects": [
+                {
+                  "id": "effect_20",
+                  "properties": {
+                    "argument": "01  /  CONTINUOUS INPUT",
+                    "geometry": "50 36 1170 36",
+                    "family": "DejaVu Sans",
+                    "size": "21",
+                    "weight": "600",
+                    "fgcolour": "#fff0e8d8",
+                    "bgcolour": "#00000000",
+                    "olcolour": "#aa000000",
+                    "outline": "1",
+                    "pad": "0",
+                    "halign": "left",
+                    "valign": "top",
+                    "mlt_service": "dynamictext",
+                    "kdenlive:id": "dynamictext",
+                    "kdenlive:ix": "1"
+                  }
+                },
+                {
+                  "id": "effect_21",
+                  "properties": {
+                    "argument": "Input 25 mm  \u00b7  Coupler 80 mm  \u00b7  Rocker 50 mm",
+                    "geometry": "50 750 1180 30",
+                    "family": "DejaVu Sans",
+                    "size": "17",
+                    "weight": "400",
+                    "fgcolour": "#ffd6dedb",
+                    "bgcolour": "#00000000",
+                    "olcolour": "#aa000000",
+                    "outline": "1",
+                    "pad": "0",
+                    "halign": "left",
+                    "valign": "top",
+                    "mlt_service": "dynamictext",
+                    "kdenlive:id": "dynamictext",
+                    "kdenlive:ix": "2"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "clip_9",
+              "type": "producer",
+              "properties": {
+                "mlt_service": "avformat",
+                "resource": "media/965212d1d462437d12c67412c9748739cda60e552f4e8e1c596c57df31d581e6.png",
+                "length": "1",
+                "eof": "pause",
+                "kdenlive:id": "10",
+                "kdenlive:clipname": "Native motion frame 009 / pass 1"
+              },
+              "effects": [
+                {
+                  "id": "effect_18",
+                  "properties": {
+                    "argument": "01  /  CONTINUOUS INPUT",
+                    "geometry": "50 36 1170 36",
+                    "family": "DejaVu Sans",
+                    "size": "21",
+                    "weight": "600",
+                    "fgcolour": "#fff0e8d8",
+                    "bgcolour": "#00000000",
+                    "olcolour": "#aa000000",
+                    "outline": "1",
+                    "pad": "0",
+                    "halign": "left",
+                    "valign": "top",
+                    "mlt_service": "dynamictext",
+                    "kdenlive:id": "dynamictext",
+                    "kdenlive:ix": "1"
+                  }
+                },
+                {
+                  "id": "effect_19",
+                  "properties": {
+                    "argument": "Input 25 mm  \u00b7  Coupler 80 mm  \u00b7  Rocker 50 mm",
+                    "geometry": "50 750 1180 30",
+                    "family": "DejaVu Sans",
+                    "size": "17",
+                    "weight": "400",
+                    "fgcolour": "#ffd6dedb",
+                    "bgcolour": "#00000000",
+                    "olcolour": "#aa000000",
+                    "outline": "1",
+                    "pad": "0",
+                    "halign": "left",
+                    "valign": "top",
+                    "mlt_service": "dynamictext",
+                    "kdenlive:id": "dynamictext",
+                    "kdenlive:ix": "2"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "clip_8",
+              "type": "producer",
+              "properties": {
+                "mlt_service": "avformat",
+                "resource": "media/6eafdd98e22e0db0a62693b353a0248dc200850f5b27c43cf06f515b2aaaee6f.png",
+                "length": "1",
+                "eof": "pause",
+                "kdenlive:id": "9",
+                "kdenlive:clipname": "Native motion frame 008 / pass 1"
+              },
+              "effects": [
+                {
+                  "id": "effect_16",
+                  "properties": {
+                    "argument": "01  /  CONTINUOUS INPUT",
+                    "geometry": "50 36 1170 36",
+                    "family": "DejaVu Sans",
+                    "size": "21",
+                    "weight": "600",
+                    "fgcolour": "#fff0e8d8",
+                    "bgcolour": "#00000000",
+                    "olcolour": "#aa000000",
+                    "outline": "1",
+                    "pad": "0",
+                    "halign": "left",
+                    "valign": "top",
+                    "mlt_service": "dynamictext",
+                    "kdenlive:id": "dynamictext",
+                    "kdenlive:ix": "1"
+                  }
+                },
+                {
+                  "id": "effect_17",
+                  "properties": {
+                    "argument": "Input 25 mm  \u00b7  Coupler 80 mm  \u00b7  Rocker 50 mm",
+                    "geometry": "50 750 1180 30",
+                    "family": "DejaVu Sans",
+                    "size": "17",
+                    "weight": "400",
+                    "fgcolour": "#ffd6dedb",
+                    "bgcolour": "#00000000",
+                    "olcolour": "#aa000000",
+                    "outline": "1",
+                    "pad": "0",
+                    "halign": "left",
+                    "valign": "top",
+                    "mlt_service": "dynamictext",
+                    "kdenlive:id": "dynamictext",
+                    "kdenlive:ix": "2"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "clip_7",
+              "type": "producer",
+              "properties": {
+                "mlt_service": "avformat",
+                "resource": "media/28b01fdf9612fc805855011ec6d005838817448ab51d868d08ec2bb1f37a422d.png",
+                "length": "1",
+                "eof": "pause",
+                "kdenlive:id": "8",
+                "kdenlive:clipname": "Native motion frame 007 / pass 1"
+              },
+              "effects": [
+                {
+                  "id": "effect_14",
+                  "properties": {
+                    "argument": "01  /  CONTINUOUS INPUT",
+                    "geometry": "50 36 1170 36",
+                    "family": "DejaVu Sans",
+                    "size": "21",
+                    "weight": "600",
+                    "fgcolour": "#fff0e8d8",
+                    "bgcolour": "#00000000",
+                    "olcolour": "#aa000000",
+                    "outline": "1",
+                    "pad": "0",
+                    "halign": "left",
+                    "valign": "top",
+                    "mlt_service": "dynamictext",
+                    "kdenlive:id": "dynamictext",
+                    "kdenlive:ix": "1"
+                  }
+                },
+                {
+                  "id": "effect_15",
+                  "properties": {
+                    "argument": "Input 25 mm  \u00b7  Coupler 80 mm  \u00b7  Rocker 50 mm",
+                    "geometry": "50 750 1180 30",
+                    "family": "DejaVu Sans",
+                    "size": "17",
+                    "weight": "400",
+                    "fgcolour": "#ffd6dedb",
+                    "bgcolour": "#00000000",
+                    "olcolour": "#aa000000",
+                    "outline": "1",
+                    "pad": "0",
+                    "halign": "left",
+                    "valign": "top",
+                    "mlt_service": "dynamictext",
+                    "kdenlive:id": "dynamictext",
+                    "kdenlive:ix": "2"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "clip_6",
+              "type": "producer",
+              "properties": {
+                "mlt_service": "avformat",
+                "resource": "media/671fa2cdacfe0e06eecee56a8103442febe65b80066190f5fc8cb8c103ba0271.png",
+                "length": "1",
+                "eof": "pause",
+                "kdenlive:id": "7",
+                "kdenlive:clipname": "Native motion frame 006 / pass 1"
+              },
+              "effects": [
+                {
+                  "id": "effect_12",
+                  "properties": {
+                    "argument": "01  /  CONTINUOUS INPUT",
+                    "geometry": "50 36 1170 36",
+                    "family": "DejaVu Sans",
+                    "size": "21",
+                    "weight": "600",
+                    "fgcolour": "#fff0e8d8",
+                    "bgcolour": "#00000000",
+                    "olcolour": "#aa000000",
+                    "outline": "1",
+                    "pad": "0",
+                    "halign": "left",
+                    "valign": "top",
+                    "mlt_service": "dynamictext",
+                    "kdenlive:id": "dynamictext",
+                    "kdenlive:ix": "1"
+                  }
+                },
+                {
+                  "id": "effect_13",
+                  "properties": {
+                    "argument": "Input 25 mm  \u00b7  Coupler 80 mm  \u00b7  Rocker 50 mm",
+                    "geometry": "50 750 1180 30",
+                    "family": "DejaVu Sans",
+                    "size": "17",
+                    "weight": "400",
+                    "fgcolour": "#ffd6dedb",
+                    "bgcolour": "#00000000",
+                    "olcolour": "#aa000000",
+                    "outline": "1",
+                    "pad": "0",
+                    "halign": "left",
+                    "valign": "top",
+                    "mlt_service": "dynamictext",
+                    "kdenlive:id": "dynamictext",
+                    "kdenlive:ix": "2"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "clip_5",
+              "type": "producer",
+              "properties": {
+                "mlt_service": "avformat",
+                "resource": "media/740c3da5ceb46e5cf6f2c96e1498436d30a89cdfb6fc53e4459323f1b72b1e93.png",
+                "length": "1",
+                "eof": "pause",
+                "kdenlive:id": "6",
+                "kdenlive:clipname": "Native motion frame 005 / pass 1"
+              },
+              "effects": [
+                {
+                  "id": "effect_10",
+                  "properties": {
+                    "argument": "01  /  CONTINUOUS INPUT",
+                    "geometry": "50 36 1170 36",
+                    "family": "DejaVu Sans",
+                    "size": "21",
+                    "weight": "600",
+                    "fgcolour": "#fff0e8d8",
+                    "bgcolour": "#00000000",
+                    "olcolour": "#aa000000",
+                    "outline": "1",
+                    "pad": "0",
+                    "halign": "left",
+                    "valign": "top",
+                    "mlt_service": "dynamictext",
+                    "kdenlive:id": "dynamictext",
+                    "kdenlive:ix": "1"
+                  }
+                },
+                {
+                  "id": "effect_11",
+                  "properties": {
+                    "argument": "Input 25 mm  \u00b7  Coupler 80 mm  \u00b7  Rocker 50 mm",
+                    "geometry": "50 750 1180 30",
+                    "family": "DejaVu Sans",
+                    "size": "17",
+                    "weight": "400",
+                    "fgcolour": "#ffd6dedb",
+                    "bgcolour": "#00000000",
+                    "olcolour": "#aa000000",
+                    "outline": "1",
+                    "pad": "0",
+                    "halign": "left",
+                    "valign": "top",
+                    "mlt_service": "dynamictext",
+                    "kdenlive:id": "dynamictext",
+                    "kdenlive:ix": "2"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "clip_4",
+              "type": "producer",
+              "properties": {
+                "mlt_service": "avformat",
+                "resource": "media/b8c01187651733b6fca195e7a2a2fc5db2cd490f2e2f4b17f7c061648c78cec0.png",
+                "length": "1",
+                "eof": "pause",
+                "kdenlive:id": "5",
+                "kdenlive:clipname": "Native motion frame 004 / pass 1"
+              },
+              "effects": [
+                {
+                  "id": "effect_8",
+                  "properties": {
+                    "argument": "01  /  CONTINUOUS INPUT",
+                    "geometry": "50 36 1170 36",
+                    "family": "DejaVu Sans",
+                    "size": "21",
+                    "weight": "600",
+                    "fgcolour": "#fff0e8d8",
+                    "bgcolour": "#00000000",
+                    "olcolour": "#aa000000",
+                    "outline": "1",
+                    "pad": "0",
+                    "halign": "left",
+                    "valign": "top",
+                    "mlt_service": "dynamictext",
+                    "kdenlive:id": "dynamictext",
+                    "kdenlive:ix": "1"
+                  }
+                },
+                {
+                  "id": "effect_9",
+                  "properties": {
+                    "argument": "Input 25 mm  \u00b7  Coupler 80 mm  \u00b7  Rocker 50 mm",
+                    "geometry": "50 750 1180 30",
+                    "family": "DejaVu Sans",
+                    "size": "17",
+                    "weight": "400",
+                    "fgcolour": "#ffd6dedb",
+                    "bgcolour": "#00000000",
+                    "olcolour": "#aa000000",
+                    "outline": "1",
+                    "pad": "0",
+                    "halign": "left",
+                    "valign": "top",
+                    "mlt_service": "dynamictext",
+                    "kdenlive:id": "dynamictext",
+                    "kdenlive:ix": "2"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "clip_3",
+              "type": "producer",
+              "properties": {
+                "mlt_service": "avformat",
+                "resource": "media/c5f63aea9b9791c60ac0f49edd0800b77ddaa29d41b2f97eddec5538f0bb109b.png",
+                "length": "1",
+                "eof": "pause",
+                "kdenlive:id": "4",
+                "kdenlive:clipname": "Native motion frame 003 / pass 1"
+              },
+              "effects": [
+                {
+                  "id": "effect_6",
+                  "properties": {
+                    "argument": "01  /  CONTINUOUS INPUT",
+                    "geometry": "50 36 1170 36",
+                    "family": "DejaVu Sans",
+                    "size": "21",
+                    "weight": "600",
+                    "fgcolour": "#fff0e8d8",
+                    "bgcolour": "#00000000",
+                    "olcolour": "#aa000000",
+                    "outline": "1",
+                    "pad": "0",
+                    "halign": "left",
+                    "valign": "top",
+                    "mlt_service": "dynamictext",
+                    "kdenlive:id": "dynamictext",
+                    "kdenlive:ix": "1"
+                  }
+                },
+                {
+                  "id": "effect_7",
+                  "properties": {
+                    "argument": "Input 25 mm  \u00b7  Coupler 80 mm  \u00b7  Rocker 50 mm",
+                    "geometry": "50 750 1180 30",
+                    "family": "DejaVu Sans",
+                    "size": "17",
+                    "weight": "400",
+                    "fgcolour": "#ffd6dedb",
+                    "bgcolour": "#00000000",
+                    "olcolour": "#aa000000",
+                    "outline": "1",
+                    "pad": "0",
+                    "halign": "left",
+                    "valign": "top",
+                    "mlt_service": "dynamictext",
+                    "kdenlive:id": "dynamictext",
+                    "kdenlive:ix": "2"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "clip_2",
+              "type": "producer",
+              "properties": {
+                "mlt_service": "avformat",
+                "resource": "media/f80bc51e44e7160883bc4c203e54de12840dbe022cba90aa95d3f4c7862afae7.png",
+                "length": "1",
+                "eof": "pause",
+                "kdenlive:id": "3",
+                "kdenlive:clipname": "Native motion frame 002 / pass 1"
+              },
+              "effects": [
+                {
+                  "id": "effect_4",
+                  "properties": {
+                    "argument": "01  /  CONTINUOUS INPUT",
+                    "geometry": "50 36 1170 36",
+                    "family": "DejaVu Sans",
+                    "size": "21",
+                    "weight": "600",
+                    "fgcolour": "#fff0e8d8",
+                    "bgcolour": "#00000000",
+                    "olcolour": "#aa000000",
+                    "outline": "1",
+                    "pad": "0",
+                    "halign": "left",
+                    "valign": "top",
+                    "mlt_service": "dynamictext",
+                    "kdenlive:id": "dynamictext",
+                    "kdenlive:ix": "1"
+                  }
+                },
+                {
+                  "id": "effect_5",
+                  "properties": {
+                    "argument": "Input 25 mm  \u00b7  Coupler 80 mm  \u00b7  Rocker 50 mm",
+                    "geometry": "50 750 1180 30",
+                    "family": "DejaVu Sans",
+                    "size": "17",
+                    "weight": "400",
+                    "fgcolour": "#ffd6dedb",
+                    "bgcolour": "#00000000",
+                    "olcolour": "#aa000000",
+                    "outline": "1",
+                    "pad": "0",
+                    "halign": "left",
+                    "valign": "top",
+                    "mlt_service": "dynamictext",
+                    "kdenlive:id": "dynamictext",
+                    "kdenlive:ix": "2"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "clip_1",
+              "type": "producer",
+              "properties": {
+                "mlt_service": "avformat",
+                "resource": "media/fe6a6122b7d364ba2365797c311c9329d4e0deeb655ef7241f7b54b04dff3b6f.png",
+                "length": "1",
+                "eof": "pause",
+                "kdenlive:id": "2",
+                "kdenlive:clipname": "Native motion frame 001 / pass 1"
+              },
+              "effects": [
+                {
+                  "id": "effect_2",
+                  "properties": {
+                    "argument": "01  /  CONTINUOUS INPUT",
+                    "geometry": "50 36 1170 36",
+                    "family": "DejaVu Sans",
+                    "size": "21",
+                    "weight": "600",
+                    "fgcolour": "#fff0e8d8",
+                    "bgcolour": "#00000000",
+                    "olcolour": "#aa000000",
+                    "outline": "1",
+                    "pad": "0",
+                    "halign": "left",
+                    "valign": "top",
+                    "mlt_service": "dynamictext",
+                    "kdenlive:id": "dynamictext",
+                    "kdenlive:ix": "1"
+                  }
+                },
+                {
+                  "id": "effect_3",
+                  "properties": {
+                    "argument": "Input 25 mm  \u00b7  Coupler 80 mm  \u00b7  Rocker 50 mm",
+                    "geometry": "50 750 1180 30",
+                    "family": "DejaVu Sans",
+                    "size": "17",
+                    "weight": "400",
+                    "fgcolour": "#ffd6dedb",
+                    "bgcolour": "#00000000",
+                    "olcolour": "#aa000000",
+                    "outline": "1",
+                    "pad": "0",
+                    "halign": "left",
+                    "valign": "top",
+                    "mlt_service": "dynamictext",
+                    "kdenlive:id": "dynamictext",
+                    "kdenlive:ix": "2"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "clip_0",
+              "type": "producer",
+              "properties": {
+                "mlt_service": "avformat",
+                "resource": "media/2569cdb351092c71ad306d6668dbedf4706e969875c96618bd19226e72927554.png",
+                "length": "72",
+                "eof": "pause",
+                "kdenlive:id": "1",
+                "kdenlive:clipname": "Brass Relay / Native hero"
+              },
+              "effects": [
+                {
+                  "id": "effect_0",
+                  "properties": {
+                    "argument": "BRASS RELAY  /  A FOUR-BAR STUDY",
+                    "geometry": "50 36 1170 36",
+                    "family": "DejaVu Sans",
+                    "size": "21",
+                    "weight": "600",
+                    "fgcolour": "#fff0e8d8",
+                    "bgcolour": "#00000000",
+                    "olcolour": "#aa000000",
+                    "outline": "1",
+                    "pad": "0",
+                    "halign": "left",
+                    "valign": "top",
+                    "mlt_service": "dynamictext",
+                    "kdenlive:id": "dynamictext",
+                    "kdenlive:ix": "1"
+                  }
+                },
+                {
+                  "id": "effect_1",
+                  "properties": {
+                    "argument": "13 parametric CAD parts  \u00b7  70 mm between fixed pivots",
+                    "geometry": "50 750 1180 30",
+                    "family": "DejaVu Sans",
+                    "size": "17",
+                    "weight": "400",
+                    "fgcolour": "#ffd6dedb",
+                    "bgcolour": "#00000000",
+                    "olcolour": "#aa000000",
+                    "outline": "1",
+                    "pad": "0",
+                    "halign": "left",
+                    "valign": "top",
+                    "mlt_service": "dynamictext",
+                    "kdenlive:id": "dynamictext",
+                    "kdenlive:ix": "2"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "main_bin",
+              "type": "playlist",
+              "properties": {
+                "kdenlive:docproperties.version": "1.04",
+                "kdenlive:docproperties.documentid": "55294731191478",
+                "kdenlive:docproperties.audioChannels": "2",
+                "kdenlive:docproperties.zonein": "0",
+                "kdenlive:docproperties.zoneout": "0",
+                "kdenlive:docproperties.groups": "[]",
+                "xml_retain": "1",
+                "dcc-mcp:authored": "1",
+                "kdenlive:docproperties.guides": "[{\"pos\": 0, \"comment\": \"Native capability preview / hero\", \"type\": 0}, {\"pos\": 72, \"comment\": \"Twelve actual motion frames / incomplete cycle\", \"type\": 0}, {\"pos\": 84, \"comment\": \"Native plan view\", \"type\": 0}]"
+              },
+              "items": [
+                {
+                  "index": 0,
+                  "position": 0,
+                  "duration": 72,
+                  "type": "entry",
+                  "producer": "clip_0",
+                  "in": "0",
+                  "out": "71"
+                },
+                {
+                  "index": 1,
+                  "position": 72,
+                  "duration": 1,
+                  "type": "entry",
+                  "producer": "clip_1",
+                  "in": "0",
+                  "out": "0"
+                },
+                {
+                  "index": 2,
+                  "position": 73,
+                  "duration": 1,
+                  "type": "entry",
+                  "producer": "clip_2",
+                  "in": "0",
+                  "out": "0"
+                },
+                {
+                  "index": 3,
+                  "position": 74,
+                  "duration": 1,
+                  "type": "entry",
+                  "producer": "clip_3",
+                  "in": "0",
+                  "out": "0"
+                },
+                {
+                  "index": 4,
+                  "position": 75,
+                  "duration": 1,
+                  "type": "entry",
+                  "producer": "clip_4",
+                  "in": "0",
+                  "out": "0"
+                },
+                {
+                  "index": 5,
+                  "position": 76,
+                  "duration": 1,
+                  "type": "entry",
+                  "producer": "clip_5",
+                  "in": "0",
+                  "out": "0"
+                },
+                {
+                  "index": 6,
+                  "position": 77,
+                  "duration": 1,
+                  "type": "entry",
+                  "producer": "clip_6",
+                  "in": "0",
+                  "out": "0"
+                },
+                {
+                  "index": 7,
+                  "position": 78,
+                  "duration": 1,
+                  "type": "entry",
+                  "producer": "clip_7",
+                  "in": "0",
+                  "out": "0"
+                },
+                {
+                  "index": 8,
+                  "position": 79,
+                  "duration": 1,
+                  "type": "entry",
+                  "producer": "clip_8",
+                  "in": "0",
+                  "out": "0"
+                },
+                {
+                  "index": 9,
+                  "position": 80,
+                  "duration": 1,
+                  "type": "entry",
+                  "producer": "clip_9",
+                  "in": "0",
+                  "out": "0"
+                },
+                {
+                  "index": 10,
+                  "position": 81,
+                  "duration": 1,
+                  "type": "entry",
+                  "producer": "clip_10",
+                  "in": "0",
+                  "out": "0"
+                },
+                {
+                  "index": 11,
+                  "position": 82,
+                  "duration": 1,
+                  "type": "entry",
+                  "producer": "clip_11",
+                  "in": "0",
+                  "out": "0"
+                },
+                {
+                  "index": 12,
+                  "position": 83,
+                  "duration": 1,
+                  "type": "entry",
+                  "producer": "clip_12",
+                  "in": "0",
+                  "out": "0"
+                },
+                {
+                  "index": 13,
+                  "position": 84,
+                  "duration": 96,
+                  "type": "entry",
+                  "producer": "clip_13",
+                  "in": "0",
+                  "out": "95"
+                }
+              ],
+              "effects": []
+            },
+            {
+              "id": "black_track",
+              "type": "producer",
+              "properties": {
+                "mlt_service": "color",
+                "resource": "black",
+                "length": "2147483647",
+                "eof": "continue"
+              },
+              "effects": []
+            },
+            {
+              "id": "track_0_0",
+              "type": "playlist",
+              "properties": {},
+              "items": [
+                {
+                  "index": 0,
+                  "position": 0,
+                  "duration": 72,
+                  "type": "entry",
+                  "producer": "clip_0",
+                  "in": "0",
+                  "out": "71"
+                },
+                {
+                  "index": 1,
+                  "position": 72,
+                  "duration": 1,
+                  "type": "entry",
+                  "producer": "clip_1",
+                  "in": "0",
+                  "out": "0"
+                },
+                {
+                  "index": 2,
+                  "position": 73,
+                  "duration": 1,
+                  "type": "entry",
+                  "producer": "clip_2",
+                  "in": "0",
+                  "out": "0"
+                },
+                {
+                  "index": 3,
+                  "position": 74,
+                  "duration": 1,
+                  "type": "entry",
+                  "producer": "clip_3",
+                  "in": "0",
+                  "out": "0"
+                },
+                {
+                  "index": 4,
+                  "position": 75,
+                  "duration": 1,
+                  "type": "entry",
+                  "producer": "clip_4",
+                  "in": "0",
+                  "out": "0"
+                },
+                {
+                  "index": 5,
+                  "position": 76,
+                  "duration": 1,
+                  "type": "entry",
+                  "producer": "clip_5",
+                  "in": "0",
+                  "out": "0"
+                },
+                {
+                  "index": 6,
+                  "position": 77,
+                  "duration": 1,
+                  "type": "entry",
+                  "producer": "clip_6",
+                  "in": "0",
+                  "out": "0"
+                },
+                {
+                  "index": 7,
+                  "position": 78,
+                  "duration": 1,
+                  "type": "entry",
+                  "producer": "clip_7",
+                  "in": "0",
+                  "out": "0"
+                },
+                {
+                  "index": 8,
+                  "position": 79,
+                  "duration": 1,
+                  "type": "entry",
+                  "producer": "clip_8",
+                  "in": "0",
+                  "out": "0"
+                },
+                {
+                  "index": 9,
+                  "position": 80,
+                  "duration": 1,
+                  "type": "entry",
+                  "producer": "clip_9",
+                  "in": "0",
+                  "out": "0"
+                },
+                {
+                  "index": 10,
+                  "position": 81,
+                  "duration": 1,
+                  "type": "entry",
+                  "producer": "clip_10",
+                  "in": "0",
+                  "out": "0"
+                },
+                {
+                  "index": 11,
+                  "position": 82,
+                  "duration": 1,
+                  "type": "entry",
+                  "producer": "clip_11",
+                  "in": "0",
+                  "out": "0"
+                },
+                {
+                  "index": 12,
+                  "position": 83,
+                  "duration": 1,
+                  "type": "entry",
+                  "producer": "clip_12",
+                  "in": "0",
+                  "out": "0"
+                },
+                {
+                  "index": 13,
+                  "position": 84,
+                  "duration": 96,
+                  "type": "entry",
+                  "producer": "clip_13",
+                  "in": "0",
+                  "out": "95"
+                }
+              ],
+              "effects": []
+            },
+            {
+              "id": "track_0_1",
+              "type": "playlist",
+              "properties": {},
+              "items": [],
+              "effects": []
+            },
+            {
+              "id": "track_0",
+              "type": "tractor",
+              "properties": {
+                "kdenlive:track_name": "V1",
+                "kdenlive:timeline_active": "1"
+              },
+              "tracks": [
+                {
+                  "producer": "track_0_0",
+                  "hide": "audio"
+                },
+                {
+                  "producer": "track_0_1",
+                  "hide": "audio"
+                }
+              ],
+              "effects": []
+            },
+            {
+              "id": "track_1_0",
+              "type": "playlist",
+              "properties": {},
+              "items": [],
+              "effects": []
+            },
+            {
+              "id": "track_1_1",
+              "type": "playlist",
+              "properties": {},
+              "items": [],
+              "effects": []
+            },
+            {
+              "id": "track_1",
+              "type": "tractor",
+              "properties": {
+                "kdenlive:track_name": "V2",
+                "kdenlive:timeline_active": "1"
+              },
+              "tracks": [
+                {
+                  "producer": "track_1_0",
+                  "hide": "audio"
+                },
+                {
+                  "producer": "track_1_1",
+                  "hide": "audio"
+                }
+              ],
+              "effects": []
+            },
+            {
+              "id": "sequence",
+              "type": "tractor",
+              "properties": {},
+              "tracks": [
+                {
+                  "producer": "black_track"
+                },
+                {
+                  "producer": "track_0"
+                },
+                {
+                  "producer": "track_1"
+                }
+              ],
+              "effects": []
+            }
+          ],
+          "editor_state": "file_only"
+        },
+        "is_error": false,
+        "result_type": "complete"
+      }
+    },
+    {
+      "event": "tools/call",
+      "tool": "validate_project",
+      "arguments": {
+        "path": "CASE_ROOT/brass-relay/film-core2041-proof-package-02/relocated-project/project.kdenlive"
+      },
+      "response": {
+        "meta": null,
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"valid\":true,\"elements\":53,\"fps\":\"24\"}",
+            "annotations": null,
+            "meta": null
+          }
+        ],
+        "structured_content": {
+          "valid": true,
+          "elements": 53,
+          "fps": "24"
+        },
+        "is_error": false,
+        "result_type": "complete"
+      }
+    },
+    {
+      "event": "tools/call",
+      "tool": "render_project",
+      "arguments": {
+        "path": "CASE_ROOT/brass-relay/film-core2041-proof-package-02/relocated-project/project.kdenlive",
+        "output_path": "CASE_ROOT/brass-relay/film-core2041-proof-package-02/relocated-rerender.mp4",
+        "preset": "mp4",
+        "start": 0,
+        "end": 179,
+        "timeout": 1800
+      },
+      "response": {
+        "meta": null,
+        "content": [
+          {
+            "type": "text",
+            "text": "Core job 59a7c0da-b4ce-40fc-9845-a73a6fe433d5 queued; poll jobs_get_status with core_job_id=59a7c0da-b4ce-40fc-9845-a73a6fe433d5",
+            "annotations": null,
+            "meta": null
+          }
+        ],
+        "structured_content": {
+          "job_id": "59a7c0da-b4ce-40fc-9845-a73a6fe433d5",
+          "core_job_id": "59a7c0da-b4ce-40fc-9845-a73a6fe433d5",
+          "job_id_owner": "core",
+          "status": "pending",
+          "parent_job_id": null,
+          "core_poll": {
+            "owner": "core",
+            "tool": "jobs_get_status",
+            "arguments": {
+              "job_id": "59a7c0da-b4ce-40fc-9845-a73a6fe433d5",
+              "include_result": true
+            }
+          },
+          "_meta": {
+            "status": "pending",
+            "dcc": {
+              "jobId": "59a7c0da-b4ce-40fc-9845-a73a6fe433d5",
+              "coreJobId": "59a7c0da-b4ce-40fc-9845-a73a6fe433d5",
+              "jobOwner": "core",
+              "pollTool": "jobs_get_status",
+              "parentJobId": null
+            }
+          }
+        },
+        "is_error": false,
+        "result_type": "complete"
+      }
+    },
+    {
+      "event": "tools/call",
+      "tool": "probe_media",
+      "arguments": {
+        "path": "CASE_ROOT/brass-relay/film-core2041-proof-package-02/relocated-rerender.mp4"
+      },
+      "response": {
+        "meta": null,
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"streams\":[{\"index\":0,\"codec_name\":\"h264\",\"codec_long_name\":\"H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10\",\"profile\":\"High\",\"codec_type\":\"video\",\"codec_tag_string\":\"avc1\",\"codec_tag\":\"0x31637661\",\"width\":1280,\"height\":800,\"coded_width\":1280,\"coded_height\":800,\"closed_captions\":0,\"film_grain\":0,\"has_b_frames\":2,\"sample_aspect_ratio\":\"1:1\",\"display_aspect_ratio\":\"8:5\",\"pix_fmt\":\"yuv420p\",\"level\":32,\"color_range\":\"tv\",\"color_space\":\"bt709\",\"color_transfer\":\"bt709\",\"color_primaries\":\"bt709\",\"chroma_location\":\"left\",\"field_order\":\"progressive\",\"refs\":1,\"is_avc\":\"true\",\"nal_length_size\":\"4\",\"id\":\"0x1\",\"r_frame_rate\":\"24/1\",\"avg_frame_rate\":\"24/1\",\"time_base\":\"1/12288\",\"start_pts\":0,\"start_time\":\"0.000000\",\"duration_ts\":92160,\"duration\":\"7.500000\",\"bit_rate\":\"494462\",\"bits_per_raw_sample\":\"8\",\"nb_frames\":\"180\",\"extradata_size\":49,\"disposition\":{\"default\":1,\"dub\":0,\"original\":0,\"comment\":0,\"lyrics\":0,\"karaoke\":0,\"forced\":0,\"hearing_impaired\":0,\"visual_impaired\":0,\"clean_effects\":0,\"attached_pic\":0,\"timed_thumbnails\":0,\"non_diegetic\":0,\"captions\":0,\"descriptions\":0,\"metadata\":0,\"dependent\":0,\"still_image\":0,\"multilayer\":0},\"tags\":{\"language\":\"und\",\"handler_name\":\"VideoHandler\",\"vendor_id\":\"[0][0][0][0]\"}},{\"index\":1,\"codec_name\":\"aac\",\"codec_long_name\":\"AAC (Advanced Audio Coding)\",\"profile\":\"LC\",\"codec_type\":\"audio\",\"codec_tag_string\":\"mp4a\",\"codec_tag\":\"0x6134706d\",\"sample_fmt\":\"fltp\",\"sample_rate\":\"48000\",\"channels\":2,\"channel_layout\":\"stereo\",\"bits_per_sample\":0,\"initial_padding\":0,\"id\":\"0x2\",\"r_frame_rate\":\"0/0\",\"avg_frame_rate\":\"0/0\",\"time_base\":\"1/48000\",\"start_pts\":0,\"start_time\":\"0.000000\",\"duration_ts\":360432,\"duration\":\"7.509000\",\"bit_rate\":\"2286\",\"nb_frames\":\"353\",\"extradata_size\":5,\"disposition\":{\"default\":1,\"dub\":0,\"original\":0,\"comment\":0,\"lyrics\":0,\"karaoke\":0,\"forced\":0,\"hearing_impaired\":0,\"visual_impaired\":0,\"clean_effects\":0,\"attached_pic\":0,\"timed_thumbnails\":0,\"non_diegetic\":0,\"captions\":0,\"descriptions\":0,\"metadata\":0,\"dependent\":0,\"still_image\":0,\"multilayer\":0},\"tags\":{\"language\":\"und\",\"handler_name\":\"SoundHandler\",\"vendor_id\":\"[0][0][0][0]\"}}],\"format\":{\"filename\":\"CASE_ROOT/brass-relay/film-core2041-proof-package-02/relocated-rerender.mp4\",\"nb_streams\":2,\"nb_programs\":0,\"nb_stream_groups\":0,\"format_name\":\"mov,mp4,m4a,3gp,3g2,mj2\",\"format_long_name\":\"QuickTime / MOV\",\"start_time\":\"0.000000\",\"duration\":\"7.509000\",\"size\":\"472380\",\"bit_rate\":\"503268\",\"probe_score\":100,\"tags\":{\"major_brand\":\"isom\",\"minor_version\":\"512\",\"compatible_brands\":\"isomiso2avc1mp41\",\"encoder\":\"Lavf61.7.103\"}}}",
+            "annotations": null,
+            "meta": null
+          }
+        ],
+        "structured_content": {
+          "streams": [
+            {
+              "index": 0,
+              "codec_name": "h264",
+              "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+              "profile": "High",
+              "codec_type": "video",
+              "codec_tag_string": "avc1",
+              "codec_tag": "0x31637661",
+              "width": 1280,
+              "height": 800,
+              "coded_width": 1280,
+              "coded_height": 800,
+              "closed_captions": 0,
+              "film_grain": 0,
+              "has_b_frames": 2,
+              "sample_aspect_ratio": "1:1",
+              "display_aspect_ratio": "8:5",
+              "pix_fmt": "yuv420p",
+              "level": 32,
+              "color_range": "tv",
+              "color_space": "bt709",
+              "color_transfer": "bt709",
+              "color_primaries": "bt709",
+              "chroma_location": "left",
+              "field_order": "progressive",
+              "refs": 1,
+              "is_avc": "true",
+              "nal_length_size": "4",
+              "id": "0x1",
+              "r_frame_rate": "24/1",
+              "avg_frame_rate": "24/1",
+              "time_base": "1/12288",
+              "start_pts": 0,
+              "start_time": "0.000000",
+              "duration_ts": 92160,
+              "duration": "7.500000",
+              "bit_rate": "494462",
+              "bits_per_raw_sample": "8",
+              "nb_frames": "180",
+              "extradata_size": 49,
+              "disposition": {
+                "default": 1,
+                "dub": 0,
+                "original": 0,
+                "comment": 0,
+                "lyrics": 0,
+                "karaoke": 0,
+                "forced": 0,
+                "hearing_impaired": 0,
+                "visual_impaired": 0,
+                "clean_effects": 0,
+                "attached_pic": 0,
+                "timed_thumbnails": 0,
+                "non_diegetic": 0,
+                "captions": 0,
+                "descriptions": 0,
+                "metadata": 0,
+                "dependent": 0,
+                "still_image": 0,
+                "multilayer": 0
+              },
+              "tags": {
+                "language": "und",
+                "handler_name": "VideoHandler",
+                "vendor_id": "[0][0][0][0]"
+              }
+            },
+            {
+              "index": 1,
+              "codec_name": "aac",
+              "codec_long_name": "AAC (Advanced Audio Coding)",
+              "profile": "LC",
+              "codec_type": "audio",
+              "codec_tag_string": "mp4a",
+              "codec_tag": "0x6134706d",
+              "sample_fmt": "fltp",
+              "sample_rate": "48000",
+              "channels": 2,
+              "channel_layout": "stereo",
+              "bits_per_sample": 0,
+              "initial_padding": 0,
+              "id": "0x2",
+              "r_frame_rate": "0/0",
+              "avg_frame_rate": "0/0",
+              "time_base": "1/48000",
+              "start_pts": 0,
+              "start_time": "0.000000",
+              "duration_ts": 360432,
+              "duration": "7.509000",
+              "bit_rate": "2286",
+              "nb_frames": "353",
+              "extradata_size": 5,
+              "disposition": {
+                "default": 1,
+                "dub": 0,
+                "original": 0,
+                "comment": 0,
+                "lyrics": 0,
+                "karaoke": 0,
+                "forced": 0,
+                "hearing_impaired": 0,
+                "visual_impaired": 0,
+                "clean_effects": 0,
+                "attached_pic": 0,
+                "timed_thumbnails": 0,
+                "non_diegetic": 0,
+                "captions": 0,
+                "descriptions": 0,
+                "metadata": 0,
+                "dependent": 0,
+                "still_image": 0,
+                "multilayer": 0
+              },
+              "tags": {
+                "language": "und",
+                "handler_name": "SoundHandler",
+                "vendor_id": "[0][0][0][0]"
+              }
+            }
+          ],
+          "format": {
+            "filename": "CASE_ROOT/brass-relay/film-core2041-proof-package-02/relocated-rerender.mp4",
+            "nb_streams": 2,
+            "nb_programs": 0,
+            "nb_stream_groups": 0,
+            "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+            "format_long_name": "QuickTime / MOV",
+            "start_time": "0.000000",
+            "duration": "7.509000",
+            "size": "472380",
+            "bit_rate": "503268",
+            "probe_score": 100,
+            "tags": {
+              "major_brand": "isom",
+              "minor_version": "512",
+              "compatible_brands": "isomiso2avc1mp41",
+              "encoder": "Lavf61.7.103"
+            }
+          }
+        },
+        "is_error": false,
+        "result_type": "complete"
+      }
+    }
+  ],
+  "selection": "Tool requests excluding polling; full raw trace retained privately"
+}
