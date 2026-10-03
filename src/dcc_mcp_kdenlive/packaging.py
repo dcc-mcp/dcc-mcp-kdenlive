@@ -312,6 +312,10 @@ def package_project(
         )
         check_dcc_cancelled()
         _plain_path(str(destination))
+        if os.name != "nt":
+            # Retain private staging until publication, then use the normal
+            # child-directory mode without changing the process-wide umask.
+            stage.chmod(stat.S_IMODE(media.stat().st_mode))
         _publish_directory(stage, destination)
         stage = None
         return {

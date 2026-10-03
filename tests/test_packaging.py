@@ -3,6 +3,7 @@
 import errno
 import json
 import os
+import stat
 from pathlib import Path
 from types import SimpleNamespace
 
@@ -69,6 +70,21 @@ def test_duplicate_content_deduplicates(tmp_path):
     source = make_project(tmp_path, [a, b])
     result = packaging.package_project(str(source), str(tmp_path / "out"), [str(tmp_path)])
     assert result["media_files"] == 1
+
+
+@pytest.mark.skipif(os.name == "nt", reason="POSIX directory permissions")
+@pytest.mark.parametrize("mask", [0o022, 0o007, 0o077])
+def test_published_directory_respects_creation_umask(tmp_path, mask):
+    media = media_file(tmp_path / "frame.png")
+    source = make_project(tmp_path, [media])
+    out = tmp_path / "portable"
+    previous = os.umask(mask)
+    try:
+        packaging.package_project(str(source), str(out), [str(tmp_path)])
+        assert stat.S_IMODE(out.stat().st_mode) == 0o777 & ~mask
+        assert stat.S_IMODE((out / "media").stat().st_mode) == 0o777 & ~mask
+    finally:
+        os.umask(previous)
 
 
 def test_native_avi_exact_bytes_packaged(tmp_path):
