@@ -23,7 +23,15 @@ Runs are listed in the order they were performed.
 5. **[`kdenlive-avi-qualification.json`](kdenlive-avi-qualification.json)** — the AVI media claims from base `4703e75`, layered on the same packaging source as run 3 (`base_packaging_sha256` equals run 3's `packaging_source_sha256`): a 1280x800 24 fps Godot MovieWriter capture of 699 frames and 49,121,546 bytes copies byte-exactly, and all 673 decoded frames of the relocated MLT re-render match with the original capture and package unavailable; records 64 passed / 1 skipped and both packaging-source digests.
 6. **[`portable-package-publication.md`](portable-package-publication.md)** — publication-review coverage of reparse-point and duplicate-dependency rejections, plus three POSIX staging-mode integration cases for umasks 022/007/077 that check restoration of the normal child-directory mode without changing the process-wide umask. The separate Windows Python 3.12 / Core 0.20.41 run reported 69 passed and 6 skipped, including the POSIX mode cases; ruff lint/format, sdist/wheel build and Twine checks passed in that run.
 
-## What these snapshots do not cover
+## PNG still image import
+
+[`png-image-import.md`](png-image-import.md) records publication checks for the
+explicit native `qimage` PNG kind and its relink guards. Its linked qualification
+JSON is clearly labeled source-author reported native evidence; raw traces and
+native artifacts were not provided to the publication environment. It is separate
+from the six portable-package snapshots above.
+
+## What the six portable-package snapshots do not cover
 
 - No Kdenlive editor GUI acceptance. Every run is standalone file-mode or CLI/SDK work,
   and the earliest packet records `editor_gui_opened: false`.

@@ -2,7 +2,7 @@
   "tools": [
     {
       "name": "add_media",
-      "description": "Add file media, a color producer, or a Kdenlive title template to the project bin.",
+      "description": "Add file media, a bounded local PNG still using native qimage, a color producer, or a Kdenlive title template to the project bin.",
       "input_schema": {
         "type": "object",
         "properties": {
@@ -22,7 +22,14 @@
           },
           "kind": {
             "type": "string",
-            "default": "file"
+            "default": "file",
+            "enum": [
+              "file",
+              "image",
+              "color",
+              "title"
+            ],
+            "description": "image selects native qimage for one local PNG still (64 MiB,8192 pixels per edge,16 megapixels max); file retains avformat behavior. Native decoding and editor preview are separate validation. Sequence/directory/query/inline-XML resource syntax is refused."
           },
           "name": {
             "type": "string",

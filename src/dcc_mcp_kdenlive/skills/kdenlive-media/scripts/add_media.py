@@ -1,4 +1,4 @@
-"""Add file media, a color producer, or a Kdenlive title template to the project bin."""
+"""Add file media, native PNG stills, a color producer, or a Kdenlive title template to the project bin."""
 
 from dcc_mcp_kdenlive.project import add_media
 
