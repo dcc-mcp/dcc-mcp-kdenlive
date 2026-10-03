@@ -21,9 +21,14 @@ The complete five-file source packet was verified against base
 SHA-256 `36f875f1743f03d92856cbc7acbba8b7e8f8bae5fe0cae01ec8f7128e8be8c87`.
 The publication candidate adds seven integration cases for mixed-service aliases,
 safe alias rewrites with timing/effects preserved, unrelated aliases, canonical
-parent markers and a real symlink normalized to a safe literal target.
+parent markers and a real symlink normalized to a safe literal target. A later
+review fix binds the file-size check and header read to one opened descriptor.
+Its regression replaces a real PNG with an oversized PNG-header file immediately
+before opening: it fails against the original helper and passes with the fix,
+preserving source bytes and publishing no output. This does not freeze the inode
+against concurrent writes or snapshot media for the later native decoder.
 
-On Windows / Python 3.12 / Core 0.20.41, the complete suite passed 101 tests with
+On Windows / Python 3.12 / Core 0.20.41, the complete suite passed 102 tests with
 7 explicit skips. These comprise the four existing platform/live-host skips and
 three filenames Windows cannot create. All seven additional cases passed. Ruff
 lint/format and Python 3.7 grammar checks for changed Python files passed.
@@ -48,6 +53,13 @@ manifests were not supplied to the publication environment. Their recorded hashe
 and equivalence statements are source-author reports and were not independently
 verified here. No artwork, media, new license grant or optional DCT/nlmeans filter
 is included.
+
+Those native reports describe the source author's original candidate, before the
+publication-review descriptor fix. The fix changes `project.py` from that
+candidate's SHA-256 `a44b198fa87f82171a6a2b881b30a1c493339dca0f9e51f1e7c658083d336d81`.
+The revised publication runtime has not received a fresh native or GUI run; the
+historical seven-module identity and GUI reuse statements do not establish native
+qualification of its changed bytes.
 
 The accepted render range is frames 0 through 431. The reported proof does not
 claim an extra playable frame 432, cross-environment typography, continuous

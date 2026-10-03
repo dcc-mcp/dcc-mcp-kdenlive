@@ -2,6 +2,7 @@
 
 import copy
 import json
+import os
 import re
 import uuid
 from fractions import Fraction
@@ -295,9 +296,9 @@ def _png_still_resource(resource):
     _check_qimage_literal(str(target))
     if not target.is_file() or target.suffix.lower() != ".png":
         raise ValueError("Image kind requires an existing local PNG still")
-    if not 33 <= target.stat().st_size <= 64 * 1024 * 1024:
-        raise ValueError("PNG still must be between 33 bytes and 64 MiB")
     with target.open("rb") as stream:
+        if not 33 <= os.fstat(stream.fileno()).st_size <= 64 * 1024 * 1024:
+            raise ValueError("PNG still must be between 33 bytes and 64 MiB")
         header = stream.read(33)
     if header[:16] != b"\x89PNG\r\n\x1a\n\x00\x00\x00\rIHDR":
         raise ValueError("PNG still requires a native PNG signature and IHDR")

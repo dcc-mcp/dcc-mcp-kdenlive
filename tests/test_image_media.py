@@ -322,3 +322,30 @@ def test_symlink_marker_is_normalized_to_safe_literal_resource(tmp_path):
     assert prop["resource"] == str(media.resolve())
     assert prop["mlt_service"] == "qimage"
     assert media.read_bytes() == PNG
+
+
+def test_png_replaced_before_open_cannot_bypass_opened_file_size_bound(tmp_path, monkeypatch):
+    source, media = inputs(tmp_path)
+    before = source.read_bytes()
+    replacement = tmp_path / "oversized.png"
+    with replacement.open("wb") as stream:
+        stream.write(PNG)
+        stream.truncate(64 * 1024 * 1024 + 1)
+    original_open = Path.open
+    swapped = False
+
+    def replace_then_open(path, *args, **kwargs):
+        nonlocal swapped
+        if path == media and args == ("rb",) and not swapped:
+            os.replace(str(replacement), str(media))
+            swapped = True
+        return original_open(path, *args, **kwargs)
+
+    monkeypatch.setattr(Path, "open", replace_then_open)
+    output = tmp_path / "rejected.kdenlive"
+    with pytest.raises(ValueError, match="33 bytes and 64 MiB"):
+        add_media(str(source), str(output), str(media), 2, kind="image")
+    assert swapped
+    assert media.stat().st_size == 64 * 1024 * 1024 + 1
+    assert source.read_bytes() == before
+    assert not output.exists()

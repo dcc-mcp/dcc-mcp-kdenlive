@@ -117,5 +117,13 @@
     "native_artwork_or_media_files_included": false,
     "new_original_art_license_grant": false,
     "external_publish_or_upload": false
+  },
+  "publication_runtime_review_fix": {
+    "source_author_runtime_sha256": "a44b198fa87f82171a6a2b881b30a1c493339dca0f9e51f1e7c658083d336d81",
+    "revised_runtime_sha256": "50edc7d45d55dd3fb6d1e00b4b1a68bd618fa20bcfda612adc580a73556b9fe0",
+    "change": "File size and PNG header are inspected through one opened descriptor. A real oversized pathname replacement regression fails the source-author helper and passes the revision.",
+    "source_author_native_reports_apply_to_pre_review_candidate": true,
+    "post_review_native_or_GUI_acceptance_performed": false,
+    "immutable_media_capture": false
   }
 }
