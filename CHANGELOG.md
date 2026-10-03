@@ -1,5 +1,23 @@
 # Changelog
 
+## [0.1.2](https://github.com/dcc-mcp/dcc-mcp-kdenlive/compare/v0.1.1...v0.1.2) (2026-10-03)
+
+
+### Features
+
+* package portable native projects with AVI media ([888abad](https://github.com/dcc-mcp/dcc-mcp-kdenlive/commit/888abad0b1758d24604c941f142b800b87191a0b))
+
+
+### Bug Fixes
+
+* resolve portable media from the opened document ([#14](https://github.com/dcc-mcp/dcc-mcp-kdenlive/issues/14)) ([44268aa](https://github.com/dcc-mcp/dcc-mcp-kdenlive/commit/44268aab83f3867b75d39c78cc3df2b3cd096826))
+
+
+### Documentation
+
+* index the portable-package validation snapshots ([#11](https://github.com/dcc-mcp/dcc-mcp-kdenlive/issues/11)) ([573acde](https://github.com/dcc-mcp/dcc-mcp-kdenlive/commit/573acdef48acb303234cbd093919f44f830b2873))
+* qualify portable validation evidence ([#12](https://github.com/dcc-mcp/dcc-mcp-kdenlive/issues/12)) ([437aaca](https://github.com/dcc-mcp/dcc-mcp-kdenlive/commit/437aacad53ba0c0e9910508f9d19ce5ff991471c))
+
 ## [0.1.1](https://github.com/dcc-mcp/dcc-mcp-kdenlive/compare/v0.1.0...v0.1.1) (2026-09-14)
 
 
