@@ -76,7 +76,7 @@ GROUPS = {
     "export": (
         "render",
         {
-            "render_project": "Render an explicit frame range through MLT to MP4, WebM, ProRes MOV or WAV. Poll core jobs_get_status; use jobs_cancel to cancel."
+            "render_project": "Render an explicit MLT frame range to MP4, WebM, ProRes MOV or WAV, or exactly one 8-bit RGBA PNG frame (start=end; dimensions each at most 4096). Poll core jobs_get_status; use jobs_cancel to cancel."
         },
     ),
     "interchange": (
@@ -93,6 +93,8 @@ GROUPS = {
         },
     ),
 }
+PNG_GUIDANCE = "For a lossless encoded still, set preset to `png` and supply the same nonnegative frame for `start` and `end`. The project width and height must each be at most 4096. The tool exports one 8-bit RGBA PNG, checks its header and native stream dimensions, and publishes without replacing an existing file. PNG encoding does not guarantee identical rendering across fonts, displays or project changes; compare decoded pixels when validating those differences."
+
 READ = {
     "get_status",
     "query_services",
@@ -149,6 +151,8 @@ def generate():
                     schema["description"] = (
                         "New file path in an existing directory; existing destinations are never replaced."
                     )
+                if name == "render_project" and parameter == "preset":
+                    schema["enum"] = ["mp4", "webm", "mov", "wav", "png"]
                 props[parameter] = schema
                 if index < required_count:
                     required.append(parameter)
@@ -212,6 +216,11 @@ def generate():
             + "\n\nDiscover and describe tools before calls. File edits create new artifacts; inspect the returned file before opening it in the editor. Supply expected_sha256 for revision fencing. Frames are integers; end frames are inclusive. File results are not live editor readback.\n\nGrouped clips, nested sequences, timeline model operations and other editor-only features use the shared ui-control skill on a GUI instance bound to an exact Kdenlive PID and HWND. Report provider=dcc-cua and its runtime version before UI observation. Use snapshot -> act -> snapshot and stop the session when done. Never switch to another UI provider or retry after a policy rejection or user interruption.\n\nFor rendering, poll the core job ID until terminal; a timeout is not completion. Cancellation terminates the owned render process and cleans partial output.\n",
             encoding="utf-8",
         )
+        if group == "export":
+            skill = directory / "SKILL.md"
+            skill.write_text(
+                skill.read_text(encoding="utf-8") + "\n" + PNG_GUIDANCE + "\n", encoding="utf-8"
+            )
 
 
 if __name__ == "__main__":

@@ -10,7 +10,7 @@
 | Compositions | MLT transitions between tractor tracks and native parameters | Interactive mix edits through UI |
 | Titles | Import native `.kdenlivetitle` templates | Design/edit text, fonts, paths and layout through title designer UI |
 | Subtitles | New UTF-8 SRT from timed text | Import and project subtitle tracks, styling, speech recognition through UI |
-| Export | Explicit frame-range async MP4/WebM/ProRes/WAV, cancel, probe verification | Other native export presets, render queue UI and hardware-specific encoding through UI |
+| Export | Explicit frame-range async MP4/WebM/ProRes/WAV; one RGBA PNG frame with equal start/end and dimensions up to 4096 each; cancel, header/probe checks | Other native export presets, render queue UI and hardware-specific encoding through UI |
 | Assets | Installed effects, transitions, producers, consumers, profiles, templates, LUTs/lumas | Online resource accounts/downloads require their normal host setup |
 | AI / tracking | Discover relevant installed assets | Speech models, tracking, rotoscoping and analysis are editor workflows, not native adapter endpoints |
 | UI / settings | Core ui-control skill with exact PID/HWND | Requires DCC-CUA readiness; blocked controls are reported explicitly |
