@@ -1,0 +1,13 @@
+# Portable project qualification on Core0.20.41
+
+The bounded package tool copies only explicit task-authorized media, gives same-name files collision-free packaged names, uses relative project references and complete hashes, refuses missing/remote/symlink or unsupported dependencies, and publishes a complete staged directory without overwriting an existing destination. Cancellation and failed validation leave no published partial package.
+
+Kdenlive's relink operation also records `kdenlive:originalurl`. The final extension accepts that property only when it resolves to the exact same authorized local file as `resource`; both references become the same packaged relative path. It rejects other files even with identical bytes, remote/symlink aliases, duplicate aliases and enabled proxies, including dependencies hidden before duplicate disabled-proxy properties. The native disabled-proxy sentinel `-` is accepted. The residual-path guard remains active.
+
+The complete local suite passes58tests with1 installed-host live test skipped. Actual SDK calls independently create/edit/export an annotated native project. The exact final formatted packaging source packages that project, relocates it, hides the original media/package directories, reopens and validates it, and renders through nativeMLT. All180decoded video frames match the source render exactly. Source paths are restored. The source clip is a7.5-second capability preview with12actual motion frames and two native stills; it is not advertised as a finished film.
+
+The current proof uses Core/server0.20.41, Kdenlive24.12.3 andMLT7.30.0 in standalone file mode. Earlier content packets independently qualified480,576and624-frame round trips on recorded prior runtime pins. Neither current nor prior checks claim interactive Kdenlive GUI/editor acceptance. The JSON includes selected actual requests/results and original trace hashes, with task workspace prefixes redacted.
+
+These are source-qualification snapshots. The 180-frame comparison is recorded in the JSON's validation summary; asynchronous terminal polling and per-frame comparison records are omitted from its selected calls. The older 480/576/624-frame proofs are separate historical packets. Later AVI and publication checks are recorded in [publication validation](portable-package-publication.md).
+
+The historical JSON retains its original `source_paths_disclosed` result field. The current tool uses the narrower `source_dependency_paths_disclosed` field: supported media dependencies are rewritten and the manifest omits their original filenames. Other editor/user metadata is preserved, so this is not an attestation that all project text is public-safe.
