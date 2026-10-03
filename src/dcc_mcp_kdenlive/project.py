@@ -2,6 +2,7 @@
 
 import copy
 import json
+import os
 import re
 import uuid
 from fractions import Fraction
@@ -279,13 +280,43 @@ def validate_project(path):
     return Project(path).validate()
 
 
+def _check_qimage_literal(literal):
+    """QImage also accepts sequences, directories and inline XML; require one path."""
+    if any(marker in literal for marker in ("%", "?", "<", ">")) or "/.all." in literal.replace(
+        "\\", "/"
+    ):
+        raise ValueError(
+            "QImage file paths cannot use sequence, directory, query or inline-resource syntax"
+        )
+
+
+def _png_still_resource(resource):
+    """Bound the local PNG still profile; native QImage decode is a separate gate."""
+    target = Path(resource).resolve(strict=True)
+    _check_qimage_literal(str(target))
+    if not target.is_file() or target.suffix.lower() != ".png":
+        raise ValueError("Image kind requires an existing local PNG still")
+    with target.open("rb") as stream:
+        if not 33 <= os.fstat(stream.fileno()).st_size <= 64 * 1024 * 1024:
+            raise ValueError("PNG still must be between 33 bytes and 64 MiB")
+        header = stream.read(33)
+    if header[:16] != b"\x89PNG\r\n\x1a\n\x00\x00\x00\rIHDR":
+        raise ValueError("PNG still requires a native PNG signature and IHDR")
+    width, height = int.from_bytes(header[16:20], "big"), int.from_bytes(header[20:24], "big")
+    if not 1 <= width <= 8192 or not 1 <= height <= 8192 or width * height > 16_777_216:
+        raise ValueError("PNG still exceeds the 8192-edge or 16-megapixel bound")
+    return str(target)
+
+
 def add_media(path, output_path, resource, duration, kind="file", name="", expected_sha256=None):
     integer(duration, 1)
     project = Project(path, expected_sha256)
-    if kind not in ("file", "color", "title"):
+    if kind not in ("file", "image", "color", "title"):
         raise ValueError("Unsupported producer kind")
     if kind == "file":
         resource = str(Path(resource).resolve(strict=True))
+    elif kind == "image":
+        resource = _png_still_resource(resource)
     elif kind == "color" and not re.fullmatch(r"#[0-9a-fA-F]{6}([0-9a-fA-F]{2})?", resource):
         raise ValueError("Color must be #RRGGBB or #RRGGBBAA")
     elif kind == "title":
@@ -302,7 +333,12 @@ def add_media(path, output_path, resource, duration, kind="file", name="", expec
     bin_id = str(max(existing_bin_ids or [0]) + 1)
     producer = ET.Element("producer", id=identifier, **{"in": "0", "out": str(duration - 1)})
     for key, value in {
-        "mlt_service": {"file": "avformat", "color": "color", "title": "kdenlivetitle"}[kind],
+        "mlt_service": {
+            "file": "avformat",
+            "image": "qimage",
+            "color": "color",
+            "title": "kdenlivetitle",
+        }[kind],
         "xmldata" if kind == "title" else "resource": resource,
         "length": duration,
         "eof": "pause",
@@ -507,6 +543,12 @@ def relink_media(path, output_path, producer_id, resource, expected_sha256=None)
         raise ValueError("Producer does not represent file media")
     replacement = str(Path(resource).resolve(strict=True))
     clip_id = properties(node).get("kdenlive:id")
+    if any(
+        properties(producer).get("mlt_service") == "qimage"
+        and (producer is node or (clip_id and properties(producer).get("kdenlive:id") == clip_id))
+        for producer in project.root
+    ):
+        _check_qimage_literal(replacement)
     for producer in project.root:
         if producer is node or (clip_id and properties(producer).get("kdenlive:id") == clip_id):
             put(producer, "resource", replacement)

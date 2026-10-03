@@ -1,0 +1,129 @@
+{
+  "evidence_origin": "Source-author reported qualification supplied as a summary; raw traces, native artifacts, comparison receipts and individual module hash manifests were not supplied or independently verified in the publication environment.",
+  "publication_source_packet": {
+    "base_commit": "437aacad53ba0c0e9910508f9d19ce5ff991471c",
+    "utf8_bytes": 15251,
+    "sha256": "36f875f1743f03d92856cbc7acbba8b7e8f8bae5fe0cae01ec8f7128e8be8c87"
+  },
+  "publication_native_acceptance_performed": false,
+  "source_author_report": {
+    "status": "PASS_IMAGE_ONLY_CODE_AND_NATIVE_QUALIFICATION",
+    "unit_suite": {
+      "passed": 100,
+      "existing_explicit_live_host_skip": 1,
+      "ruff": "PASS",
+      "independent_repeat": "100 passed, one existing live-host skip; seven supplemental alias/relink cases pass"
+    },
+    "controller": {
+      "core_server_CLI": "0.20.41",
+      "mcp": "2.2.0",
+      "httpx2": "2.13.1",
+      "CPU_affinity_cap": 2,
+      "gateway_port": 0,
+      "enable_gateway_failover": false
+    },
+    "fresh_MCP_pilot": {
+      "full_trace_events": 29,
+      "frames": 24,
+      "dimensions": [
+        1280,
+        900
+      ],
+      "qimage_producers": 2,
+      "caption_or_other_filters": 0,
+      "native_project_sha256": "6b3c64d02bcd2dc75a28549730a42b033677199ec35a92f43f494aa27e7c18be",
+      "movie_sha256": "206ff489d198451d26326785aad0213796929d78cc801b54a31790888d4a1acf",
+      "positive_operations": [
+        "create project",
+        "import two actual PNGs as image",
+        "insert timeline clips",
+        "relink image to another literal PNG path and back",
+        "set frame-based guides",
+        "inspect/validate/render/probe"
+      ],
+      "negative_operations": [
+        "existing valid PNG with percent-sequence filename refused on import",
+        "same resource refused on qimage relink"
+      ],
+      "invalid_outputs_published": false,
+      "source_and_media_preserved": true
+    },
+    "fresh_full_film_package": {
+      "full_trace_events": 77,
+      "frames": 432,
+      "dimensions": [
+        1280,
+        900
+      ],
+      "fps": 24,
+      "qimage_producers": 123,
+      "dynamictext_captions": 369,
+      "unique_media_files": 107,
+      "media_bytes": 170730378,
+      "original_project_sha256": "9f9629fe191a56e76cd231a1f80677316f4f0db20a7d71497adfdec75d8049cf",
+      "portable_project_sha256": "8580ea809fccecf6c58e60c1cbbea8f1e8c42e56344eaf2728032a891201dc47",
+      "movie_sha256": "861993c33092875742439540fd076d7d1164e14d3110a8722a8a5fbb6ea08d5f",
+      "all_432_decoded_RGBA_frames_exact": true,
+      "movie_bytes_exact": true,
+      "source_project_original_package_and_original_media_unavailable_during_render_and_comparison": true,
+      "all_sources_restored_byte_exact": true,
+      "new_package_all_files_byte_identical_to_prior_qualified_package": true,
+      "all_RGBA_comparison_receipt_sha256": "41fc2ac10321dfbfcfbfeadcb63b94cd2c699e49bf48430a6efb0ab553b180fb"
+    },
+    "prior_GUI_proof_reuse": {
+      "original_project_sha256": "9f9629fe191a56e76cd231a1f80677316f4f0db20a7d71497adfdec75d8049cf",
+      "saved_copy_sha256": "e99765981b31e994100836455f9158d2c82603a6186f0c600f8f00a4f3b4d416",
+      "before_gui_frame_positions": [
+        0,
+        47,
+        48,
+        119,
+        120,
+        208,
+        236,
+        304,
+        359,
+        360,
+        431
+      ],
+      "reopened_frame_positions": [
+        0,
+        47,
+        48,
+        119,
+        120,
+        359,
+        360,
+        431
+      ],
+      "before_after_movie_sha256": "fc28eba052f1864c5ec99f112fc43b56fbecb4a4637c11d2523c65e656cb1c50",
+      "same_display_decoded_RGB_frames_exact": 432,
+      "native_artifacts_and_all_123_media_hashes_rechecked": true,
+      "all_7_authoring_render_modules_identical_to_GUI_tested_source": true,
+      "package_calls_in_prior_GUI_comparison": 0,
+      "claim": "Reused prior GUI seek and Save Copy/reopen proof for the exact project/media and unchanged authoring/render path. This is not a fresh GUI run on the restored upstream packaging helper. Fresh packaging/render proof is recorded separately above.",
+      "limits": [
+        "No cross-environment typography or frame-by-frame live-playback assertion",
+        "GUI saved graph has editor-added audio filters and is not XML-identical to authored graph",
+        "Accepted render range 0..431; duration metadata does not establish a playable extra frame432"
+      ],
+      "raw_GUI_receipt_sha256": "881f35d5b81dca3fa6bd977fc1e946b66816505697cfa1e202ecbedde9127ac9"
+    },
+    "cleanup": {
+      "both_owned_MCP_hosts_stopped": true,
+      "all_original_source_paths_restored": true
+    },
+    "PNG_boundary": "Header/size preflight only; no full-decode, immutable-media-snapshot or hostile-parser-isolation claim",
+    "native_artwork_or_media_files_included": false,
+    "new_original_art_license_grant": false,
+    "external_publish_or_upload": false
+  },
+  "publication_runtime_review_fix": {
+    "source_author_runtime_sha256": "a44b198fa87f82171a6a2b881b30a1c493339dca0f9e51f1e7c658083d336d81",
+    "revised_runtime_sha256": "50edc7d45d55dd3fb6d1e00b4b1a68bd618fa20bcfda612adc580a73556b9fe0",
+    "change": "File size and PNG header are inspected through one opened descriptor. A real oversized pathname replacement regression fails the source-author helper and passes the revision.",
+    "source_author_native_reports_apply_to_pre_review_candidate": true,
+    "post_review_native_or_GUI_acceptance_performed": false,
+    "immutable_media_capture": false
+  }
+}
