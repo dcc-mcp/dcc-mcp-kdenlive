@@ -261,3 +261,45 @@ def test_symlinked_effects_root_rejected(project, tmp_path, native_effect_catalo
     with pytest.raises(ValueError, match="must not be a symlink"):
         add_effect(str(project), str(output), "sequence", "dynamictext", {})
     assert not output.exists()
+
+
+@pytest.mark.parametrize("grouped", [False, True])
+def test_kdenlive_namespaced_effect_is_supported(project, tmp_path, native_effect_catalog, grouped):
+    effect = '<effect id="dynamictext" tag="dynamictext"/>'
+    if grouped:
+        xml = '<group xmlns="https://www.kdenlive.org">' + effect + "</group>"
+    else:
+        xml = '<effect xmlns="https://www.kdenlive.org" id="dynamictext" tag="dynamictext"/>'
+    (native_effect_catalog / "dynamictext.xml").write_text(xml)
+    result = add_effect(
+        str(project), str(tmp_path / "namespaced.kdenlive"), "sequence", "dynamictext", {}
+    )
+    assert (
+        properties(Project(result["path"]).element(result["effect_id"]))["kdenlive_id"]
+        == "dynamictext"
+    )
+
+
+def test_namespaced_conflict_with_legacy_definition_rejected(
+    project, tmp_path, native_effect_catalog
+):
+    (native_effect_catalog / "namespace-conflict.xml").write_text(
+        '<group xmlns="https://www.kdenlive.org">'
+        '<effect id="dynamictext" tag="brightness"/></group>'
+    )
+    output = tmp_path / "namespace-conflict.kdenlive"
+    with pytest.raises(ValueError, match="uniquely match"):
+        add_effect(str(project), str(output), "sequence", "dynamictext", {})
+    assert not output.exists()
+
+
+def test_unknown_namespace_does_not_supply_native_identity(
+    project, tmp_path, native_effect_catalog
+):
+    (native_effect_catalog / "dynamictext.xml").write_text(
+        '<effect xmlns="urn:other-format" id="dynamictext" tag="dynamictext"/>'
+    )
+    output = tmp_path / "unknown-namespace.kdenlive"
+    with pytest.raises(ValueError, match="not in the installed XML catalog"):
+        add_effect(str(project), str(output), "sequence", "dynamictext", {})
+    assert not output.exists()

@@ -131,7 +131,9 @@ def validate_effect_identity(effect_id, service):
             if len(data) > 256 * 1024 or total > 16 * 1024 * 1024:
                 raise ValueError("Installed effect catalog exceeds byte limit")
             root = ElementTree.fromstring(data)
-            for node in root.iter("effect"):
+            for node in root.iter():
+                if node.tag not in ("effect", "{https://www.kdenlive.org}effect"):
+                    continue
                 if node.get("id", node.get("tag")) == effect_id:
                     tags.add(node.get("tag", ""))
     if not tags:
