@@ -19,3 +19,15 @@ Discover and describe tools before calls. File edits create new artifacts; inspe
 Grouped clips, nested sequences, timeline model operations and other editor-only features use the shared ui-control skill on a GUI instance bound to an exact Kdenlive PID and HWND. Report provider=dcc-cua and its runtime version before UI observation. Use snapshot -> act -> snapshot and stop the session when done. Never switch to another UI provider or retry after a policy rejection or user interruption.
 
 For rendering, poll the core job ID until terminal; a timeout is not completion. Cancellation terminates the owned render process and cleans partial output.
+
+`add_effect` writes the native `kdenlive_id` effect identity. The optional
+`effect_id` selects the installed Kdenlive effect definition and defaults to
+`service`; the returned `effect_id` is the XML graph ID used by subsequent
+parameter and removal calls. Identity fields cannot be supplied through
+`parameters`. The ID must match an XML effect definition in the installed data catalog
+(`DCC_MCP_KDENLIVE_DATA` selects a nonstandard installation), and its declared
+MLT tag must match `service`. Unknown, conflicting or mismatched IDs reject
+before output. In-memory-only custom effects are not supported by this check.
+The native MLT plugin must also be available; the XML lookup alone does not
+prove its runtime availability. Render-only success does not establish editor save/reopen
+preservation; verify the native effect stack when that is part of the task.

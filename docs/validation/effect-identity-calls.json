@@ -1,0 +1,309 @@
+{
+  "scope": "Privacy-projected actual tools/call arguments from the source pilot. Responses and initialization/schema records are retained privately, not included here.",
+  "source_trace_events": 31,
+  "included_tool_calls": 27,
+  "placeholders": {
+    "RUN_DIR": "Fresh existing task output directory",
+    "CURRENT_SOURCE_SHA256": "Compute or read the current input digest for each operation, not a fixed reusable digest",
+    "JOB_N": "Use the job ID returned by the corresponding asynchronous call; poll until terminal"
+  },
+  "calls": [
+    {
+      "tool": "search_skills",
+      "arguments": {
+        "query": "kdenlive image media project timeline export"
+      },
+      "expected_outcome": "success"
+    },
+    {
+      "tool": "load_skill",
+      "arguments": {
+        "skill_name": "kdenlive-project"
+      },
+      "expected_outcome": "success"
+    },
+    {
+      "tool": "load_skill",
+      "arguments": {
+        "skill_name": "kdenlive-media"
+      },
+      "expected_outcome": "success"
+    },
+    {
+      "tool": "load_skill",
+      "arguments": {
+        "skill_name": "kdenlive-timeline"
+      },
+      "expected_outcome": "success"
+    },
+    {
+      "tool": "load_skill",
+      "arguments": {
+        "skill_name": "kdenlive-effects"
+      },
+      "expected_outcome": "success"
+    },
+    {
+      "tool": "load_skill",
+      "arguments": {
+        "skill_name": "kdenlive-export"
+      },
+      "expected_outcome": "success"
+    },
+    {
+      "tool": "load_skill",
+      "arguments": {
+        "skill_name": "kdenlive-interchange"
+      },
+      "expected_outcome": "success"
+    },
+    {
+      "tool": "load_skill",
+      "arguments": {
+        "skill_name": "kdenlive-catalog"
+      },
+      "expected_outcome": "success"
+    },
+    {
+      "tool": "create_project",
+      "arguments": {
+        "output_path": "${RUN_DIR}/native-versions/edit-0001.kdenlive",
+        "width": 640,
+        "height": 360,
+        "fps_num": 24,
+        "fps_den": 1,
+        "video_tracks": 1,
+        "audio_tracks": 0
+      },
+      "expected_outcome": "success"
+    },
+    {
+      "tool": "add_media",
+      "arguments": {
+        "path": "${RUN_DIR}/native-versions/edit-0001.kdenlive",
+        "output_path": "${RUN_DIR}/native-versions/edit-0002.kdenlive",
+        "resource": "#367c85",
+        "duration": 24,
+        "kind": "color",
+        "name": "Effect identity native pilot",
+        "expected_sha256": "${CURRENT_SOURCE_SHA256}"
+      },
+      "expected_outcome": "success"
+    },
+    {
+      "tool": "insert_clip",
+      "arguments": {
+        "path": "${RUN_DIR}/native-versions/edit-0002.kdenlive",
+        "output_path": "${RUN_DIR}/native-versions/edit-0003.kdenlive",
+        "playlist_id": "track_0_0",
+        "producer_id": "clip_0",
+        "position": 0,
+        "source_in": 0,
+        "source_out": 23,
+        "expected_sha256": "${CURRENT_SOURCE_SHA256}"
+      },
+      "expected_outcome": "success"
+    },
+    {
+      "tool": "add_effect",
+      "arguments": {
+        "path": "${RUN_DIR}/native-versions/edit-0003.kdenlive",
+        "output_path": "${RUN_DIR}/native-versions/edit-0004.kdenlive",
+        "element_id": "clip_0",
+        "service": "dynamictext",
+        "parameters": {
+          "argument": "CLIP TEXT: retained",
+          "geometry": "28 126 580 48",
+          "family": "DejaVu Sans",
+          "size": "24",
+          "weight": "400",
+          "fgcolour": "#ffffffff",
+          "bgcolour": "#00000000",
+          "olcolour": "#00000000",
+          "outline": "0",
+          "pad": "0",
+          "halign": "left",
+          "valign": "top"
+        },
+        "expected_sha256": "${CURRENT_SOURCE_SHA256}"
+      },
+      "expected_outcome": "success"
+    },
+    {
+      "tool": "add_effect",
+      "arguments": {
+        "path": "${RUN_DIR}/native-versions/edit-0004.kdenlive",
+        "output_path": "${RUN_DIR}/native-versions/edit-0005.kdenlive",
+        "element_id": "track_0",
+        "service": "brightness",
+        "parameters": {
+          "level": "0.8"
+        },
+        "expected_sha256": "${CURRENT_SOURCE_SHA256}"
+      },
+      "expected_outcome": "success"
+    },
+    {
+      "tool": "add_effect",
+      "arguments": {
+        "path": "${RUN_DIR}/native-versions/edit-0005.kdenlive",
+        "output_path": "${RUN_DIR}/native-versions/edit-0006.kdenlive",
+        "element_id": "sequence",
+        "service": "dynamictext",
+        "parameters": {
+          "argument": "MASTER TEXT: retained",
+          "geometry": "28 30 580 48",
+          "family": "DejaVu Sans",
+          "size": "26",
+          "weight": "400",
+          "fgcolour": "#ffffffff",
+          "bgcolour": "#00000000",
+          "olcolour": "#00000000",
+          "outline": "0",
+          "pad": "0",
+          "halign": "left",
+          "valign": "top"
+        },
+        "expected_sha256": "${CURRENT_SOURCE_SHA256}"
+      },
+      "expected_outcome": "success"
+    },
+    {
+      "tool": "add_effect",
+      "arguments": {
+        "path": "${RUN_DIR}/native-versions/edit-0006.kdenlive",
+        "output_path": "${RUN_DIR}/native-versions/edit-0007.kdenlive",
+        "element_id": "sequence",
+        "service": "dynamictext",
+        "parameters": {
+          "argument": "Two master effects survive native save",
+          "geometry": "28 290 580 40",
+          "family": "DejaVu Sans",
+          "size": "18",
+          "weight": "400",
+          "fgcolour": "#ffffffff",
+          "bgcolour": "#00000000",
+          "olcolour": "#00000000",
+          "outline": "0",
+          "pad": "0",
+          "halign": "left",
+          "valign": "top"
+        },
+        "expected_sha256": "${CURRENT_SOURCE_SHA256}"
+      },
+      "expected_outcome": "success"
+    },
+    {
+      "tool": "add_effect",
+      "arguments": {
+        "path": "${RUN_DIR}/native-versions/edit-0007.kdenlive",
+        "output_path": "${RUN_DIR}/native-versions/edit-0008.kdenlive",
+        "element_id": "clip_0",
+        "service": "brightness",
+        "parameters": {
+          "level": "1",
+          "alpha": "0=0;11=1",
+          "in": "0",
+          "out": "11"
+        },
+        "effect_id": "fade_from_black",
+        "expected_sha256": "${CURRENT_SOURCE_SHA256}"
+      },
+      "expected_outcome": "success"
+    },
+    {
+      "tool": "add_effect",
+      "arguments": {
+        "path": "${RUN_DIR}/native-versions/edit-0008.kdenlive",
+        "output_path": "${RUN_DIR}/native-versions/rejected-identity.kdenlive",
+        "element_id": "sequence",
+        "service": "dynamictext",
+        "parameters": {
+          "kdenlive_id": "brightness"
+        },
+        "expected_sha256": "${CURRENT_SOURCE_SHA256}"
+      },
+      "expected_outcome": "rejection"
+    },
+    {
+      "tool": "inspect_project",
+      "arguments": {
+        "path": "${RUN_DIR}/native-versions/edit-0008.kdenlive"
+      },
+      "expected_outcome": "success"
+    },
+    {
+      "tool": "validate_project",
+      "arguments": {
+        "path": "${RUN_DIR}/native-versions/edit-0008.kdenlive"
+      },
+      "expected_outcome": "success"
+    },
+    {
+      "tool": "package_project",
+      "arguments": {
+        "path": "${RUN_DIR}/native-versions/edit-0008.kdenlive",
+        "output_directory": "${RUN_DIR}/portable-project",
+        "allowed_media_roots": [
+          "${RUN_DIR}"
+        ],
+        "expected_sha256": "${CURRENT_SOURCE_SHA256}"
+      },
+      "expected_outcome": "success"
+    },
+    {
+      "tool": "jobs_get_status",
+      "arguments": {
+        "job_id": "${JOB_1}"
+      },
+      "expected_outcome": "success"
+    },
+    {
+      "tool": "jobs_get_status",
+      "arguments": {
+        "job_id": "${JOB_1}"
+      },
+      "expected_outcome": "success"
+    },
+    {
+      "tool": "render_project",
+      "arguments": {
+        "path": "${RUN_DIR}/portable-project/project.kdenlive",
+        "output_path": "${RUN_DIR}/pilot.mp4",
+        "preset": "mp4",
+        "start": 0,
+        "end": 23,
+        "timeout": 180
+      },
+      "expected_outcome": "success"
+    },
+    {
+      "tool": "jobs_get_status",
+      "arguments": {
+        "job_id": "${JOB_2}"
+      },
+      "expected_outcome": "success"
+    },
+    {
+      "tool": "jobs_get_status",
+      "arguments": {
+        "job_id": "${JOB_2}"
+      },
+      "expected_outcome": "success"
+    },
+    {
+      "tool": "jobs_get_status",
+      "arguments": {
+        "job_id": "${JOB_2}"
+      },
+      "expected_outcome": "success"
+    },
+    {
+      "tool": "probe_media",
+      "arguments": {
+        "path": "${RUN_DIR}/pilot.mp4"
+      },
+      "expected_outcome": "success"
+    }
+  ]
+}
