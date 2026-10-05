@@ -39,6 +39,7 @@ GROUPS = {
             "inspect_project": "Inspect the file profile, bin, tracks, clips and effects; does not read live editor state.",
             "validate_project": "Validate XML references, IDs, frame rate and entry ranges.",
             "set_guides": "Replace project guide markers in a new file.",
+            "package_project": "Stage and hash a portable editable project with explicit task-authorized media roots; reject symlinks, missing/remote/out-of-root dependencies and existing destinations. Native render/reopen is separate.",
         },
     ),
     "media": (
@@ -93,7 +94,51 @@ GROUPS = {
         },
     ),
 }
+# Packaging lives outside project.py and has a deliberately narrower wire contract
+# than the generic signature-derived tools (including non-destructive async jobs).
+FUNCTION_MODULES = {"package_project": "packaging"}
+TOOL_OVERRIDES = {
+    "package_project": {
+        "input_schema": {
+            "type": "object",
+            "additionalProperties": False,
+            "required": ["path", "output_directory", "allowed_media_roots"],
+            "properties": {
+                "path": {"type": "string", "minLength": 1},
+                "output_directory": {"type": "string", "minLength": 1},
+                "allowed_media_roots": {
+                    "type": "array",
+                    "minItems": 1,
+                    "maxItems": 16,
+                    "items": {"type": "string", "minLength": 1},
+                },
+                "max_total_bytes": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2147483648,
+                    "default": 536870912,
+                },
+                "expected_sha256": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$",
+                },
+            },
+        },
+        "execution": "async",
+        "timeout_hint_secs": 1800,
+        "annotations": {
+            "read_only_hint": False,
+            "destructive_hint": False,
+            "idempotent_hint": False,
+            "open_world_hint": False,
+            "deferred_hint": True,
+        },
+    },
+}
+
 PNG_GUIDANCE = "For a lossless encoded still, set preset to `png` and supply the same nonnegative frame for `start` and `end`. The project width and height must each be at most 4096. The tool exports one 8-bit RGBA PNG, checks its header and native stream dimensions, and publishes without replacing an existing file. PNG encoding does not guarantee identical rendering across fonts, displays or project changes; compare decoded pixels when validating those differences."
+
+PACKAGING_GUIDANCE = "`package_project` accepts explicit media roots already authorized for the task. It copies only referenced regular media, uses content-addressed filenames to avoid basename collisions, and records bytes and SHA-256 without private source paths. Media resources are relative; the native root is empty so Kdenlive can recover the directory from the opened document's location instead of the editor's launch directory. Existing destinations are never replaced. Cancellation/error removes staging, not the source. Linux uses atomic no-replace directory publication; platforms without that primitive fail closed. File/color producers and bounded audited effects are supported; indirect title/effect dependencies, remote media and symlinks are rejected. These limits are not a sandbox against hostile parsers or concurrent directory attackers. Open the packaged native project and render it through MCP after packaging; structural/hash checks alone are not editor or render acceptance."
 
 READ = {
     "get_status",
@@ -114,7 +159,18 @@ def generate():
         definitions = {node.name: node for node in tree.body if isinstance(node, ast.FunctionDef)}
         tools = []
         for name, description in functions.items():
-            definition = definitions[name]
+            function_module = FUNCTION_MODULES.get(name, module)
+            if function_module == module:
+                definition = definitions[name]
+            else:
+                function_tree = ast.parse(
+                    (PACKAGE / (function_module + ".py")).read_text(encoding="utf-8")
+                )
+                definition = next(
+                    node
+                    for node in function_tree.body
+                    if isinstance(node, ast.FunctionDef) and node.name == name
+                )
             required_count = len(definition.args.args) - len(definition.args.defaults)
             props, required = {}, []
             for index, argument in enumerate(definition.args.args):
@@ -187,11 +243,12 @@ def generate():
                     },
                 }
             )
+            tools[-1].update(TOOL_OVERRIDES.get(name, {}))
             (directory / "scripts" / (name + ".py")).write_text(
                 '"""'
                 + description
                 + '"""\n\nfrom dcc_mcp_kdenlive.'
-                + module
+                + function_module
                 + " import "
                 + name
                 + "\n\n\ndef main(**kwargs):\n    return "
@@ -220,6 +277,15 @@ def generate():
             skill = directory / "SKILL.md"
             skill.write_text(
                 skill.read_text(encoding="utf-8") + "\n" + PNG_GUIDANCE + "\n", encoding="utf-8"
+            )
+        if group == "project":
+            skill = directory / "SKILL.md"
+            skill.write_text(
+                skill.read_text(encoding="utf-8")
+                + "\n## Portable native bundles\n\n"
+                + PACKAGING_GUIDANCE
+                + "\n",
+                encoding="utf-8",
             )
 
 
