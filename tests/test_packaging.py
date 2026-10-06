@@ -1,12 +1,14 @@
 """Portable bundle safety and exact-byte contract tests."""
 
 import errno
+import hashlib
 import json
 import os
 import shutil
 import stat
 from pathlib import Path
 from types import SimpleNamespace
+from xml.etree import ElementTree as ET
 
 import pytest
 
@@ -355,3 +357,173 @@ def test_duplicate_proxy_cannot_hide_a_dependency(tmp_path):
     with pytest.raises(ValueError, match="Proxy"):
         packaging.package_project(str(source), str(tmp_path / "out"), [str(tmp_path / "media")])
     assert not (tmp_path / "out").exists()
+
+
+_BROWSER_PROPERTY = "kdenlive:docproperties.browserurl"
+
+
+@pytest.mark.parametrize(
+    "browser_location",
+    ["/private/editor-browser", "C:\\private\\editor-browser", "file:///private/browser", ""],
+)
+def test_browser_ui_metadata_omitted_without_content_changes(tmp_path, browser_location):
+    media = media_file(tmp_path / "media/a.png", b"unchanged media")
+    source = make_project(tmp_path, [media])
+    project = Project(str(source))
+    main_bin = project.element("main_bin", ("playlist",))
+    put(main_bin, "kdenlive:docproperties.guides", '[{"pos":1,"comment":"Keep guide"}]')
+    put(main_bin, "kdenlive:docproperties.documentnotes", "Keep editor notes")
+    entry = project.element("track_0_0", ("playlist",)).find("entry")
+    effect = ET.SubElement(entry, "filter", id="retained_effect", **{"in": "0", "out": "1"})
+    put(effect, "mlt_service", "brightness")
+    put(effect, "kdenlive:id", "brightness")
+    put(effect, "level", "0=1;1=0.5")
+    baseline = tmp_path / "baseline.kdenlive"
+    baseline.write_bytes(xml_bytes(project.root))
+    baseline_result = packaging.package_project(
+        str(baseline), str(tmp_path / "baseline-package"), [str(media.parent)]
+    )
+
+    put(main_bin, _BROWSER_PROPERTY, browser_location)
+    saved_copy = tmp_path / "saved-copy.kdenlive"
+    saved_copy.write_bytes(xml_bytes(project.root))
+    original = saved_copy.read_bytes()
+    original_hash = hashlib.sha256(original).hexdigest()
+    out = tmp_path / "portable"
+    result = packaging.package_project(
+        str(saved_copy), str(out), [str(media.parent)], expected_sha256=original_hash
+    )
+    manifest = json.loads((out / "manifest.json").read_text())
+    native = (out / "project.kdenlive").read_bytes()
+    assert native == Path(baseline_result["project_path"]).read_bytes()
+    assert saved_copy.read_bytes() == original
+    assert manifest["source_project_sha256"] == original_hash
+    assert manifest["omitted_editor_metadata"] == [_BROWSER_PROPERTY]
+    assert result["omitted_editor_metadata"] == [_BROWSER_PROPERTY]
+    assert baseline_result["omitted_editor_metadata"] == []
+    assert _BROWSER_PROPERTY not in native.decode()
+    if browser_location:
+        assert browser_location not in native.decode()
+        assert json.dumps(browser_location)[1:-1] not in json.dumps(manifest)
+        assert json.dumps(browser_location)[1:-1] not in json.dumps(result)
+    assert next((out / "media").iterdir()).read_bytes() == b"unchanged media"
+    for record in manifest["files"]:
+        content = (out / record["path"]).read_bytes()
+        assert record["bytes"] == len(content)
+        assert record["sha256"] == hashlib.sha256(content).hexdigest()
+
+
+def test_no_browser_metadata_reports_no_omissions(tmp_path):
+    source = make_project(tmp_path, [media_file(tmp_path / "a.png")])
+    project = Project(str(source))
+    put(project.element("main_bin"), "kdenlive:docproperties.documentnotes", "Retained notes")
+    source.write_bytes(xml_bytes(project.root))
+    original = source.read_bytes()
+    result = packaging.package_project(str(source), str(tmp_path / "out"), [str(tmp_path)])
+    manifest = json.loads(Path(result["manifest_path"]).read_text())
+    assert result["omitted_editor_metadata"] == []
+    assert manifest["omitted_editor_metadata"] == []
+    assert source.read_bytes() == original
+    assert (
+        properties(Project(result["project_path"]).element("main_bin"))[
+            "kdenlive:docproperties.documentnotes"
+        ]
+        == "Retained notes"
+    )
+
+
+@pytest.mark.parametrize("value", ["/private/unrecognized", "https://example.com/private"])
+@pytest.mark.parametrize("name", ["private_metadata", "kdenlive:docproperties.browserurl.extra"])
+def test_browser_omission_does_not_hide_other_private_metadata(tmp_path, value, name):
+    source = make_project(tmp_path, [media_file(tmp_path / "a.png")])
+    project = Project(str(source))
+    main_bin = project.element("main_bin", ("playlist",))
+    put(main_bin, _BROWSER_PROPERTY, "/private/editor-browser")
+    put(main_bin, name, value)
+    source.write_bytes(xml_bytes(project.root))
+    original = source.read_bytes()
+    with pytest.raises(ValueError, match="Residual private/remote path"):
+        packaging.package_project(str(source), str(tmp_path / "out"), [str(tmp_path)])
+    assert source.read_bytes() == original
+    assert not (tmp_path / "out").exists()
+    assert not list(tmp_path.glob(".kdenlive-package-*"))
+
+
+@pytest.mark.parametrize("value", ["/private/browser", "https://example.com/browser"])
+@pytest.mark.parametrize(
+    "location", ["root", "producer", "track_playlist", "nested_playlist", "wrong_tag"]
+)
+def test_browser_property_outside_top_level_main_bin_is_rejected(tmp_path, value, location):
+    source = make_project(tmp_path, [media_file(tmp_path / "a.png")])
+    project = Project(str(source))
+    if location == "root":
+        target = project.root
+    elif location == "producer":
+        target = project.element("black_track")
+    elif location == "track_playlist":
+        target = project.element("track_0_0")
+    elif location == "nested_playlist":
+        target = project.element("main_bin")
+        project.root.remove(target)
+        ET.SubElement(project.root, "wrapper").append(target)
+    else:
+        target = project.element("main_bin")
+        target.tag = "tractor"
+    put(target, _BROWSER_PROPERTY, value)
+    source.write_bytes(xml_bytes(project.root))
+    original = source.read_bytes()
+    with pytest.raises(ValueError, match="Residual private/remote path"):
+        packaging.package_project(str(source), str(tmp_path / "out"), [str(tmp_path)])
+    assert source.read_bytes() == original
+    assert not (tmp_path / "out").exists()
+    assert not list(tmp_path.glob(".kdenlive-package-*"))
+
+
+@pytest.mark.parametrize("value", ["/private/browser", ""])
+def test_duplicate_browser_metadata_rejected(tmp_path, value):
+    source = make_project(tmp_path, [media_file(tmp_path / "a.png")])
+    project = Project(str(source))
+    main_bin = project.element("main_bin", ("playlist",))
+    put(main_bin, _BROWSER_PROPERTY, value)
+    ET.SubElement(main_bin, "property", name=_BROWSER_PROPERTY).text = ""
+    source.write_bytes(xml_bytes(project.root))
+    original = source.read_bytes()
+    with pytest.raises(ValueError, match="Duplicate project-bin browser metadata"):
+        packaging.package_project(str(source), str(tmp_path / "out"), [str(tmp_path)])
+    assert source.read_bytes() == original
+    assert not (tmp_path / "out").exists()
+    assert not list(tmp_path.glob(".kdenlive-package-*"))
+
+
+def test_nonpath_browser_property_outside_main_bin_is_preserved(tmp_path):
+    source = make_project(tmp_path, [media_file(tmp_path / "a.png")])
+    project = Project(str(source))
+    put(project.element("track_0_0"), _BROWSER_PROPERTY, "retained custom metadata")
+    source.write_bytes(xml_bytes(project.root))
+    result = packaging.package_project(str(source), str(tmp_path / "out"), [str(tmp_path)])
+    assert result["omitted_editor_metadata"] == []
+    assert (
+        properties(Project(result["project_path"]).element("track_0_0"))[_BROWSER_PROPERTY]
+        == "retained custom metadata"
+    )
+
+
+@pytest.mark.parametrize("value", ["/private/other-content", "https://example.com/other-content"])
+@pytest.mark.parametrize("shape", ["attribute", "child"])
+def test_browser_metadata_cannot_hide_unknown_payload(tmp_path, value, shape):
+    source = make_project(tmp_path, [media_file(tmp_path / "a.png")])
+    project = Project(str(source))
+    main_bin = project.element("main_bin", ("playlist",))
+    put(main_bin, _BROWSER_PROPERTY, "/private/editor-browser")
+    browser = main_bin.find("property[@name='kdenlive:docproperties.browserurl']")
+    if shape == "attribute":
+        browser.set("unknown_path", value)
+    else:
+        ET.SubElement(browser, "property", name="unknown_path").text = value
+    source.write_bytes(xml_bytes(project.root))
+    original = source.read_bytes()
+    with pytest.raises(ValueError, match="Only scalar project-bin browser metadata"):
+        packaging.package_project(str(source), str(tmp_path / "out"), [str(tmp_path)])
+    assert source.read_bytes() == original
+    assert not (tmp_path / "out").exists()
+    assert not list(tmp_path.glob(".kdenlive-package-*"))

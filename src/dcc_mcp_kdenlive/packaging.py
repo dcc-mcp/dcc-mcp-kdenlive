@@ -273,6 +273,19 @@ def package_project(
         # An empty root lets Kdenlive recover the directory from the document
         # URL. A literal dot instead selects the editor's launch directory.
         project.root.set("root", "")
+        # Kdenlive saves the last project-bin browser location in main_bin.
+        # This is editor UI state, not a media dependency or authored content.
+        # Omit only this known property; do not generalize to a path scrubber.
+        omitted_metadata = []
+        for playlist in project.root.findall("playlist[@id='main_bin']"):
+            browser = playlist.findall("property[@name='kdenlive:docproperties.browserurl']")
+            if len(browser) > 1:
+                raise ValueError("Duplicate project-bin browser metadata is not supported")
+            if browser:
+                if list(browser[0]) or set(browser[0].attrib) != {"name"}:
+                    raise ValueError("Only scalar project-bin browser metadata is supported")
+                playlist.remove(browser[0])
+                omitted_metadata.append("kdenlive:docproperties.browserurl")
         # Reject residual absolute paths or remote resources; do not guess how
         # to redact unknown metadata or silently discard editable content.
         for node in project.root.iter():
@@ -305,7 +318,8 @@ def package_project(
             "media_files": len(records) - 1,
             "media_bytes": sum(item["bytes"] for item in records[1:]),
             "source_dependency_paths_disclosed": False,
-            "metadata_privacy": "Editor/user metadata is preserved; review it before sharing the package.",
+            "omitted_editor_metadata": omitted_metadata,
+            "metadata_privacy": "Only documented browser UI metadata is omitted; other editor/user metadata is preserved and requires review before sharing.",
             "native_structure_validation": validation,
             "scope": "File/color sources and explicitly supported effects. Native editor reopen and render are separate acceptance.",
         }
@@ -327,6 +341,7 @@ def package_project(
             "media_files": manifest["media_files"],
             "media_bytes": manifest["media_bytes"],
             "source_dependency_paths_disclosed": False,
+            "omitted_editor_metadata": omitted_metadata,
         }
     finally:
         if stage is not None:
