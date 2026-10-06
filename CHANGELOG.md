@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.1.3](https://github.com/dcc-mcp/dcc-mcp-kdenlive/compare/v0.1.2...v0.1.3) (2026-10-06)
+
+
+### Bug Fixes
+
+* omit scalar project-bin browser metadata from portable packages ([#20](https://github.com/dcc-mcp/dcc-mcp-kdenlive/issues/20)) ([e712709](https://github.com/dcc-mcp/dcc-mcp-kdenlive/commit/e712709032adcadab591096220347d54feeebaf6))
+* preserve project packaging during skill regeneration ([#17](https://github.com/dcc-mcp/dcc-mcp-kdenlive/issues/17)) ([0d1a1cc](https://github.com/dcc-mcp/dcc-mcp-kdenlive/commit/0d1a1cc2bfe0ff203384d174549217a1ca57191a))
+
 ## [0.1.2](https://github.com/dcc-mcp/dcc-mcp-kdenlive/compare/v0.1.1...v0.1.2) (2026-10-03)
 
 
