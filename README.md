@@ -13,8 +13,9 @@ expose this endpoint, and a full host binary has not yet been validated.
 <!-- Generated from dcc-mcp-catalog.yml by scripts/generate_adapter_pointer.py in dcc-mcp/dcc-mcp-core. Do not edit by hand. -->
 ## Part of the DCC-MCP host matrix
 
-**dcc-mcp-kdenlive** — Kdenlive adapter with 20 typed project, media, timeline, effect,
-catalog and async MLT rendering tools, plus shared DCC-CUA editor control.
+**dcc-mcp-kdenlive** — Kdenlive adapter with 27 typed project, media, timeline, effect,
+catalog, export, interchange, native and setup tools, plus shared DCC-CUA editor
+control.
 
 It is one of **38 host adapters** in the DCC-MCP catalog. Every adapter speaks the same
 MCP protocol and builds on the same core runtime contract; each one exposes the tools
