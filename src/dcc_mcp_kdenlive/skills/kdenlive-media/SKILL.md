@@ -6,7 +6,7 @@ metadata:
   dcc-mcp:
     dcc: kdenlive
     layer: domain
-    version: "0.1.3" # x-release-please-version
+    version: "0.1.4" # x-release-please-version
     tools: tools.yaml
     tags: [kdenlive, video, pipeline]
     search-hint: "Kdenlive media add_media relink_media"
