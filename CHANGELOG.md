@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.4](https://github.com/dcc-mcp/dcc-mcp-kdenlive/compare/v0.1.3...v0.1.4) (2026-10-09)
+
+
+### Bug Fixes
+
+* **ci:** anchor release identity on the tag, not github.sha ([18c4831](https://github.com/dcc-mcp/dcc-mcp-kdenlive/commit/18c4831a62c758e1dda14ca9a3999ab91856c4e9))
+
 ## [0.1.3](https://github.com/dcc-mcp/dcc-mcp-kdenlive/compare/v0.1.2...v0.1.3) (2026-10-06)
 
 
