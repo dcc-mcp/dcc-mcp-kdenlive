@@ -9,6 +9,27 @@ readback and undoable edits for a separately built, pinned Kdenlive host.
 The source overlay and protocol tests are included; stock installations do not
 expose this endpoint, and a full host binary has not yet been validated.
 
+<!-- dcc-mcp-coverage-pointer:start -->
+<!-- Generated from dcc-mcp-catalog.yml by scripts/generate_adapter_pointer.py in dcc-mcp/dcc-mcp-core. Do not edit by hand. -->
+## Part of the DCC-MCP host matrix
+
+**dcc-mcp-kdenlive** — Kdenlive adapter with 27 typed project, media, timeline, effect,
+catalog, export, interchange, native and setup tools, plus shared DCC-CUA editor
+control.
+
+It is one of **38 host adapters** in the DCC-MCP catalog. Every adapter speaks the same
+MCP protocol and builds on the same core runtime contract; each one exposes the tools
+its own host needs on top of that.
+
+- [All host adapters and install metadata](https://dcc-mcp.github.io/ecosystem)
+- [Host matrix on the core README](https://github.com/dcc-mcp/dcc-mcp-core#readme)
+- [Showcase](https://dcc-mcp.github.io/showcase)
+
+This block is generated from the catalog entry in
+[`dcc-mcp-catalog.yml`](https://github.com/dcc-mcp/dcc-mcp-core/blob/main/dcc-mcp-catalog.yml).
+Re-run the generator after changing the catalog.
+<!-- dcc-mcp-coverage-pointer:end -->
+
 ## See a product video take shape
 
 ![AI-generated Kdenlive interface illustration with headphone clips, an editing timeline, narration and music tracks, and a portrait product preview](docs/images/headphones-workflow-showcase.webp)
