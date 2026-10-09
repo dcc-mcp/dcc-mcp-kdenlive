@@ -48,7 +48,29 @@ jobs:
           python-version: '3.12'
       - name: Verify exact release identity
         run: |
-          test "$RELEASE_SHA" = "$GITHUB_SHA"
+          set -euo pipefail
+          # Anchor every check on the commit the release TAG resolves to, never on
+          # github.sha. The release PR can be merged while this run's `checks` job is
+          # still in flight; release-please then tags that later merge commit, so
+          # release-please's `sha` output legitimately differs from the commit that
+          # started this run. Asserting RELEASE_SHA == GITHUB_SHA made the publish job
+          # fail in exactly that case, and the next push skipped it (created != true),
+          # so the release shipped with no artifacts and could never self-heal.
+          tag_commit=""
+          for _ in $(seq 1 12); do
+            if git fetch --depth=1 origin "refs/tags/$RELEASE_TAG:refs/tags/$RELEASE_TAG" 2>/dev/null; then
+              tag_commit="$(git rev-list -n 1 "$RELEASE_TAG")"
+              [ -n "$tag_commit" ] && break
+            fi
+            echo "waiting for $RELEASE_TAG to become visible on origin"
+            sleep 5
+          done
+          if [ -z "$tag_commit" ]; then
+            echo "::error::release tag $RELEASE_TAG is not resolvable on origin"
+            exit 1
+          fi
+          echo "tag $RELEASE_TAG -> $tag_commit"
+          test "$tag_commit" = "$RELEASE_SHA"
           test "$(git rev-parse HEAD)" = "$RELEASE_SHA"
           python -c 'import os,tomllib; v=tomllib.load(open("pyproject.toml","rb"))["project"]["version"]; assert os.environ["RELEASE_TAG"] == "v"+v'
       - run: python -m pip install build twine
