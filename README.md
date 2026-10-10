@@ -17,7 +17,7 @@ expose this endpoint, and a full host binary has not yet been validated.
 catalog, export, interchange, native and setup tools, plus shared DCC-CUA editor
 control.
 
-It is one of **38 host adapters** in the DCC-MCP catalog. Every adapter speaks the same
+It is one of **47 host adapters** in the DCC-MCP catalog. Every adapter speaks the same
 MCP protocol and builds on the same core runtime contract; each one exposes the tools
 its own host needs on top of that.
 
