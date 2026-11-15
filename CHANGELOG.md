@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.1.5](https://github.com/dcc-mcp/dcc-mcp-kdenlive/compare/v0.1.4...v0.1.5) (2026-11-15)
+
+
+### Documentation
+
+* refresh the generated DCC-MCP host matrix pointer ([0aabfa6](https://github.com/dcc-mcp/dcc-mcp-kdenlive/commit/0aabfa64034d6507069f0c9fdf79b255fe69df73))
+* refresh the generated DCC-MCP host matrix pointer ([512f188](https://github.com/dcc-mcp/dcc-mcp-kdenlive/commit/512f188235f81bd408caff6c0a6523560017391e))
+* refresh the generated DCC-MCP host matrix pointer ([#24](https://github.com/dcc-mcp/dcc-mcp-kdenlive/issues/24)) ([5a83cba](https://github.com/dcc-mcp/dcc-mcp-kdenlive/commit/5a83cbad7c987e32b86a5314996951ac91311c3b))
+
 ## [0.1.4](https://github.com/dcc-mcp/dcc-mcp-kdenlive/compare/v0.1.3...v0.1.4) (2026-10-09)
 
 
